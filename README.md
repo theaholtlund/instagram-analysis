@@ -6,6 +6,7 @@ The script is intended to be added to the directory of files received from Insta
 
 ### Requesting Files
 
+To request data from Instagram:
 1. Go to "Settings" > "Accounts Centre" > "Download your information"
 2. Choose profiles and data range
 3. Specify that the date range should be "All time" and that the format should be "HTML"
