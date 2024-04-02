@@ -28,4 +28,6 @@ following_usernames = extract_usernames(following_soup)
 not_following_back = following_usernames - followers_usernames
 
 # Output the result
-print(not_following_back)
+print("Accounts not following back:")
+for username in not_following_back:
+    print("- " + username)
