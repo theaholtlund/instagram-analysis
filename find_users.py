@@ -2,15 +2,25 @@
 import os
 from bs4 import BeautifulSoup
 
+# Function to load HTML content with error handling
+def load_html_content(file_path):
+    try:
+        with open(file_path, "r", encoding="utf-8") as file:
+            return file.read()
+    except FileNotFoundError:
+        print(f"Error: '{file_path}' not found. Make sure 'find_users.py' is placed in the correct directory.")
+        exit()
+
 # Get the directory of the current script
 script_dir = os.path.dirname(os.path.realpath(__file__))
 
-# Load the HTML content of the followers and following files
-with open("./connections/followers_and_following/followers_1.html", "r", encoding="utf-8") as file:
-    followers_html = file.read()
+# Define paths for the HTML files
+followers_path = os.path.join(script_dir, "connections/followers_and_following/followers_1.html")
+following_path = os.path.join(script_dir, "connections/followers_and_following/following.html")
 
-with open("./connections/followers_and_following/following.html", "r", encoding="utf-8") as file:
-    following_html = file.read()
+# Load the HTML content with error handling
+followers_html = load_html_content(followers_path)
+following_html = load_html_content(following_path)
 
 # Parse the HTML content using BeautifulSoup
 followers_soup = BeautifulSoup(followers_html, "html.parser")
