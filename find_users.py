@@ -37,7 +37,12 @@ following_usernames = extract_usernames(following_soup)
 # Find account names the user is following, that are not following them back
 not_following_back = following_usernames - followers_usernames
 
-# Output the result
-print("Accounts not following back:")
-for username in not_following_back:
-    print("- " + username)
+# Output the result to a file
+output_file_path = os.path.join(script_dir, "not_following_back.txt")
+with open(output_file_path, "w", encoding="utf-8") as output_file:
+    output_file.write("Accounts not following back:\n")
+    for username in not_following_back:
+        output_file.write("- " + username + "\n")
+
+# Print out confirmation of file export
+print(f"Accounts not following back have been saved to '{output_file_path}'.")
