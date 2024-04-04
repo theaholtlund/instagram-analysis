@@ -8,15 +8,18 @@ def load_html_content(file_path):
         with open(file_path, "r", encoding="utf-8") as file:
             return file.read()
     except FileNotFoundError:
-        print(f"Error: '{file_path}' not found. Make sure 'find_users.py' is placed in the correct directory.")
+        print(f"Error: '{file_path}' not found. Please make sure you have copied the files into the 'instagram_data' folder.")
         exit()
+
+# Specify the directory where Instagram data is expected to be placed
+data_dir = "instagram_data"
 
 # Get the directory of the current script
 script_dir = os.path.dirname(os.path.realpath(__file__))
 
-# Define paths for the HTML files
-followers_path = os.path.join(script_dir, "connections/followers_and_following/followers_1.html")
-following_path = os.path.join(script_dir, "connections/followers_and_following/following.html")
+# Define paths for the HTML files within the data files folder
+followers_path = os.path.join(script_dir, data_dir, "followers_1.html")
+following_path = os.path.join(script_dir, data_dir, "following.html")
 
 # Load the HTML content with error handling
 followers_html = load_html_content(followers_path)
@@ -38,7 +41,7 @@ following_usernames = extract_usernames(following_soup)
 not_following_back = following_usernames - followers_usernames
 
 # Output the result to a file
-output_file_path = os.path.join(script_dir, "not_following_back.txt")
+output_file_path = os.path.join(script_dir, data_dir, "not_following_back.txt")
 with open(output_file_path, "w", encoding="utf-8") as output_file:
     output_file.write("Accounts not following back:\n")
     for username in not_following_back:
