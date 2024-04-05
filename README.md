@@ -23,7 +23,7 @@ Before running the script, ensure you have placed the files `followers_1.html` a
 To utilise the script:
 
 1. Run `find_users.py`. The script will analyse the follower information files located in the `instagram_data` folder.
-2. Once the analysis is complete, you will find the output in the same folder named `not_following_back.txt`.
+2. Once the analysis is complete, you will find the output in the project directory, in a file called `not_following_back.txt`.
 3. Open the file to see what user accounts you are following, but that are not following you back.
 
 ### Error Handling

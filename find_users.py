@@ -41,7 +41,7 @@ following_usernames = extract_usernames(following_soup)
 not_following_back = following_usernames - followers_usernames
 
 # Output the result to a file
-output_file_path = os.path.join(script_dir, data_dir, "not_following_back.txt")
+output_file_path = os.path.join(script_dir, "not_following_back.txt")
 with open(output_file_path, "w", encoding="utf-8") as output_file:
     output_file.write("Accounts not following back:\n")
     for username in not_following_back:
