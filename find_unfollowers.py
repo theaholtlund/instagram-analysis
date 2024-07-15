@@ -13,13 +13,15 @@ def load_html_content(file_path):
 
 # Specify the directory where Instagram data is expected to be placed
 data_dir = "instagram_data"
+connections_dir = "connections"
+followers_dir = "followers_and_following"
 
 # Get the directory of the current script
 script_dir = os.path.dirname(os.path.realpath(__file__))
 
 # Define paths for the HTML files within the data files folder
-followers_path = os.path.join(script_dir, data_dir, "followers_1.html")
-following_path = os.path.join(script_dir, data_dir, "following.html")
+followers_path = os.path.join(script_dir, data_dir, connections_dir, followers_dir, "followers_1.html")
+following_path = os.path.join(script_dir, data_dir, connections_dir, followers_dir, "following.html")
 
 # Load the HTML content with error handling
 followers_html = load_html_content(followers_path)
