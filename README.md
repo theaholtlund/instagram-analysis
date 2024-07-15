@@ -16,7 +16,8 @@ To request data from Instagram:
 
 ### Setting Up Your Instagram Data
 
-Before running the respective scripts, ensure you have placed the files `followers_1.html` and `following.html` from the directory `connections` > `followers_and_following` in the data you received from Instagram, in the `instagram_data` folder within the project directory.
+Before running the respective scripts, please copy app contents from the downloaded folder into the
+have placed the files `followers_1.html` and `following.html` from the directory `connections` > `followers_and_following` in the data you received from Instagram, in the `instagram_data` folder within the project directory.
 
 ### Using the Script
 

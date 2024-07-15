@@ -1,1 +1,3 @@
 .DS_Store
+instagram_data/*
+!instagram_data/README
