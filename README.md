@@ -16,16 +16,14 @@ To request data from Instagram:
 
 ### Setting Up Your Instagram Data
 
-Before running the respective scripts, please copy app contents from the downloaded folder into the
-have placed the files `followers_1.html` and `following.html` from the directory `connections` > `followers_and_following` in the data you received from Instagram, in the `instagram_data` folder within the project directory.
+Before running the respective scripts, please copy all contents from the downloaded folder as they are, with the current structure, into the `instagram_data` folder within the project directory.
 
 ### Using the Script
 
 To utilise the script:
 
-1. Run `find_unfollowers.py`. The script will analyse the follower information files located in the `instagram_data` folder.
-2. Once the analysis is complete, you will find the output in the project directory, in a file called `not_following_back.txt`.
-3. Open the file to see what user accounts you are following, but that are not following you back.
+1. Run the script for which you want to perform an analysis.
+2. Once the analysis is complete, you will find the output in the `analysis_outputs` directory, with a name corresponding to the area of analysis.
 
 ### Error Handling
 
