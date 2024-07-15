@@ -10,6 +10,10 @@ def load_html_content(file_path):
     except FileNotFoundError:
         print(f"Error: '{file_path}' not found. Please make sure you have copied the files into the 'instagram_data' folder.")
         exit()
+        
+# Function to extract usernames from the provided HTML content
+def extract_usernames(soup):
+    return {a.text for a in soup.find_all("a", href=True)}
 
 # Specify the directory where Instagram data is expected to be placed
 data_dir = "instagram_data"
@@ -30,10 +34,6 @@ following_html = load_html_content(following_path)
 # Parse the HTML content using BeautifulSoup
 followers_soup = BeautifulSoup(followers_html, "html.parser")
 following_soup = BeautifulSoup(following_html, "html.parser")
-
-# Function to extract usernames from the provided HTML content
-def extract_usernames(soup):
-    return {a.text for a in soup.find_all("a", href=True)}
 
 # Extract followers and following usernames
 followers_usernames = extract_usernames(followers_soup)
