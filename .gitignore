@@ -1,3 +1,5 @@
 .DS_Store
 instagram_data/*
-!instagram_data/README
+!instagram_data/README.md
+analysis_outputs/*
+!analysis_outputs/README.md
