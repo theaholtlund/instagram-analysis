@@ -35,13 +35,9 @@ def main():
     followers_path = os.path.join(script_dir, data_dir, connections_dir, followers_dir, "followers_1.html")
     following_path = os.path.join(script_dir, data_dir, connections_dir, followers_dir, "following.html")
     
-    try:
-        # Load the HTML content with error handling
-        followers_html = load_html_content(followers_path)
-        following_html = load_html_content(following_path)
-    except FileNotFoundError as e:
-        print(e)
-        return
+    # Load the HTML content with error handling
+    followers_html = load_html_content(followers_path)
+    following_html = load_html_content(following_path)
     
     # Parse the HTML content using BeautifulSoup
     followers_soup = BeautifulSoup(followers_html, "html.parser")
