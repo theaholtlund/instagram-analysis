@@ -1,8 +1,8 @@
-# Instagram Followers App
+# Instagram Analysis App
 
 ### Overview
 
-The script is intended to be added to the directory of files received from Instagram when requesting your data from them. It analyses the data to identify accounts that you are following but are not following you back. Results are saved to a file for easy access.
+The repository can be used to analyse various areas for Instagram, based on files received when a user requests their data from the platform. Files are names according to their functionality. Currently, it only has functionality to find accounts that have unfollowed a user within the last year, but more functionality is under development. Results are saved to a file for easy access.
 
 ### Requesting Files
 
@@ -16,13 +16,13 @@ To request data from Instagram:
 
 ### Setting Up Your Instagram Data
 
-Before running the script, ensure you have placed the files `followers_1.html` and `following.html` from the directory `connections` > `followers_and_following` in the data you received from Instagram, in the `instagram_data` folder within the project directory.
+Before running the respective scripts, ensure you have placed the files `followers_1.html` and `following.html` from the directory `connections` > `followers_and_following` in the data you received from Instagram, in the `instagram_data` folder within the project directory.
 
 ### Using the Script
 
 To utilise the script:
 
-1. Run `find_users.py`. The script will analyse the follower information files located in the `instagram_data` folder.
+1. Run `find_unfollowers.py`. The script will analyse the follower information files located in the `instagram_data` folder.
 2. Once the analysis is complete, you will find the output in the project directory, in a file called `not_following_back.txt`.
 3. Open the file to see what user accounts you are following, but that are not following you back.
 
