@@ -55,7 +55,7 @@ def main():
     os.makedirs(output_dir, exist_ok=True)
     
     # Output the result to a file
-    output_file_path = os.path.join(output_dir, "not_following_back.txt")
+    output_file_path = os.path.join(output_dir, "find_unfollowers.txt")
     write_to_file(output_file_path, not_following_back)
     
     # Print out confirmation of file export

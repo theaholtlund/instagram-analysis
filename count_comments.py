@@ -55,7 +55,7 @@ def main():
     os.makedirs(output_dir, exist_ok=True)
     
     # Output the result to a file
-    output_file_path = os.path.join(output_dir, "number_of_comments.txt")
+    output_file_path = os.path.join(output_dir, "count_comments.txt")
     write_to_file(output_file_path, total_comments)
     
     # Print out confirmation of file export
