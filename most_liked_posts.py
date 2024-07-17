@@ -13,10 +13,7 @@ def load_html_content(file_path):
 
 # Function to extract liked post usernames from the provided HTML content
 def extract_liked_usernames(soup):
-    usernames = []
-    for username in soup.find_all("div", class_="_3-95 _2pim _a6-h _a6-i"):
-            usernames.append(username.text)
-    return usernames
+    return [username.text for username in soup.find_all("div", class_="_3-95 _2pim _a6-h _a6-i")]
 
 # Function to write results to a file
 def write_to_file(file_path, data):
@@ -50,8 +47,8 @@ def main():
     # Count occurrences of each username
     username_counts = Counter(liked_usernames)
     
-    # Get the top 3 usernames with the most likes
-    top_3_liked_users = username_counts.most_common(5)
+    # Get the top 5 usernames with the most likes
+    top_5_liked_users = username_counts.most_common(5)
     
     # Define output directory and create it if it does not exist
     output_dir = os.path.join(script_dir, "analysis_outputs")
@@ -59,7 +56,7 @@ def main():
     
     # Output the result to a file
     output_file_path = os.path.join(output_dir, "most_liked_posts.txt")
-    write_to_file(output_file_path, top_3_liked_users)
+    write_to_file(output_file_path, top_5_liked_users)
     
     # Print out confirmation of file export
     print(f"The top 5 users who you liked the most posts from have been saved to '{output_file_path}'.")
