@@ -9,7 +9,7 @@ def load_html_content(file_path):
         with open(file_path, "r", encoding="utf-8") as file:
             return file.read()
     except FileNotFoundError:
-        raise FileNotFoundError(f"Error: '{file_path}' not found. Please make sure you have copied the files into the 'instagram_data' folder.")
+        raise FileNotFoundError(f"Error: '{file_path}' not found. Please make sure you have added the data files to the project correctly.")
 
 # Function to extract liked post usernames from the provided HTML content
 def extract_liked_usernames(soup):
@@ -21,7 +21,7 @@ def extract_liked_usernames(soup):
 # Function to write results to a file
 def write_to_file(file_path, data):
     with open(file_path, "w", encoding="utf-8") as file:
-        file.write("Top 3 users whose posts you liked the most:\n")
+        file.write("Top 5 users who you liked the most posts from:\n")
         for username, count in data:
             file.write(f"- {username}: {count} likes\n")
 
@@ -62,7 +62,7 @@ def main():
     write_to_file(output_file_path, top_3_liked_users)
     
     # Print out confirmation of file export
-    print(f"Top 3 users whose posts you liked the most have been saved to '{output_file_path}'.")
+    print(f"The top 5 users who you liked the most posts from have been saved to '{output_file_path}'.")
 
 if __name__ == "__main__":
     main()

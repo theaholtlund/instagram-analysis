@@ -8,7 +8,7 @@ def load_html_content(file_path):
         with open(file_path, "r", encoding="utf-8") as file:
             return file.read()
     except FileNotFoundError:
-        raise FileNotFoundError(f"Error: '{file_path}' not found. Please make sure you have copied the files into the 'instagram_data' folder.")
+        raise FileNotFoundError(f"Error: '{file_path}' not found. Please make sure you have added the data files to the project correctly.")
 
 # Function to extract usernames from the provided HTML content
 def extract_usernames(soup):
