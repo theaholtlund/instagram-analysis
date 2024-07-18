@@ -49,3 +49,14 @@ def main():
         
         # Update the total likes count
         total_likes += len(likes)
+    
+    # Define output directory and create it if it does not exist
+    output_dir = os.path.join(script_dir, "analysis_outputs")
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Output the result to a file
+    output_file_path = os.path.join(output_dir, "count_liked_posts.txt")
+    write_to_file(output_file_path, total_likes)
+    
+    # Print out confirmation of file export
+    print(f"The total number of likes given by the user has been saved to '{output_file_path}'.")
