@@ -24,7 +24,3 @@ To utilise the script:
 
 1. Run the script for which you want to perform an analysis.
 2. Once the analysis is complete, you will find the output in the `analysis_outputs` directory, with a name corresponding to the area of analysis.
-
-### Error Handling
-
-If the necessary HTML files are not found within the `instagram_data` folder, the script will terminate with an error message.
