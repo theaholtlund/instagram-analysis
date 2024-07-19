@@ -29,7 +29,7 @@ To utilise the script:
 
 The repository currently contains four main scripts:
 
-- count_comments.py: This script counts the total number of comments you have made on Instagram posts.
-- count_liked_posts.py: This script calculates the total number of posts you have liked.
-- find_unfollowers.py: This script identifies users who have unfollowed you.
-- most_liked_posts.py: This script finds and lists your most liked posts.
+- `count_comments`: Counts the total number of comments made on Instagram posts.
+- `count_liked_posts`: Calculates the total number of Instagram posts liked by the user.
+- `find_unfollowers`: Identifies users who have unfollowed the account being analysed.
+- `most_liked_posts`: Finds and lists the top accounts to which the user has given the most likes.
