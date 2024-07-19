@@ -24,3 +24,12 @@ To utilise the script:
 
 1. Run the script for which you want to perform an analysis.
 2. Once the analysis is complete, you will find the output in the `analysis_outputs` directory, with a name corresponding to the area of analysis.
+
+### Repository Contents
+
+The repository currently contains four main scripts:
+
+- count_comments.py: This script counts the total number of comments you have made on Instagram posts.
+- count_liked_posts.py: This script calculates the total number of posts you have liked.
+- find_unfollowers.py: This script identifies users who have unfollowed you.
+- most_liked_posts.py: This script finds and lists your most liked posts.
