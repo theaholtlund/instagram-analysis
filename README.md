@@ -4,7 +4,7 @@
 
 The repository can be used to analyse various areas for Instagram, based on files received when a user requests their data from the platform. Files are names according to their functionality. Results are saved to a file for easy access.
 
-### Requesting Data Files
+### Requesting Data
 
 To request data from Instagram:
 
@@ -14,11 +14,11 @@ To request data from Instagram:
 4. Confirm choices by clicking "Create files".
 5. Expect an e-mail with the download link within 30 days.
 
-### Adding Your Data
+### Adding Data
 
 Before running the various scripts, please copy all contents from the folder they are in upon download as they are, with its current structure, into the `instagram_data` folder within the project directory.
 
-### Using the Script
+### Running the Analysis
 
 To utilise the script:
 
