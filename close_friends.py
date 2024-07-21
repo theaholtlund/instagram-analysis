@@ -17,8 +17,8 @@ def extract_usernames(soup):
 # Function to write results to a file
 def write_to_file(file_path, data):
     with open(file_path, "w", encoding="utf-8") as file:
-        file.write(f"Total close friends: {len(data)}\n")
-        file.write("Close Friends:\n")
+        file.write(f"Number of close friends: {len(data)}\n")
+        file.write("Users on close friends list:\n")
         for username in data:
             file.write(f"- {username}\n")
 
@@ -48,7 +48,7 @@ def main():
     os.makedirs(output_dir, exist_ok=True)
     
     # Output the result to a file
-    output_file_path = os.path.join(output_dir, "close_friends_list.txt")
+    output_file_path = os.path.join(output_dir, "close_friends.txt")
     write_to_file(output_file_path, close_friends_usernames)
     
     # Print out confirmation of file export
