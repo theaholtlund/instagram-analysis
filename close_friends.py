@@ -22,9 +22,8 @@ def write_to_file(file_path, data):
         for username in data:
             file.write(f"- {username}\n")
 
-# Main function to orchestrate the process
+# Main function to coordinate execution of the script
 def main():
-    # Specify the directory where Instagram data is expected to be placed
     data_dir = "instagram_data"
     connections_dir = "connections"
     followers_dir = "followers_and_following"

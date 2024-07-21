@@ -19,7 +19,7 @@ def write_to_file(file_path, count):
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(f"Total number of likes given on Instagram: {count}\n")
 
-# Main function to orchestrate the process
+# Main function to coordinate execution of the script
 def main():
     data_dir = "instagram_data"
     activity_dir = "your_instagram_activity"

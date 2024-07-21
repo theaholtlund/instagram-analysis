@@ -22,7 +22,7 @@ def write_to_file(file_path, data):
         for username, count in data:
             file.write(f"- {username}: {count} likes\n")
 
-# Main function to orchestrate the process
+# Main function to coordinate execution of the script
 def main():
     data_dir = "instagram_data"
     activity_dir = "your_instagram_activity"
