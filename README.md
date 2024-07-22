@@ -29,6 +29,7 @@ To utilise the script:
 
 The repository currently contains four main scripts:
 
+- `blocked_accounts`: Counts the number of blocked accounts, and outputs their username.
 - `close_friends`: Counts the number of close friends, and outputs their username.
 - `count_comments`: Counts the total number of comments made on Instagram posts.
 - `count_liked_posts`: Calculates the total number of Instagram posts liked by the user.
