@@ -10,14 +10,17 @@ def load_html_content(file_path):
     except FileNotFoundError:
         raise FileNotFoundError(f"Error: '{file_path}' not found. Please make sure you have added the data files to the project correctly.")
 
-# Function to count the number of blocked accounts from the provided HTML content
-def count_blocked_accounts(soup):
-    return len(soup.find_all("a", href=True))
+# Function to extract usernames from the provided HTML content
+def extract_usernames(soup):
+    return {a.text for a in soup.find_all("a", href=True)}
 
 # Function to write results to a file
-def write_to_file(file_path, count):
+def write_to_file(file_path, data):
     with open(file_path, "w", encoding="utf-8") as file:
-        file.write(f"Number of blocked accounts: {count}\n")
+        file.write(f"Number of blocked accounts: {len(data)}\n")
+        file.write("Blocked accounts:\n")
+        for username in data:
+            file.write(f"- {username}\n")
 
 # Main function to coordinate execution of the script
 def main():
@@ -37,8 +40,8 @@ def main():
     # Parse the HTML content using BeautifulSoup
     blocked_accounts_soup = BeautifulSoup(blocked_accounts_html, "html.parser")
     
-    # Count blocked accounts
-    blocked_accounts_count = count_blocked_accounts(blocked_accounts_soup)
+    # Extract blocked accounts usernames
+    blocked_accounts_usernames = extract_usernames(blocked_accounts_soup)
     
     # Define output directory and create it if it does not exist
     output_dir = os.path.join(script_dir, "analysis_outputs")
@@ -46,10 +49,10 @@ def main():
     
     # Output the result to a file
     output_file_path = os.path.join(output_dir, "blocked_accounts.txt")
-    write_to_file(output_file_path, blocked_accounts_count)
+    write_to_file(output_file_path, blocked_accounts_usernames)
     
     # Print out confirmation of file export
-    print(f"Blocked accounts count has been saved to '{output_file_path}'.")
+    print(f"Blocked accounts list has been saved to '{output_file_path}'.")
 
 if __name__ == "__main__":
     main()
