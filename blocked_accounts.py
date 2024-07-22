@@ -40,3 +40,16 @@ def main():
     # Count blocked accounts
     blocked_accounts_count = count_blocked_accounts(blocked_accounts_soup)
     
+    # Define output directory and create it if it does not exist
+    output_dir = os.path.join(script_dir, "analysis_outputs")
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Output the result to a file
+    output_file_path = os.path.join(output_dir, "blocked_accounts.txt")
+    write_to_file(output_file_path, blocked_accounts_count)
+    
+    # Print out confirmation of file export
+    print(f"Blocked accounts count has been saved to '{output_file_path}'.")
+
+if __name__ == "__main__":
+    main()
