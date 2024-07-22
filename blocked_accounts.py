@@ -12,7 +12,7 @@ def load_html_content(file_path):
 
 # Function to extract usernames from the provided HTML content
 def extract_usernames(soup):
-    return {a.text for a in soup.find_all("a", href=True)}
+    return {a['href'].split("/_u/")[-1] for a in soup.find_all("a", href=True)}
 
 # Function to write results to a file
 def write_to_file(file_path, data):
