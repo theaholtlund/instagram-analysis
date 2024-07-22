@@ -10,10 +10,33 @@ def load_html_content(file_path):
     except FileNotFoundError:
         raise FileNotFoundError(f"Error: '{file_path}' not found. Please make sure you have added the data files to the project correctly.")
 
+# Function to count the number of blocked accounts from the provided HTML content
+def count_blocked_accounts(soup):
+    return len(soup.find_all("a", href=True))
+
 # Function to write results to a file
-def write_to_file(file_path, data):
+def write_to_file(file_path, count):
     with open(file_path, "w", encoding="utf-8") as file:
-        file.write(f"Number of blocked accounts: {len(data)}\n")
-        file.write("Blocked accounts:\n")
-        for username in data:
-            file.write(f"- {username}\n")
+        file.write(f"Number of blocked accounts: {count}\n")
+
+# Main function to coordinate execution of the script
+def main():
+    data_dir = "instagram_data"
+    connections_dir = "connections"
+    followers_dir = "followers_and_following"
+    
+    # Get the directory of the current script
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    
+    # Define path for the blocked accounts HTML file within the data files folder
+    blocked_accounts_path = os.path.join(script_dir, data_dir, connections_dir, followers_dir, "blocked_accounts.html")
+    
+    # Load the HTML content with error handling
+    blocked_accounts_html = load_html_content(blocked_accounts_path)
+    
+    # Parse the HTML content using BeautifulSoup
+    blocked_accounts_soup = BeautifulSoup(blocked_accounts_html, "html.parser")
+    
+    # Count blocked accounts
+    blocked_accounts_count = count_blocked_accounts(blocked_accounts_soup)
+    
