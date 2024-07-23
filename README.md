@@ -27,7 +27,7 @@ To utilise the script:
 
 ### Repository Contents
 
-The repository currently contains four main scripts:
+The repository currently contains the following analysis scripts:
 
 - `blocked_accounts`: Counts the number of blocked accounts, and outputs their username.
 - `close_friends`: Counts the number of close friends, and outputs their username.
