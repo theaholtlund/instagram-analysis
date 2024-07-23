@@ -40,9 +40,12 @@ def main():
     output_dir = os.path.join(script_dir, "analysis_outputs")
     os.makedirs(output_dir, exist_ok=True)
     
+    # Format the data for output
+    formatted_data = [f"{username}: {count}" for username, count in top_5_liked_users]
+    
     # Output the result to a file
     output_file_path = os.path.join(output_dir, "most_liked_posts.txt")
-    write_to_file(output_file_path, top_5_liked_users, "Top 5 users who you liked the most posts from", "Users and likes count")
+    write_to_file(output_file_path, formatted_data, "Top 5 users who you liked the most posts from", "Users and likes count")
     
     # Print out confirmation of file export
     print(f"The top 5 users who you liked the most posts from have been saved to '{output_file_path}'.")
