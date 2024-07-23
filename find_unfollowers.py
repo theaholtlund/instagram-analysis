@@ -1,25 +1,11 @@
 # Import required libraries
 import os
 from bs4 import BeautifulSoup
-
-# Function to load HTML content with error handling
-def load_html_content(file_path):
-    try:
-        with open(file_path, "r", encoding="utf-8") as file:
-            return file.read()
-    except FileNotFoundError:
-        raise FileNotFoundError(f"Error: '{file_path}' not found. Please make sure you have added the data files to the project correctly.")
+from utils import load_html_content, write_to_file
 
 # Function to extract usernames from the provided HTML content
 def extract_usernames(soup):
     return {a.text for a in soup.find_all("a", href=True)}
-
-# Function to write results to a file
-def write_to_file(file_path, data):
-    with open(file_path, "w", encoding="utf-8") as file:
-        file.write("Accounts not following back:\n")
-        for username in data:
-            file.write(f"- {username}\n")
 
 # Main function to coordinate execution of the script
 def main():
@@ -55,7 +41,7 @@ def main():
     
     # Output the result to a file
     output_file_path = os.path.join(output_dir, "find_unfollowers.txt")
-    write_to_file(output_file_path, not_following_back)
+    write_to_file(output_file_path, not_following_back, "Accounts not following back", "Accounts")
     
     # Print out confirmation of file export
     print(f"Accounts not following back have been saved to '{output_file_path}'.")

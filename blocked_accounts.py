@@ -1,26 +1,11 @@
 # Import required libraries
 import os
 from bs4 import BeautifulSoup
-
-# Function to load HTML content with error handling
-def load_html_content(file_path):
-    try:
-        with open(file_path, "r", encoding="utf-8") as file:
-            return file.read()
-    except FileNotFoundError:
-        raise FileNotFoundError(f"Error: '{file_path}' not found. Please make sure you have added the data files to the project correctly.")
+from utils import load_html_content, write_to_file
 
 # Function to extract usernames from the provided HTML content
 def extract_usernames(soup):
     return {a['href'].split("/_u/")[-1] for a in soup.find_all("a", href=True)}
-
-# Function to write results to a file
-def write_to_file(file_path, data):
-    with open(file_path, "w", encoding="utf-8") as file:
-        file.write(f"Number of blocked accounts: {len(data)}\n")
-        file.write("Blocked accounts:\n")
-        for username in data:
-            file.write(f"- {username}\n")
 
 # Main function to coordinate execution of the script
 def main():
@@ -49,7 +34,7 @@ def main():
     
     # Output the result to a file
     output_file_path = os.path.join(output_dir, "blocked_accounts.txt")
-    write_to_file(output_file_path, blocked_accounts_usernames)
+    write_to_file(output_file_path, blocked_accounts_usernames, "Number of blocked accounts", "Blocked accounts")
     
     # Print out confirmation of file export
     print(f"Blocked accounts list has been saved to '{output_file_path}'.")

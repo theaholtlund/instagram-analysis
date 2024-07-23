@@ -2,25 +2,11 @@
 import os
 from bs4 import BeautifulSoup
 from collections import Counter
-
-# Function to load HTML content with error handling
-def load_html_content(file_path):
-    try:
-        with open(file_path, "r", encoding="utf-8") as file:
-            return file.read()
-    except FileNotFoundError:
-        raise FileNotFoundError(f"Error: '{file_path}' not found. Please make sure you have added the data files to the project correctly.")
+from utils import load_html_content, write_to_file
 
 # Function to extract liked post usernames from the provided HTML content
 def extract_liked_usernames(soup):
     return [username.text for username in soup.find_all("div", class_="_3-95 _2pim _a6-h _a6-i")]
-
-# Function to write results to a file
-def write_to_file(file_path, data):
-    with open(file_path, "w", encoding="utf-8") as file:
-        file.write("Top 5 users who you liked the most posts from:\n")
-        for username, count in data:
-            file.write(f"- {username}: {count} likes\n")
 
 # Main function to coordinate execution of the script
 def main():
@@ -56,7 +42,7 @@ def main():
     
     # Output the result to a file
     output_file_path = os.path.join(output_dir, "most_liked_posts.txt")
-    write_to_file(output_file_path, top_5_liked_users)
+    write_to_file(output_file_path, top_5_liked_users, "Top 5 users who you liked the most posts from", "Users and likes count")
     
     # Print out confirmation of file export
     print(f"The top 5 users who you liked the most posts from have been saved to '{output_file_path}'.")

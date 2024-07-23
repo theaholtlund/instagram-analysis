@@ -1,23 +1,11 @@
 # Import required libraries
 import os
 from bs4 import BeautifulSoup
-
-# Function to load HTML content with error handling
-def load_html_content(file_path):
-    try:
-        with open(file_path, "r", encoding="utf-8") as file:
-            return file.read()
-    except FileNotFoundError:
-        raise FileNotFoundError(f"Error: '{file_path}' not found. Please make sure you have added the data files to the project correctly.")
+from utils import load_html_content, write_to_file
 
 # Function to extract likes from the provided HTML content
 def extract_likes(soup):
     return [like for like in soup.find_all("a", href=True) if like.text == "👍"]
-
-# Function to write results to a file
-def write_to_file(file_path, count):
-    with open(file_path, "w", encoding="utf-8") as file:
-        file.write(f"Total number of likes given on Instagram: {count}\n")
 
 # Main function to coordinate execution of the script
 def main():
@@ -56,7 +44,7 @@ def main():
     
     # Output the result to a file
     output_file_path = os.path.join(output_dir, "count_liked_posts.txt")
-    write_to_file(output_file_path, total_likes)
+    write_to_file(output_file_path, [total_likes], "Total number of likes given on Instagram", "Likes count")
     
     # Print out confirmation of file export
     print(f"The total number of likes given by the user has been saved to '{output_file_path}'.")
