@@ -13,9 +13,9 @@ def load_html_content(file_path):
 # Function to write results to a file in simple format
 def write_to_file_simple(file_path, data, header):
     with open(file_path, "w", encoding="utf-8") as file:
-        file.write(f"{header}:\n")
+        file.write(f"{header}: ")
         for item in data:
-            file.write(f"- {item}\n")
+            file.write(f"{item}")
 
 # Function to write results to a file in detailed format
 def write_to_file_detailed(file_path, data, header, data_label):
