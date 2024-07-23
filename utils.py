@@ -10,8 +10,15 @@ def load_html_content(file_path):
     except FileNotFoundError:
         raise FileNotFoundError(f"Error: '{file_path}' not found. Please make sure you have added the data files to the project correctly.")
 
-# Function to write results to a file
-def write_to_file(file_path, data, header, data_label):
+# Function to write results to a file in simple format
+def write_to_file_simple(file_path, data, header):
+    with open(file_path, "w", encoding="utf-8") as file:
+        file.write(f"{header}:\n")
+        for item in data:
+            file.write(f"- {item}\n")
+
+# Function to write results to a file in detailed format
+def write_to_file_detailed(file_path, data, header, data_label):
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(f"{header}: {len(data)}\n")
         file.write(f"{data_label}:\n")

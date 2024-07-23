@@ -1,7 +1,7 @@
 # Import required libraries
 import os
 from bs4 import BeautifulSoup
-from utils import load_html_content, write_to_file
+from utils import load_html_content, write_to_file_detailed
 
 # Function to extract usernames from the provided HTML content
 def extract_usernames(soup):
@@ -41,7 +41,7 @@ def main():
     
     # Output the result to a file
     output_file_path = os.path.join(output_dir, "find_unfollowers.txt")
-    write_to_file(output_file_path, not_following_back, "Accounts not following back", "Accounts")
+    write_to_file_detailed(output_file_path, not_following_back, "Accounts not following back", "Usernames not following back")
     
     # Print out confirmation of file export
     print(f"Accounts not following back have been saved to '{output_file_path}'.")

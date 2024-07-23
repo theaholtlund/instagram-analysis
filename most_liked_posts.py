@@ -2,7 +2,7 @@
 import os
 from bs4 import BeautifulSoup
 from collections import Counter
-from utils import load_html_content, write_to_file
+from utils import load_html_content, write_to_file_simple
 
 # Function to extract liked post usernames from the provided HTML content
 def extract_liked_usernames(soup):
@@ -45,7 +45,7 @@ def main():
     
     # Output the result to a file
     output_file_path = os.path.join(output_dir, "most_liked_posts.txt")
-    write_to_file(output_file_path, formatted_data, "Top 5 users who you liked the most posts from", "Users and likes count")
+    write_to_file_simple(output_file_path, formatted_data, "Top 5 users who you liked the most posts from")
     
     # Print out confirmation of file export
     print(f"The top 5 users who you liked the most posts from have been saved to '{output_file_path}'.")

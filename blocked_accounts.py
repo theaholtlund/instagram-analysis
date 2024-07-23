@@ -1,7 +1,7 @@
 # Import required libraries
 import os
 from bs4 import BeautifulSoup
-from utils import load_html_content, write_to_file
+from utils import load_html_content, write_to_file_detailed
 
 # Function to extract usernames from the provided HTML content
 def extract_usernames(soup):
@@ -34,7 +34,7 @@ def main():
     
     # Output the result to a file
     output_file_path = os.path.join(output_dir, "blocked_accounts.txt")
-    write_to_file(output_file_path, blocked_accounts_usernames, "Number of blocked accounts", "Blocked accounts")
+    write_to_file_detailed(output_file_path, blocked_accounts_usernames, "Number of blocked accounts", "Blocked accounts")
     
     # Print out confirmation of file export
     print(f"Blocked accounts list has been saved to '{output_file_path}'.")

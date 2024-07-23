@@ -1,7 +1,7 @@
 # Import required libraries
 import os
 from bs4 import BeautifulSoup
-from utils import load_html_content, write_to_file
+from utils import load_html_content, write_to_file_detailed
 
 # Function to extract usernames from the provided HTML content
 def extract_usernames(soup):
@@ -34,7 +34,7 @@ def main():
     
     # Output the result to a file
     output_file_path = os.path.join(output_dir, "close_friends.txt")
-    write_to_file(output_file_path, close_friends_usernames, "Number of close friends", "Users on close friends list")
+    write_to_file_detailed(output_file_path, close_friends_usernames, "Number of close friends", "Users on close friends list")
     
     # Print out confirmation of file export
     print(f"Close friends list has been saved to '{output_file_path}'.")

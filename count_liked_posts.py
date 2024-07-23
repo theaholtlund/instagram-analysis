@@ -1,7 +1,7 @@
 # Import required libraries
 import os
 from bs4 import BeautifulSoup
-from utils import load_html_content, write_to_file
+from utils import load_html_content, write_to_file_simple
 
 # Function to extract likes from the provided HTML content
 def extract_likes(soup):
@@ -44,7 +44,7 @@ def main():
     
     # Output the result to a file
     output_file_path = os.path.join(output_dir, "count_liked_posts.txt")
-    write_to_file(output_file_path, [total_likes], "Total number of likes given on Instagram", "Likes count")
+    write_to_file_simple(output_file_path, [total_likes], "Total number of likes given on Instagram")
     
     # Print out confirmation of file export
     print(f"The total number of likes given by the user has been saved to '{output_file_path}'.")

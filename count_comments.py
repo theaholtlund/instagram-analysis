@@ -1,7 +1,7 @@
 # Import required libraries
 import os
 from bs4 import BeautifulSoup
-from utils import load_html_content, write_to_file
+from utils import load_html_content, write_to_file_simple
 
 # Function to extract comments from the provided HTML content
 def extract_comments(soup):
@@ -44,7 +44,7 @@ def main():
     
     # Output the result to a file
     output_file_path = os.path.join(output_dir, "count_comments.txt")
-    write_to_file(output_file_path, [total_comments], "Total number of comments left on Instagram", "Comments count")
+    write_to_file_simple(output_file_path, [total_comments], "Total number of comments left on Instagram")
     
     # Print out confirmation of file export
     print(f"The total number of comments left by the user has been saved to '{output_file_path}'.")
