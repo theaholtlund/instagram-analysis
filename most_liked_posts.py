@@ -41,7 +41,7 @@ def main():
     os.makedirs(output_dir, exist_ok=True)
     
     # Format the data for output
-    formatted_data = [f"{username}: {count}" for username, count in top_5_liked_users]
+    formatted_data = [f"\n- {username}: {count}" for username, count in top_5_liked_users]
     
     # Output the result to a file
     output_file_path = os.path.join(output_dir, "most_liked_posts.txt")
