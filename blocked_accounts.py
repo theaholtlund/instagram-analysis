@@ -1,7 +1,7 @@
 # Import required libraries
 import os
 from bs4 import BeautifulSoup
-import config
+import variables
 from utils import load_html_content, write_to_file_detailed, create_output_dir, get_script_dir
 
 # Function to extract usernames from the provided HTML content
@@ -14,7 +14,7 @@ def main():
     script_dir = get_script_dir()
     
     # Define path for the blocked accounts HTML file within the data files folder
-    blocked_accounts_path = os.path.join(script_dir, config.data_dir, config.connections_dir, config.followers_dir, "blocked_accounts.html")
+    blocked_accounts_path = os.path.join(script_dir, variables.data_dir, variables.connections_dir, variables.followers_dir, "blocked_accounts.html")
     
     # Load the HTML content with error handling
     blocked_accounts_html = load_html_content(blocked_accounts_path)

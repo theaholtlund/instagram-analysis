@@ -2,7 +2,7 @@
 import os
 from bs4 import BeautifulSoup
 from collections import Counter
-import config
+import variables
 from utils import load_html_content, write_to_file_simple, create_output_dir, get_script_dir
 
 # Function to extract liked post usernames from the provided HTML content
@@ -15,7 +15,7 @@ def main():
     script_dir = get_script_dir()
     
     # Define paths for the HTML files within the data files folder
-    likes_path = os.path.join(script_dir, config.data_dir, config.activity_dir, config.likes_dir, "liked_posts.html")
+    likes_path = os.path.join(script_dir, variables.data_dir, variables.activity_dir, variables.likes_dir, "liked_posts.html")
     
     # Load the HTML content
     likes_html = load_html_content(likes_path)

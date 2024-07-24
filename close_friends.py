@@ -1,7 +1,7 @@
 # Import required libraries
 import os
 from bs4 import BeautifulSoup
-import config
+import variables
 from utils import load_html_content, write_to_file_detailed, create_output_dir, get_script_dir
 
 # Function to extract usernames from the provided HTML content
@@ -14,7 +14,7 @@ def main():
     script_dir = get_script_dir()
     
     # Define path for the close friends HTML file within the data files folder
-    close_friends_path = os.path.join(script_dir, config.data_dir, config.connections_dir, config.followers_dir, "close_friends.html")
+    close_friends_path = os.path.join(script_dir, variables.data_dir, variables.connections_dir, variables.followers_dir, "close_friends.html")
     
     # Load the HTML content with error handling
     close_friends_html = load_html_content(close_friends_path)

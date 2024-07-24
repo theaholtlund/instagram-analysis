@@ -1,7 +1,7 @@
 # Import required libraries
 import os
 from bs4 import BeautifulSoup
-import config
+import variables
 from utils import load_html_content, write_to_file_simple, create_output_dir, get_script_dir
 
 # Function to extract comments from the provided HTML content
@@ -14,7 +14,7 @@ def main():
     script_dir = get_script_dir()
     
     # Define the path for the comments folder
-    comments_path = os.path.join(script_dir, config.data_dir, config.activity_dir, config.comments_dir)
+    comments_path = os.path.join(script_dir, variables.data_dir, variables.activity_dir, variables.comments_dir)
     
     # Initialise the comment count
     total_comments = 0
