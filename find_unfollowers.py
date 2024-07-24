@@ -1,6 +1,7 @@
 # Import required libraries
 import os
 from bs4 import BeautifulSoup
+import config
 from utils import load_html_content, write_to_file_detailed, create_output_dir, get_script_dir
 
 # Function to extract usernames from the provided HTML content
@@ -9,16 +10,12 @@ def extract_usernames(soup):
 
 # Main function to coordinate execution of the script
 def main():
-    data_dir = "instagram_data"
-    connections_dir = "connections"
-    followers_dir = "followers_and_following"
-    
     # Get the directory of the current script
     script_dir = get_script_dir()
     
     # Define paths for the HTML files within the data files folder
-    followers_path = os.path.join(script_dir, data_dir, connections_dir, followers_dir, "followers_1.html")
-    following_path = os.path.join(script_dir, data_dir, connections_dir, followers_dir, "following.html")
+    followers_path = os.path.join(script_dir, config.data_dir, config.connections_dir, config.followers_dir, "followers_1.html")
+    following_path = os.path.join(script_dir, config.data_dir, config.connections_dir, config.followers_dir, "following.html")
     
     # Load the HTML content with error handling
     followers_html = load_html_content(followers_path)

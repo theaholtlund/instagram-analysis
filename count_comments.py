@@ -1,6 +1,7 @@
 # Import required libraries
 import os
 from bs4 import BeautifulSoup
+import config
 from utils import load_html_content, write_to_file_simple, create_output_dir, get_script_dir
 
 # Function to extract comments from the provided HTML content
@@ -9,15 +10,11 @@ def extract_comments(soup):
 
 # Main function to coordinate execution of the script
 def main():
-    data_dir = "instagram_data"
-    activity_dir = "your_instagram_activity"
-    comments_dir = "comments"
-    
     # Get the directory of the current script
     script_dir = get_script_dir()
     
     # Define the path for the comments folder
-    comments_path = os.path.join(script_dir, data_dir, activity_dir, comments_dir)
+    comments_path = os.path.join(script_dir, config.data_dir, config.activity_dir, config.comments_dir)
     
     # Initialise the comment count
     total_comments = 0
