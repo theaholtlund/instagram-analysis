@@ -1,7 +1,7 @@
 # Import required libraries
 import os
 from bs4 import BeautifulSoup
-from shared.utils import load_html_content, write_to_file_simple, create_output_dir, get_script_dir
+from utils import load_html_content, write_to_file_simple, create_output_dir, get_script_dir
 
 # Function to extract likes from the provided HTML content
 def extract_likes(soup):
