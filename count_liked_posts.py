@@ -1,7 +1,7 @@
 # Import required libraries
 import os
 from bs4 import BeautifulSoup
-from utils import load_html_content, write_to_file_simple
+from shared.utils import load_html_content, write_to_file_simple, create_output_dir, get_script_dir
 
 # Function to extract likes from the provided HTML content
 def extract_likes(soup):
@@ -14,7 +14,7 @@ def main():
     likes_dir = "likes"
     
     # Get the directory of the current script
-    script_dir = os.path.dirname(os.path.realpath(__file__))
+    script_dir = get_script_dir()
     
     # Define the path for the likes folder
     likes_path = os.path.join(script_dir, data_dir, activity_dir, likes_dir)
@@ -39,8 +39,7 @@ def main():
         total_likes += len(likes)
     
     # Define output directory and create it if it does not exist
-    output_dir = os.path.join(script_dir, "analysis_outputs")
-    os.makedirs(output_dir, exist_ok=True)
+    output_dir = create_output_dir(script_dir)
     
     # Output the result to a file
     output_file_path = os.path.join(output_dir, "count_liked_posts.txt")
