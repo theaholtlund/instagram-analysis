@@ -24,3 +24,13 @@ def write_to_file_detailed(file_path, data, header, data_label):
         file.write(f"{data_label}:\n")
         for item in data:
             file.write(f"- {item}\n")
+
+# Function to define and create output directory if it does not exist
+def create_output_dir(script_dir, output_folder_name="analysis_outputs"):
+    output_dir = os.path.join(script_dir, output_folder_name)
+    os.makedirs(output_dir, exist_ok=True)
+    return output_dir
+
+# Function to get the directory of the current script
+def get_script_dir():
+    return os.path.dirname(os.path.realpath(__file__))
