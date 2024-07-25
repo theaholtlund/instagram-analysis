@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import variables
 from utils import load_html_content, write_to_file_simple, create_output_dir, get_script_dir
 
-# Function to extract likes from the provided HTML content
+# Function to extract likes
 def extract_likes(soup):
     return [like for like in soup.find_all("a", href=True) if like.text == "👍"]
 

@@ -5,7 +5,7 @@ from collections import Counter
 import variables
 from utils import load_html_content, write_to_file_simple, create_output_dir, get_script_dir
 
-# Function to extract liked post usernames from the provided HTML content
+# Function to extract usernames behind liked post
 def extract_liked_usernames(soup):
     return [username.text for username in soup.find_all("div", class_="_3-95 _2pim _a6-h _a6-i")]
 

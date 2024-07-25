@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import variables
 from utils import load_html_content, write_to_file_simple, create_output_dir, get_script_dir
 
-# Function to extract comments from the provided HTML content
+# Function to extract comments
 def extract_comments(soup):
     return [comment.text for comment in soup.find_all("td", class_="_2pin _a6_q") if "Comment" in comment.text]
 
