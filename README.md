@@ -16,14 +16,14 @@ To request data from Instagram:
 
 ### Adding Data
 
-Before running the various scripts, please copy all contents from the folder they are in upon download as they are, with its current structure, into the `instagram_data` folder within the project directory.
+Before running the analysis scripts, please copy all contents from the download folder as they are, with its current structure, into the `instagram_data` folder within the project directory.
 
 ### Running the Analysis
 
 To utilise the script:
 
 1. Run the script for which you want to perform an analysis.
-2. Once the analysis is complete, you will find the output in the `analysis_outputs` directory, with a name corresponding to the area of analysis.
+2. Once the analysis is complete, the output can be found in the `analysis_outputs` directory, with a name corresponding to the area of analysis.
 
 ### Repository Contents
 
