@@ -29,9 +29,9 @@ To utilise the script:
 
 The repository currently contains the following analysis scripts:
 
-- `blocked_accounts`: Counts the number of blocked accounts, and outputs their username.
-- `close_friends`: Counts the number of close friends, and outputs their username.
-- `count_comments`: Counts the total number of comments made on Instagram posts.
-- `count_liked_posts`: Calculates the total number of Instagram posts liked by the user.
-- `find_unfollowers`: Identifies users who have unfollowed the account being analysed.
-- `most_liked_posts`: Finds and lists the top accounts to which the user has given the most likes.
+- `blocked_accounts`: Finds the number of blocked accounts, and their usernames.
+- `close_friends`: Finds the number of close friends, and their usernames.
+- `count_comments`: Finds the total number of comments made on Instagram posts.
+- `count_liked_posts`: Finds the total number of Instagram posts liked by the user.
+- `find_unfollowers`: Finds users who have unfollowed the account being analysed.
+- `most_liked_posts`: Finds the accounts to which the user has given the most likes.
