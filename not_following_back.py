@@ -36,7 +36,7 @@ def main():
     output_dir = create_output_dir(script_dir)
     
     # Output the result to a file
-    output_file_path = os.path.join(output_dir, "find_unfollowers.txt")
+    output_file_path = os.path.join(output_dir, "not_following_back.txt")
     write_to_file_detailed(output_file_path, not_following_back, "Accounts not following back", "Usernames not following back")
     
     # Print out confirmation of file export
