@@ -27,6 +27,11 @@ To utilise the script:
 
 ### Repository Contents
 
+Supporting files:
+
+- `utils`: For functionality shared between scripts, such as writing to file
+- `variables`: Stores set variables, such as directory names for analysis data
+
 The repository currently contains the following analysis scripts:
 
 - `blocked_accounts`: Finds the number of blocked accounts, and their usernames.
