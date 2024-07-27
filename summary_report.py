@@ -53,7 +53,7 @@ def generate_summary_report():
         for file_name, (count, items) in summary_data.items():
             title = file_name.replace("_", " ").replace(".txt", "").title()
             if "Count" in title:
-                file.write(f"{title}: {count}\n")
+                file.write(f"{title}: {count}\n\n")
             else:
                 file.write(f"{title}: {count}\n")
                 for item in items:
