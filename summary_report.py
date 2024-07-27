@@ -30,12 +30,12 @@ def generate_summary_report():
     summary_file_path = os.path.join(output_dir, "summary_report.txt")
 
     files_parsers = {
-        "Blocked_accounts.txt": parse_list_output,
-        "Close_friends.txt": parse_list_output,
-        "Count_comments.txt": parse_simple_output,
-        "Count_liked_posts.txt": parse_simple_output,
-        "Find_unfollowers.txt": parse_list_output,
-        "Most_liked_posts.txt": parse_most_liked_output
+        "blocked_accounts.txt": parse_list_output,
+        "close_friends.txt": parse_list_output,
+        "count_comments.txt": parse_simple_output,
+        "count_liked_posts.txt": parse_simple_output,
+        "find_unfollowers.txt": parse_list_output,
+        "most_liked_posts.txt": parse_most_liked_output
     }
 
     summary_data = {}
