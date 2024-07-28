@@ -48,7 +48,7 @@ def generate_summary_report():
     # Dictionary to store parsed data from each file
     summary_data = {}
 
-    # Loop through each file, parse the data, and store in the summary_data dictionary
+    # Loop through each file, parse the data and store in summary data dictionary
     for file_name, parser in files_parsers.items():
         file_path = os.path.join(analysis_output_dir, file_name)
         data = read_output_file(file_path)
@@ -70,6 +70,6 @@ def generate_summary_report():
                     file.write(f"- {item}\n")
                 file.write("\n")
 
-# Main entry point of the script, calls the generate_summary_report function
+# Main function to coordinate execution of the script
 if __name__ == "__main__":
     generate_summary_report()
