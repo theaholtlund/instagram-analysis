@@ -61,8 +61,9 @@ def generate_summary_report():
     # Write the summary report to a file
     with open(summary_file_path, "w", encoding="utf-8") as file:
         for file_name, (count, items) in summary_data.items():
-            title = file_name.replace("_", " ").replace(".txt", "").title()
-            if "Count" in title:
+            title = file_name.replace("_", " ").replace(".txt", "")
+            title = title[0].upper() + title[1:]
+            if "count" in title.lower():
                 file.write(f"{title}: {count}\n\n")
             else:
                 file.write(f"{title}: {count}\n")
