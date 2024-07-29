@@ -40,3 +40,5 @@ The repository currently contains the following analysis scripts:
 - `count_liked_posts`: Finds the total number of Instagram posts liked by the user.
 - `most_liked_posts`: Finds the accounts to which the user has given the most likes.
 - `not_following_back`: Finds users who the account being analysed follows but they do not follow the account back.
+
+Furthermore, a summary report of all the outputs can be generated through the `summary_report` file, once each analysis script has been executed, for a combined output file.
