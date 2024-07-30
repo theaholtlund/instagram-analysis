@@ -28,6 +28,12 @@ def parse_most_liked_output(data):
     items = [line.strip("- \n") for line in data[1:] if line.strip()]
     return len(items), items
 
+# Function to capitalise only the first word
+def capitalize_first_word(text):
+    if not text:
+        return text
+    return text[0].upper() + text[1:].lower()
+
 # Function to generate a summary report from the various analysis output files
 def generate_summary_report():
     script_dir = get_script_dir()
@@ -62,13 +68,13 @@ def generate_summary_report():
     with open(summary_file_path, "w", encoding="utf-8") as file:
         for file_name, (count, items) in summary_data.items():
             title = file_name.replace("_", " ").replace(".txt", "")
-            title = title[0].upper() + title[1:]
-            if "count" in title.lower():
-                file.write(f"{title}: {count}\n\n")
-            else:
-                file.write(f"{title}: {count}\n")
+            title = capitalize_first_word(title)
+            file.write(f"{title}: {count}\n")
+            if items:
                 for item in items:
                     file.write(f"- {item}\n")
+                file.write("\n")
+            elif "count" in title.lower():
                 file.write("\n")
 
 # Main function to coordinate execution of the script
