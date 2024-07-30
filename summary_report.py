@@ -29,7 +29,7 @@ def parse_most_liked_output(data):
     return len(items), items
 
 # Function to capitalise only the first word
-def capitalize_first_word(text):
+def capitalise_first_word(text):
     if not text:
         return text
     return text[0].upper() + text[1:].lower()
@@ -69,7 +69,7 @@ def generate_summary_report():
     with open(summary_file_path, "w", encoding="utf-8") as file:
         for file_name, (count, items) in summary_data.items():
             title = file_name.replace("_", " ").replace(".txt", "")
-            title = capitalize_first_word(title)
+            title = capitalise_first_word(title)
             file.write(f"{title}: {count}\n")
             if items:
                 for item in items:
