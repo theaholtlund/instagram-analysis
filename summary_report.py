@@ -46,6 +46,7 @@ def generate_summary_report():
         "blocked_accounts.txt": parse_list_output,
         "close_friends.txt": parse_list_output,
         "count_comments.txt": parse_simple_output,
+        "count_liked_comments.txt": parse_simple_output,
         "count_liked_posts.txt": parse_simple_output,
         "find_unfollowers.txt": parse_list_output,
         "most_liked_posts.txt": parse_most_liked_output
