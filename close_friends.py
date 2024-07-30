@@ -10,7 +10,6 @@ def extract_usernames(soup):
 
 # Main function to coordinate execution of the script
 def main():
-    # Get the directory of the current script
     script_dir = get_script_dir()
     
     # Define path for the close friends HTML file within the data files folder

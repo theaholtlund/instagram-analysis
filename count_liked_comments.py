@@ -10,7 +10,6 @@ def extract_likes(soup):
 
 # Main function to coordinate execution of the script
 def main():
-    # Get the directory of the current script
     script_dir = get_script_dir()
     
     # Define the path for the likes folder

@@ -10,7 +10,6 @@ def extract_usernames(soup):
 
 # Main function to coordinate execution of the script
 def main():
-    # Get the directory of the current script
     script_dir = get_script_dir()
     
     # Define paths for the HTML files within the data files folder
