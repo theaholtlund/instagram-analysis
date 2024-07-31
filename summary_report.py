@@ -68,6 +68,9 @@ def generate_summary_report():
 
     # Write the summary report to a file
     with open(summary_file_path, "w", encoding="utf-8") as file:
+        file.write("Analysis Summary Report\n")
+        file.write("=" * 30 + "\n\n")
+
         for file_name, (count, items) in summary_data.items():
             title = file_name.replace("_", " ").replace(".txt", "")
             title = capitalise_first_word(title)
@@ -78,6 +81,9 @@ def generate_summary_report():
                 file.write("\n")
             elif "count" in title.lower():
                 file.write("\n")
+        
+        file.write("=" * 30 + "\n")
+        file.write("End of Summary Report\n")
 
 # Main function to coordinate execution of the script
 if __name__ == "__main__":
