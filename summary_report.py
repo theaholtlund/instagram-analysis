@@ -8,6 +8,7 @@ def read_output_file(file_path):
         with open(file_path, "r", encoding="utf-8") as file:
             return file.readlines()
     except FileNotFoundError:
+        print(f"Error: The file '{file_path}' could not be found. Ensure that you have run all analysis scripts.")
         return None
 
 # Function to parse a simple output file
