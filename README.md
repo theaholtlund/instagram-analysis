@@ -42,4 +42,4 @@ The repository currently contains the following analysis scripts:
 - `most_liked_posts`: Finds the accounts to which the user has given the most likes.
 - `not_following_back`: Finds users who the account being analysed follows but they do not follow the account back.
 
-Furthermore, a summary report of all the outputs can be generated through the `summary_report` file, once each analysis script has been executed, for a combined output file.
+Furthermore, a Markdown summary report of all the outputs can be generated through the `summary_report` file, once each analysis script has been executed. For ease of viewing the outputs with appropriate formatting in a code editor such as Visual Studio Code, press Ctrl+Shift+V on Windows/Linux or Cmd+Shift+V on macOS to open the Markdown preview side-by-side with the text editor.
