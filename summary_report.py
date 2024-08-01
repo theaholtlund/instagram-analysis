@@ -40,7 +40,7 @@ def generate_summary_report():
     script_dir = get_script_dir()
     output_dir = create_output_dir(script_dir)
     analysis_output_dir = os.path.join(script_dir, "analysis_outputs")
-    summary_file_path = os.path.join(output_dir, "summary_report.txt")
+    summary_file_path = os.path.join(output_dir, "summary_report.md")
 
     # Dictionary mapping filenames to their corresponding parser functions
     files_parsers = {
@@ -66,24 +66,23 @@ def generate_summary_report():
         else:
             summary_data[file_name] = (0, [])
 
-    # Write the summary report to a file
+    # Write the summary report to a Markdown file
     with open(summary_file_path, "w", encoding="utf-8") as file:
-        file.write("Analysis summary report\n")
-        file.write("=" * 30 + "\n\n")
+        file.write("# Analysis summary report\n")
+        file.write("\n")
 
         for file_name, (count, items) in summary_data.items():
             title = file_name.replace("_", " ").replace(".txt", "")
             title = capitalise_first_word(title)
-            file.write(f"{title}: {count}\n")
+            file.write(f"## {title}: {count}\n\n")
+            
             if items:
+                file.write("<details><summary>Click to expand</summary>\n\n")
                 for item in items:
                     file.write(f"- {item}\n")
-                file.write("\n")
-            elif "count" in title.lower():
-                file.write("\n")
+                file.write("\n</details>\n\n")
         
-        file.write("=" * 30 + "\n")
-        file.write("End of summary report\n")
+        file.write("**End of summary report**\n")
 
 # Main function to coordinate execution of the script
 if __name__ == "__main__":
