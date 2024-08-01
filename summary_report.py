@@ -8,7 +8,7 @@ def read_output_file(file_path):
         with open(file_path, "r", encoding="utf-8") as file:
             return file.readlines()
     except FileNotFoundError:
-        print(f"Error: The file '{file_path}' could not be found. Ensure that you have run all analysis scripts.")
+        print(f"Error: The file '{file_path}' could not be found. Please ensure that you have run al the analysis scripts.")
         return None
 
 # Function to parse a simple output file
@@ -68,7 +68,7 @@ def generate_summary_report():
 
     # Write the summary report to a file
     with open(summary_file_path, "w", encoding="utf-8") as file:
-        file.write("Analysis Summary Report\n")
+        file.write("Analysis summary report\n")
         file.write("=" * 30 + "\n\n")
 
         for file_name, (count, items) in summary_data.items():
@@ -83,7 +83,7 @@ def generate_summary_report():
                 file.write("\n")
         
         file.write("=" * 30 + "\n")
-        file.write("End of Summary Report\n")
+        file.write("End of summary report\n")
 
 # Main function to coordinate execution of the script
 if __name__ == "__main__":
