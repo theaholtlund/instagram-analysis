@@ -27,12 +27,7 @@ To utilise the script:
 
 ### Repository Contents
 
-Supporting files:
-
-- `utils`: For functionality shared between scripts, such as writing to file
-- `variables`: Stores set variables, such as directory names for analysis data
-
-The repository currently contains the following analysis scripts:
+##### Analysis scripts:
 
 - `blocked_accounts`: Finds the number of blocked accounts, and their usernames.
 - `close_friends`: Finds the number of close friends, and their usernames.
@@ -42,7 +37,9 @@ The repository currently contains the following analysis scripts:
 - `most_liked_posts`: Finds the accounts to which the user has given the most likes.
 - `not_following_back`: Finds users who the account follows, but that does not follow the account back.
 
-Furthermore, a Markdown summary report of all the outputs can be generated through the `summary_report` file, once each analysis script has been executed. For ease of viewing the outputs with correct formatting in a code editor such as Visual Studio Code:
+##### Summary report:
+
+A summary report of all analysis outputs can be generated through the `summary_report` file, once all scripts have been executed. For ease of viewing the outputs with applied formatting in an editor such as Visual Studio Code:
 
 > Press `Cmd+Shift+V` on macOS
 
@@ -51,3 +48,8 @@ or
 > Press `Ctrl+Shift+V` on Windows/Linux
 
 to open the Markdown preview side-by-side with the text editor.
+
+##### Supporting files:
+
+- `utils`: For functionality shared between scripts, such as writing to file
+- `variables`: Stores set variables, such as directory names for analysis data
