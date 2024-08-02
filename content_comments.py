@@ -47,13 +47,18 @@ def main():
     # Define output directory and create it if it does not exist
     output_dir = create_output_dir(script_dir)
     
+    # Prepare the output data
+    if top_repeated_comments:
+        output_data = ["Top 5 repeated comments and their counts:"]
+        for comment, count in top_repeated_comments:
+            formatted_comment = comment.replace("Comment", "").strip()
+            output_data.append(f"- {formatted_comment}, {count}")
+    else:
+        output_data = ["no repeated comments"]
+
     # Output the result to a file
     output_file_path = os.path.join(output_dir, "content_comments.txt")
-    
-    if top_repeated_comments:
-        write_to_file_simple(output_file_path, top_repeated_comments, "Top 5 repeated comments and their counts")
-    else:
-        write_to_file_simple(output_file_path, ["no repeated comments"], "Repeated comments status")
+    write_to_file_simple(output_file_path, output_data, "Repeated comments status")
     
     # Print out confirmation of file export
     if top_repeated_comments:
