@@ -3,7 +3,7 @@ import os
 from bs4 import BeautifulSoup
 from collections import Counter
 import variables
-from utils import load_html_content, write_to_file_simple, create_output_dir, get_script_dir
+from utils import load_html_content, create_output_dir, get_script_dir
 
 # Function to extract comments
 def extract_comments(soup):
@@ -52,7 +52,7 @@ def main():
         output_data = ["Top 5 repeated comments and their counts:"]
         for comment, count in top_repeated_comments:
             formatted_comment = comment.replace("Comment", "").strip()
-            output_data.append(f"- {formatted_comment}, {count}")
+            output_data.append(f"- {formatted_comment}, comment made {count} times")
     else:
         output_data = ["no repeated comments"]
 
