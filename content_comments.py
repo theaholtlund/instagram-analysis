@@ -58,7 +58,8 @@ def main():
 
     # Output the result to a file
     output_file_path = os.path.join(output_dir, "content_comments.txt")
-    write_to_file_simple(output_file_path, output_data, "Repeated comments status")
+    with open(output_file_path, "w") as f:
+        f.write("\n".join(output_data) + "\n")
     
     # Print out confirmation of file export
     if top_repeated_comments:
