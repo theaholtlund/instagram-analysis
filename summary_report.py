@@ -23,14 +23,8 @@ def parse_list_output(data):
     items = [line.strip("- \n") for line in data[2:]]
     return count, items
 
-# Function to parse the most liked output file
-def parse_most_liked_output(data):
-    header = data[0].strip()
-    items = [line.strip("- \n") for line in data[1:] if line.strip()]
-    return len(items), items
-
-# Function to parse the content comments output file
-def parse_content_comments_output(data):
+# Function to parse detailed content output file
+def parse_detailed_output(data):
     header = data[0].strip()
     items = [line.strip("- \n") for line in data[1:] if line.strip()]
     return len(items), items
@@ -52,12 +46,12 @@ def generate_summary_report():
     files_parsers = {
         "blocked_accounts.txt": parse_list_output,
         "close_friends.txt": parse_list_output,
-        "content_comments.txt": parse_content_comments_output,
+        "content_comments.txt": parse_detailed_output,
         "count_comments.txt": parse_simple_output,
         "count_liked_comments.txt": parse_simple_output,
         "count_liked_posts.txt": parse_simple_output,
         "find_unfollowers.txt": parse_list_output,
-        "most_liked_posts.txt": parse_most_liked_output
+        "most_liked_posts.txt": parse_detailed_output
     }
 
     # Dictionary to store parsed data from each file
