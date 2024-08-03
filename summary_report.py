@@ -8,7 +8,7 @@ def read_output_file(file_path):
         with open(file_path, "r", encoding="utf-8") as file:
             return file.readlines()
     except FileNotFoundError:
-        print(f"Error: The file '{file_path}' could not be found. Please ensure that you have run al the analysis scripts.")
+        print(f"Error: The file '{file_path}' could not be found. Please ensure that you have run all the analysis scripts.")
         return None
 
 # Function to parse a simple output file
@@ -25,6 +25,12 @@ def parse_list_output(data):
 
 # Function to parse the most liked output file
 def parse_most_liked_output(data):
+    header = data[0].strip()
+    items = [line.strip("- \n") for line in data[1:] if line.strip()]
+    return len(items), items
+
+# Function to parse the content comments output file
+def parse_content_comments_output(data):
     header = data[0].strip()
     items = [line.strip("- \n") for line in data[1:] if line.strip()]
     return len(items), items
@@ -46,6 +52,7 @@ def generate_summary_report():
     files_parsers = {
         "blocked_accounts.txt": parse_list_output,
         "close_friends.txt": parse_list_output,
+        "content_comments.txt": parse_content_comments_output,
         "count_comments.txt": parse_simple_output,
         "count_liked_comments.txt": parse_simple_output,
         "count_liked_posts.txt": parse_simple_output,
@@ -68,7 +75,7 @@ def generate_summary_report():
 
     # Write the summary report to a Markdown file
     with open(summary_file_path, "w", encoding="utf-8") as file:
-        file.write("# Analysis summary report\n")
+        file.write("# Analysis Summary Report\n")
         file.write("\n")
 
         for file_name, (count, items) in summary_data.items():
@@ -82,7 +89,7 @@ def generate_summary_report():
                     file.write(f"- {item}\n")
                 file.write("\n</details>\n\n")
         
-        file.write("**End of summary report**\n")
+        file.write("## End of summary report\n")
 
 # Main function to coordinate execution of the script
 if __name__ == "__main__":
