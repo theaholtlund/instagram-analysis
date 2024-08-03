@@ -31,6 +31,7 @@ To utilise the script:
 
 - `blocked_accounts`: Finds the number of blocked accounts, and their usernames.
 - `close_friends`: Finds the number of close friends, and their usernames.
+- `content_comments`: Finds the top most repeated comments made on Instagram posts.
 - `count_comments`: Finds the total number of comments made on Instagram posts.
 - `count_liked_comments`: Finds the total number of comments liked by the user.
 - `count_liked_posts`: Finds the total number of Instagram posts liked by the user.
