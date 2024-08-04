@@ -50,8 +50,8 @@ def generate_summary_report():
         "count_comments.txt": parse_simple_output,
         "count_liked_comments.txt": parse_simple_output,
         "count_liked_posts.txt": parse_simple_output,
-        "find_unfollowers.txt": parse_list_output,
-        "most_liked_posts.txt": parse_detailed_output
+        "most_liked_posts.txt": parse_detailed_output,
+        "not_following_back.txt": parse_list_output
     }
 
     # Dictionary to store parsed data from each file
