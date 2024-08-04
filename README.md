@@ -36,7 +36,7 @@ To utilise the script:
 - `count_liked_comments`: Finds the total number of comments liked by the user.
 - `count_liked_posts`: Finds the total number of Instagram posts liked by the user.
 - `most_liked_posts`: Finds the accounts to which the user has given the most likes.
-- `not_following_back`: Finds users who the account follows, but that does not follow the account back.
+- `not_following_back`: Finds users who the account follows that does not follow back.
 
 #### Summary report:
 
