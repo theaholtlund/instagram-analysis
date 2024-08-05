@@ -1,13 +1,13 @@
 # Import required libraries
 import os
-from utils import create_output_dir, get_script_dir, read_output_file, parse_simple_output, parse_list_output, parse_detailed_output, capitalise_first_word
+import variables
+from utils import get_script_dir, read_output_file, parse_simple_output, parse_list_output, parse_detailed_output, capitalise_first_word
 
 # Function to generate a summary report from the various analysis output files
 def generate_summary_report():
     script_dir = get_script_dir()
-    output_dir = create_output_dir(script_dir)
     analysis_output_dir = os.path.join(script_dir, "analysis_outputs")
-    summary_file_path = os.path.join(output_dir, "summary_report.md")
+    summary_file_path = os.path.join(variables.output_dir, "summary_report.md")
 
     # Dictionary mapping filenames to their corresponding parser functions
     files_parsers = {
