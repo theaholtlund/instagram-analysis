@@ -2,6 +2,18 @@
 import os
 from bs4 import BeautifulSoup
 
+# Function to read file content
+def read_file(file_path, mode):
+    try:
+        with open(file_path, "r", encoding="utf-8") as file:
+            if mode == "all":
+                return file.read()
+            else:
+                return file.readlines()
+    except FileNotFoundError:
+        print(f"Error: The file '{file_path}' could not be found.")
+        return None
+
 # Function to load HTML content with error handling
 def load_html_content(file_path):
     try:
