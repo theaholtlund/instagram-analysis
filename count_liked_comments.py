@@ -41,8 +41,6 @@ def main():
         
         # Print out confirmation of file export
         print(f"The total number of likes given on comments by the user has been saved to '{output_file_path}'.")
-    else:
-        print(f"File '{liked_comments_file}' not found in the directory '{likes_path}'.")
 
 if __name__ == "__main__":
     main()
