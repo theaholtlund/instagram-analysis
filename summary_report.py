@@ -52,6 +52,9 @@ def generate_summary_report():
         
         file.write("## End of summary report\n")
 
+    # Print out confirmation of file export
+    print(f"The summary report has been generated and saved to '{summary_file_path}'.")
+
 # Main function to coordinate execution of the script
 if __name__ == "__main__":
     generate_summary_report()
