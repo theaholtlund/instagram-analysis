@@ -8,8 +8,10 @@ def read_file(file_path, mode):
         with open(file_path, "r", encoding="utf-8") as file:
             if mode == "all":
                 return file.read()
-            else:
+            elif mode == "lines":
                 return file.readlines()
+            else:
+                raise ValueError(f"Invalid mode: {mode}. Use 'all' or 'lines'.")
     except FileNotFoundError:
         print(f"Error: The file '{file_path}' could not be found.")
         return None
