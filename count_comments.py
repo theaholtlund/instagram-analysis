@@ -2,7 +2,7 @@
 import os
 from bs4 import BeautifulSoup
 import variables
-from utils import load_html_content, write_to_file_simple, create_output_dir, get_script_dir
+from utils import load_html_content, write_to_file_simple, get_script_dir
 
 # Function to extract comments
 def extract_comments(soup):
