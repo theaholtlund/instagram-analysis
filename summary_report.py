@@ -1,39 +1,6 @@
 # Import required libraries
 import os
-from utils import create_output_dir, get_script_dir
-
-# Function to read lines from a file
-def read_output_file(file_path):
-    try:
-        with open(file_path, "r", encoding="utf-8") as file:
-            return file.readlines()
-    except FileNotFoundError:
-        print(f"Error: The file '{file_path}' could not be found. Please ensure that you have run all the analysis scripts.")
-        return None
-
-# Function to parse a simple output file
-def parse_simple_output(data):
-    header = data[0].strip()
-    return int(header.split(": ")[1]), []
-
-# Function to parse a list output file
-def parse_list_output(data):
-    header = data[0].strip()
-    count = int(header.split(": ")[1])
-    items = [line.strip("- \n") for line in data[2:]]
-    return count, items
-
-# Function to parse detailed content output file
-def parse_detailed_output(data):
-    header = data[0].strip()
-    items = [line.strip("- \n") for line in data[1:] if line.strip()]
-    return len(items), items
-
-# Function to capitalise only the first word
-def capitalise_first_word(text):
-    if not text:
-        return text
-    return text[0].upper() + text[1:].lower()
+from utils import create_output_dir, get_script_dir, read_output_file, parse_simple_output, parse_list_output, parse_detailed_output, capitalise_first_word
 
 # Function to generate a summary report from the various analysis output files
 def generate_summary_report():
