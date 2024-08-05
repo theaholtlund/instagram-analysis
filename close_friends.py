@@ -24,11 +24,8 @@ def main():
     # Extract close friends usernames
     close_friends_usernames = extract_usernames(close_friends_soup)
     
-    # Define output directory and create it if it does not exist
-    output_dir = create_output_dir(script_dir)
-    
     # Output the result to a file
-    output_file_path = os.path.join(output_dir, "close_friends.txt")
+    output_file_path = os.path.join(variables.output_dir, "close_friends.txt")
     write_to_file_detailed(output_file_path, close_friends_usernames, "Number of close friends", "Users on close friends list")
     
     # Print out confirmation of file export

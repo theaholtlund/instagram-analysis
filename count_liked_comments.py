@@ -35,11 +35,8 @@ def main():
         # Update the total likes count
         total_likes = len(likes)
         
-        # Define output directory and create it if it does not exist
-        output_dir = create_output_dir(script_dir)
-        
         # Output the result to a file
-        output_file_path = os.path.join(output_dir, "count_liked_comments.txt")
+        output_file_path = os.path.join(variables.output_dir, "count_liked_comments.txt")
         write_to_file_simple(output_file_path, [total_likes], "Total number of likes given on Instagram comments")
         
         # Print out confirmation of file export

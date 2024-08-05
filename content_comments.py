@@ -44,9 +44,6 @@ def main():
     # Sort repeated comments by frequency in descending order and take the top 5
     top_repeated_comments = sorted(repeated_comments.items(), key=lambda x: x[1], reverse=True)[:5]
     
-    # Define output directory and create it if it does not exist
-    output_dir = create_output_dir(script_dir)
-    
     # Prepare the output data
     if top_repeated_comments:
         output_data = ["Top 5 repeated comments and their counts:"]
@@ -57,7 +54,7 @@ def main():
         output_data = ["no repeated comments"]
 
     # Output the result to a file
-    output_file_path = os.path.join(output_dir, "content_comments.txt")
+    output_file_path = os.path.join(variables.output_dir, "content_comments.txt")
     with open(output_file_path, "w") as f:
         f.write("\n".join(output_data) + "\n")
     
