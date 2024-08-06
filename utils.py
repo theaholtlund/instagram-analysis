@@ -2,6 +2,10 @@
 import os
 from bs4 import BeautifulSoup
 
+# Function to get the directory of the current script
+def get_script_dir():
+    return os.path.dirname(os.path.realpath(__file__))
+
 # Function to read file content
 def read_file(file_path, mode):
     try:
@@ -31,9 +35,6 @@ def write_to_file_detailed(file_path, data, header, data_label):
         for item in data:
             file.write(f"- {item}\n")
 
-# Function to get the directory of the current script
-def get_script_dir():
-    return os.path.dirname(os.path.realpath(__file__))
 
 # Function to parse a simple output file
 def parse_simple_output(data):
