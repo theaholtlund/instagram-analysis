@@ -35,7 +35,6 @@ def write_to_file_detailed(file_path, data, header, data_label):
         for item in data:
             file.write(f"- {item}\n")
 
-
 # Function to parse a simple output file
 def parse_simple_output(data):
     header = data[0].strip()
