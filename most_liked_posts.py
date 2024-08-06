@@ -3,7 +3,7 @@ import os
 from bs4 import BeautifulSoup
 from collections import Counter
 import variables
-from utils import load_html_content, write_to_file_simple, get_script_dir
+from utils import read_file, write_to_file_simple, get_script_dir
 
 # Function to extract usernames behind liked post
 def extract_liked_usernames(soup):
@@ -17,7 +17,7 @@ def main():
     likes_path = os.path.join(script_dir, variables.data_dir, variables.activity_dir, variables.likes_dir, "liked_posts.html")
     
     # Load the HTML content
-    likes_html = load_html_content(likes_path)
+    likes_html = read_file(likes_path, "all")
     
     # Parse the HTML content using BeautifulSoup
     likes_soup = BeautifulSoup(likes_html, "html.parser")

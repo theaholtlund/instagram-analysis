@@ -3,7 +3,7 @@ import os
 from bs4 import BeautifulSoup
 from collections import Counter
 import variables
-from utils import load_html_content, get_script_dir
+from utils import read_file, get_script_dir
 
 # Function to extract comments
 def extract_comments(soup):
@@ -24,7 +24,7 @@ def main():
         file_path = os.path.join(comments_path, filename)
         
         # Load the HTML content
-        comments_html = load_html_content(file_path)
+        comments_html = read_file(file_path, "all")
         
         # Parse the HTML content using BeautifulSoup
         comments_soup = BeautifulSoup(comments_html, "html.parser")

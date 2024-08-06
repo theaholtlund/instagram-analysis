@@ -2,7 +2,7 @@
 import os
 from bs4 import BeautifulSoup
 import variables
-from utils import load_html_content, write_to_file_detailed, get_script_dir
+from utils import read_file, write_to_file_detailed, get_script_dir
 
 # Function to extract usernames
 def extract_usernames(soup):
@@ -16,7 +16,7 @@ def main():
     close_friends_path = os.path.join(script_dir, variables.data_dir, variables.connections_dir, variables.followers_dir, "close_friends.html")
     
     # Load the HTML content with error handling
-    close_friends_html = load_html_content(close_friends_path)
+    close_friends_html = read_file(close_friends_path, "all")
     
     # Parse the HTML content using BeautifulSoup
     close_friends_soup = BeautifulSoup(close_friends_html, "html.parser")
