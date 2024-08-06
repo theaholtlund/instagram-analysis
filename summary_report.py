@@ -6,7 +6,7 @@ from utils import read_file, get_script_dir, parse_simple_output, parse_list_out
 # Function to generate a summary report from the various analysis output files
 def generate_summary_report():
     script_dir = get_script_dir()
-    analysis_output_dir = os.path.join(script_dir, "analysis_outputs")
+    analysis_output_dir = os.path.join(script_dir, variables.output_dir)
     summary_file_path = os.path.join(variables.output_dir, "summary_report.md")
 
     # Dictionary mapping filenames to their corresponding parser functions
