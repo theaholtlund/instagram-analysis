@@ -1,7 +1,7 @@
 # Import required libraries
 import os
 import variables
-from utils import get_script_dir, read_output_file, parse_simple_output, parse_list_output, parse_detailed_output, capitalise_first_word
+from utils import read_file, get_script_dir, parse_simple_output, parse_list_output, parse_detailed_output, capitalise_first_word
 
 # Function to generate a summary report from the various analysis output files
 def generate_summary_report():
@@ -27,7 +27,7 @@ def generate_summary_report():
     # Loop through each file, parse the data and store in summary data dictionary
     for file_name, parser in files_parsers.items():
         file_path = os.path.join(analysis_output_dir, file_name)
-        data = read_output_file(file_path)
+        data = read_file(file_path, "lines")
         if data:
             count, items = parser(data)
             summary_data[file_name] = (count, items)
