@@ -42,12 +42,12 @@ def main():
     
     # Prepare the output data
     if top_repeated_comments:
-        output_data = ["Top 5 repeated comments and their counts:"]
+        output_data = ["Top 5 repeated comments and the number of times they were made:"]
         for comment, count in top_repeated_comments:
             formatted_comment = comment.replace("Comment", "").strip()
             output_data.append(f"- {formatted_comment}, comment made {count} times")
     else:
-        output_data = ["no repeated comments"]
+        output_data = ["No repeated comments"]
 
     # Output the result to a file
     output_file_path = os.path.join(variables.output_dir, "content_comments.txt")
