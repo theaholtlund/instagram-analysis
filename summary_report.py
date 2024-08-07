@@ -1,7 +1,7 @@
 # Import required libraries
 import os
 import variables
-from utils import read_file, get_script_dir, parse_simple_output, parse_list_output, parse_detailed_output, capitalise_first_word
+from utils import get_script_dir, read_file, parse_simple_output, parse_list_output, parse_detailed_output, capitalise_first_word
 
 # Function to generate a summary report from the various analysis output files
 def generate_summary_report():
