@@ -2,7 +2,7 @@
 import os
 from bs4 import BeautifulSoup
 import variables
-from utils import read_file, write_to_file_detailed, get_script_dir
+from utils import get_script_dir, read_file, load_and_parse_html, write_to_file_detailed
 
 # Function to extract usernames
 def extract_usernames(soup):
@@ -15,11 +15,8 @@ def main():
     # Define path for the blocked accounts HTML file within the data files folder
     blocked_accounts_path = os.path.join(script_dir, variables.data_dir, variables.connections_dir, variables.followers_dir, "blocked_accounts.html")
     
-    # Load the HTML content with error handling
-    blocked_accounts_html = read_file(blocked_accounts_path, "all")
-    
-    # Parse the HTML content using BeautifulSoup
-    blocked_accounts_soup = BeautifulSoup(blocked_accounts_html, "html.parser")
+    # Load and parse the HTML content
+    blocked_accounts_soup = load_and_parse_html(blocked_accounts_path)
     
     # Extract blocked accounts usernames
     blocked_accounts_usernames = extract_usernames(blocked_accounts_soup)

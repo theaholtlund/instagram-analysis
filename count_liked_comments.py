@@ -2,7 +2,7 @@
 import os
 from bs4 import BeautifulSoup
 import variables
-from utils import read_file, write_to_file_simple, get_script_dir
+from utils import get_script_dir, read_file, load_and_parse_html, write_to_file_simple
 
 # Function to extract likes
 def extract_likes(soup):
@@ -27,7 +27,7 @@ def main():
         comments_html = read_file(file_path, "all")
         
         # Parse the HTML content using BeautifulSoup
-        comments_soup = BeautifulSoup(comments_html, "html.parser")
+        comments_soup = load_and_parse_html(file_path)
         
         # Extract likes from the HTML content
         likes = extract_likes(comments_soup)

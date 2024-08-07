@@ -2,7 +2,7 @@
 import os
 from bs4 import BeautifulSoup
 import variables
-from utils import read_file, write_to_file_detailed, get_script_dir
+from utils import get_script_dir, read_file, load_and_parse_html, write_to_file_detailed
 
 # Function to extract usernames
 def extract_usernames(soup):
@@ -21,8 +21,8 @@ def main():
     following_html = read_file(following_path, "all")
     
     # Parse the HTML content using BeautifulSoup
-    followers_soup = BeautifulSoup(followers_html, "html.parser")
-    following_soup = BeautifulSoup(following_html, "html.parser")
+    followers_soup = load_and_parse_html(followers_path)
+    following_soup = load_and_parse_html(following_path)
     
     # Extract followers and following usernames
     followers_usernames = extract_usernames(followers_soup)
