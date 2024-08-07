@@ -15,10 +15,6 @@ def main():
     followers_path = os.path.join(script_dir, variables.data_dir, variables.connections_dir, variables.followers_dir, "followers_1.html")
     following_path = os.path.join(script_dir, variables.data_dir, variables.connections_dir, variables.followers_dir, "following.html")
     
-    # Load the HTML content with error handling
-    followers_html = read_file(followers_path, "all")
-    following_html = read_file(following_path, "all")
-    
     # Parse the HTML content using BeautifulSoup
     followers_soup = load_and_parse_html(followers_path)
     following_soup = load_and_parse_html(following_path)

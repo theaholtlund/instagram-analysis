@@ -15,9 +15,6 @@ def main():
     # Define path for the likes HTML file
     likes_path = os.path.join(script_dir, variables.data_dir, variables.activity_dir, variables.likes_dir, "liked_posts.html")
     
-    # Load the HTML content
-    likes_html = read_file(likes_path, "all")
-    
     # Parse the HTML content using BeautifulSoup
     likes_soup = load_and_parse_html(likes_path)
     

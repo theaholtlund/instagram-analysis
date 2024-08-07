@@ -22,9 +22,6 @@ def main():
     for filename in os.listdir(comments_path):
         file_path = os.path.join(comments_path, filename)
         
-        # Load the HTML content
-        comments_html = read_file(file_path, "all")
-        
         # Parse the HTML content using BeautifulSoup
         comments_soup = load_and_parse_html(file_path)
         

@@ -22,8 +22,6 @@ def main():
     file_path = os.path.join(likes_path, liked_posts_file)
     
     if os.path.exists(file_path):
-        # Load the HTML content
-        likes_html = read_file(file_path, "all")
         
         # Parse the HTML content using BeautifulSoup
         likes_soup = load_and_parse_html(file_path)
