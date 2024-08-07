@@ -1,6 +1,5 @@
 # Import required libraries
 import os
-from bs4 import BeautifulSoup
 from collections import Counter
 import variables
 from utils import get_script_dir, read_file, load_and_parse_html, write_to_file_simple
