@@ -7,15 +7,10 @@ def get_script_dir():
     return os.path.dirname(os.path.realpath(__file__))
 
 # Function to read file content
-def read_file(file_path, mode):
+def read_file(file_path):
     try:
         with open(file_path, "r", encoding="utf-8") as file:
-            if mode == "all":
-                return file.read()
-            elif mode == "lines":
-                return file.readlines()
-            else:
-                raise ValueError(f"Invalid mode: {mode}. Use 'all' or 'lines'.")
+            return file.readlines()
     except FileNotFoundError:
         print(f"Error: The file '{file_path}' could not be found.")
         return None
