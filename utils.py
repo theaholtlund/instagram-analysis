@@ -21,8 +21,14 @@ def read_file(file_path, mode):
         return None
 
 # Function to handle loading and parsing HTML content
-def load_and_parse_html(file_path, mode="all"):
-    html_content = read_file(file_path, mode)
+def load_and_parse_html(file_path):
+    try:
+        with open(file_path, "r", encoding="utf-8") as file:
+            html_content = file.read()
+    except FileNotFoundError:
+        print(f"Error: The file '{file_path}' could not be found.")
+        return None
+
     return BeautifulSoup(html_content, "html.parser")
 
 # Function to write results to a file in simple format
