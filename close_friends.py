@@ -1,7 +1,7 @@
 # Import required libraries
 import os
 import variables
-from utils import get_script_dir, read_file, load_and_parse_html, write_to_file_detailed
+from utils import get_script_dir, load_and_parse_html, write_to_file_detailed
 
 # Function to extract usernames
 def extract_usernames(soup):

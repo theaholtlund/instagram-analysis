@@ -2,7 +2,7 @@
 import os
 from collections import Counter
 import variables
-from utils import get_script_dir, read_file, load_and_parse_html, write_to_file_simple
+from utils import get_script_dir, load_and_parse_html, write_to_file_simple
 
 # Function to extract usernames behind liked post
 def extract_liked_usernames(soup):

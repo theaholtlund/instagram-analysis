@@ -1,7 +1,7 @@
 # Import required libraries
 import os
 import variables
-from utils import get_script_dir, read_file, load_and_parse_html, write_to_file_simple
+from utils import get_script_dir, load_and_parse_html, write_to_file_simple
 
 # Function to extract likes
 def extract_likes(soup):

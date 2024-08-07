@@ -2,7 +2,7 @@
 import os
 from collections import Counter
 import variables
-from utils import get_script_dir, read_file, load_and_parse_html
+from utils import get_script_dir, load_and_parse_html
 
 # Function to extract comments
 def extract_comments(soup):
