@@ -20,6 +20,11 @@ def read_file(file_path, mode):
         print(f"Error: The file '{file_path}' could not be found.")
         return None
 
+# Function to handle loading and parsing HTML content
+def load_and_parse_html(file_path, mode="all"):
+    html_content = read_file(file_path, mode)
+    return BeautifulSoup(html_content, "html.parser")
+
 # Function to write results to a file in simple format
 def write_to_file_simple(file_path, data, header):
     with open(file_path, "w", encoding="utf-8") as file:
