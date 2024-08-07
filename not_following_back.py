@@ -11,7 +11,7 @@ def extract_usernames(soup):
 def main():
     script_dir = get_script_dir()
     
-    # Define paths for the HTML files within the data files folder
+    # Define paths for the followers and following HTML files
     followers_path = os.path.join(script_dir, variables.data_dir, variables.connections_dir, variables.followers_dir, "followers_1.html")
     following_path = os.path.join(script_dir, variables.data_dir, variables.connections_dir, variables.followers_dir, "following.html")
     

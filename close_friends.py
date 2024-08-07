@@ -11,7 +11,7 @@ def extract_usernames(soup):
 def main():
     script_dir = get_script_dir()
     
-    # Define path for the close friends HTML file within the data files folder
+    # Define path for the close friends HTML file
     close_friends_path = os.path.join(script_dir, variables.data_dir, variables.connections_dir, variables.followers_dir, "close_friends.html")
     
     # Load and parse the HTML content

@@ -12,7 +12,7 @@ def extract_liked_usernames(soup):
 def main():
     script_dir = get_script_dir()
     
-    # Define paths for the HTML files within the data files folder
+    # Define path for the likes HTML file
     likes_path = os.path.join(script_dir, variables.data_dir, variables.activity_dir, variables.likes_dir, "liked_posts.html")
     
     # Load the HTML content

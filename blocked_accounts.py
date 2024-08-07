@@ -11,7 +11,7 @@ def extract_usernames(soup):
 def main():
     script_dir = get_script_dir()
     
-    # Define path for the blocked accounts HTML file within the data files folder
+    # Define path for the blocked accounts HTML file
     blocked_accounts_path = os.path.join(script_dir, variables.data_dir, variables.connections_dir, variables.followers_dir, "blocked_accounts.html")
     
     # Load and parse the HTML content
