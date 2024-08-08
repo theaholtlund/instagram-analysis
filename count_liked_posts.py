@@ -17,9 +17,8 @@ def main():
     # Initialise the likes count
     total_likes = 0
     
-    # Define the filename to process
-    liked_posts_file = "liked_posts.html"
-    file_path = os.path.join(likes_path, liked_posts_file)
+    # Define path for file to process
+    file_path = os.path.join(likes_path, variables.liked_posts_file)
         
     # Parse the HTML content using BeautifulSoup
     likes_soup = load_and_parse_html(file_path)

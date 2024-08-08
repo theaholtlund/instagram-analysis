@@ -17,9 +17,8 @@ def main():
     # Initialise the likes count
     total_likes = 0
     
-    # Define the filename to process
-    liked_comments_file = "liked_comments.html"
-    file_path = os.path.join(likes_path, liked_comments_file)
+    # Define path for file to process
+    file_path = os.path.join(likes_path, variables.liked_comments_file)
     
     # Parse the HTML content using BeautifulSoup
     comments_soup = load_and_parse_html(file_path)
