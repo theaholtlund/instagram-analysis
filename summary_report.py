@@ -27,7 +27,7 @@ def generate_summary_report():
     # Loop through each file, parse the data and store in summary data dictionary
     for file_name, parser in files_parsers.items():
         file_path = os.path.join(analysis_output_dir, file_name)
-        data = read_file(file_path, "lines")
+        data = read_file(file_path)
         if data:
             count, items = parser(data)
             summary_data[file_name] = (count, items)
