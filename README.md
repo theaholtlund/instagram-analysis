@@ -53,4 +53,4 @@ to open the Markdown preview side-by-side with the text editor.
 #### Supporting files:
 
 - `utils`: For functionality shared between scripts, such as writing to file
-- `variables`: Stores set variables, such as directory names for analysis data
+- `variables`: Stores shared variables, such as file and directory names for analysis data
