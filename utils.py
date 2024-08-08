@@ -8,22 +8,13 @@ def get_script_dir():
 
 # Function to read file content
 def read_file(file_path):
-    try:
-        with open(file_path, "r", encoding="utf-8") as file:
-            return file.readlines()
-    except FileNotFoundError:
-        print(f"Error: The file '{file_path}' could not be found.")
-        return None
+    with open(file_path, "r", encoding="utf-8") as file:
+        return file.readlines()
 
 # Function to handle loading and parsing HTML content
 def load_and_parse_html(file_path):
-    try:
-        with open(file_path, "r", encoding="utf-8") as file:
-            html_content = file.read()
-    except FileNotFoundError:
-        print(f"Error: The file '{file_path}' could not be found.")
-        return None
-
+    with open(file_path, "r", encoding="utf-8") as file:
+        html_content = file.read()
     return BeautifulSoup(html_content, "html.parser")
 
 # Function to write results to a file in simple format
