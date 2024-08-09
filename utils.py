@@ -6,6 +6,10 @@ from bs4 import BeautifulSoup
 def get_script_dir():
     return os.path.dirname(os.path.realpath(__file__))
 
+# Function to construct the file path
+def construct_file_path(*path_parts):
+    return os.path.join(*path_parts)
+
 # Function to read file content
 def read_file(file_path):
     with open(file_path, "r", encoding="utf-8") as file:
