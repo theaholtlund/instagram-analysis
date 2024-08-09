@@ -2,7 +2,7 @@
 import os
 from collections import Counter
 import variables
-from utils import get_script_dir, load_and_parse_html
+from utils import get_script_dir, construct_file_path, load_and_parse_html
 
 # Function to extract comments
 def extract_comments(soup):
@@ -13,14 +13,14 @@ def main():
     script_dir = get_script_dir()
     
     # Define the path for the comments folder
-    comments_path = os.path.join(script_dir, variables.data_dir, variables.activity_dir, variables.comments_dir)
+    comments_path = construct_file_path(script_dir, variables.data_dir, variables.activity_dir, variables.comments_dir)
     
     # Initialise the comment list
     all_comments = []
     
     # Iterate over all files in the comments directory
     for filename in os.listdir(comments_path):
-        file_path = os.path.join(comments_path, filename)
+        file_path = construct_file_path(comments_path, filename)
         
         # Parse the HTML content using BeautifulSoup
         comments_soup = load_and_parse_html(file_path)
@@ -50,7 +50,7 @@ def main():
         output_data = ["No repeated comments"]
 
     # Output the result to a file
-    output_file_path = os.path.join(variables.output_dir, "content_comments.txt")
+    output_file_path = construct_file_path(variables.output_dir, "content_comments.txt")
     with open(output_file_path, "w") as f:
         f.write("\n".join(output_data) + "\n")
     

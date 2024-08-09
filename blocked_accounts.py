@@ -1,7 +1,7 @@
 # Import required libraries
 import os
 import variables
-from utils import get_script_dir, load_and_parse_html, write_to_file_detailed
+from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file_detailed
 
 # Function to extract usernames
 def extract_usernames(soup):
@@ -12,7 +12,7 @@ def main():
     script_dir = get_script_dir()
     
     # Define path for the blocked accounts HTML file
-    blocked_accounts_path = os.path.join(script_dir, variables.data_dir, variables.connections_dir, variables.followers_dir, "blocked_accounts.html")
+    blocked_accounts_path = construct_file_path(script_dir, variables.data_dir, variables.connections_dir, variables.followers_dir, "blocked_accounts.html")
     
     # Load and parse the HTML content
     blocked_accounts_soup = load_and_parse_html(blocked_accounts_path)
@@ -21,7 +21,7 @@ def main():
     blocked_accounts_usernames = extract_usernames(blocked_accounts_soup)
     
     # Output the result to a file
-    output_file_path = os.path.join(variables.output_dir, "blocked_accounts.txt")
+    output_file_path = construct_file_path(variables.output_dir, "blocked_accounts.txt")
     write_to_file_detailed(output_file_path, blocked_accounts_usernames, "Number of blocked accounts", "Blocked accounts")
     
     # Print out confirmation of file export

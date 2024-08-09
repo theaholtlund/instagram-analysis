@@ -1,7 +1,7 @@
 # Import required libraries
 import os
 import variables
-from utils import get_script_dir, load_and_parse_html, write_to_file_simple
+from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file_simple
 
 # Function to extract likes
 def extract_likes(soup):
@@ -12,13 +12,13 @@ def main():
     script_dir = get_script_dir()
     
     # Define the path for the likes folder
-    likes_path = os.path.join(script_dir, variables.data_dir, variables.activity_dir, variables.likes_dir)
+    likes_path = construct_file_path(script_dir, variables.data_dir, variables.activity_dir, variables.likes_dir)
     
     # Initialise the likes count
     total_likes = 0
     
     # Define path for file to process
-    file_path = os.path.join(likes_path, variables.liked_comments_file)
+    file_path = construct_file_path(likes_path, variables.liked_comments_file)
     
     # Parse the HTML content using BeautifulSoup
     comments_soup = load_and_parse_html(file_path)
@@ -30,7 +30,7 @@ def main():
     total_likes = len(likes)
     
     # Output the result to a file
-    output_file_path = os.path.join(variables.output_dir, "count_liked_comments.txt")
+    output_file_path = construct_file_path(variables.output_dir, "count_liked_comments.txt")
     write_to_file_simple(output_file_path, [total_likes], "Total number of likes given on Instagram comments")
     
     # Print out confirmation of file export
