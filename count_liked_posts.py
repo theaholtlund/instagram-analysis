@@ -1,5 +1,4 @@
 # Import required libraries
-import os
 import variables
 from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file_simple
 
