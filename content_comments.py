@@ -2,7 +2,7 @@
 import os
 from collections import Counter
 import variables
-from utils import get_script_dir, construct_file_path, load_and_parse_html
+from utils import get_script_dir, construct_file_path, list_files_and_construct_paths, load_and_parse_html
 
 # Function to extract comments
 def extract_comments(soup):
@@ -15,11 +15,14 @@ def main():
     # Define the path for the comments folder
     comments_path = construct_file_path(script_dir, variables.data_dir, variables.activity_dir, variables.comments_dir)
     
+    # List files in the comments directory
+    file_paths = list_files_and_construct_paths(comments_path)
+
     # Initialise the comment list
     all_comments = []
     
     # Iterate over all files in the comments directory
-    for filename in os.listdir(comments_path):
+    for filename in file_paths:
         file_path = construct_file_path(comments_path, filename)
         
         # Parse the HTML content using BeautifulSoup
