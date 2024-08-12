@@ -10,6 +10,13 @@ def get_script_dir():
 def construct_file_path(*path_parts):
     return os.path.join(*path_parts)
 
+# Function to list files in a directory and construct the file path
+def list_files_and_construct_paths(directory):
+    file_paths = []
+    for filename in os.listdir(directory):
+        file_paths.append(os.path.join(directory, filename))
+    return file_paths
+
 # Function to read file content
 def read_file(file_path):
     with open(file_path, "r", encoding="utf-8") as file:
