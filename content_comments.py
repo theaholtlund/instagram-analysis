@@ -1,5 +1,4 @@
 # Import required libraries
-import os
 from collections import Counter
 import variables
 from utils import get_script_dir, construct_file_path, list_files_and_construct_paths, load_and_parse_html
