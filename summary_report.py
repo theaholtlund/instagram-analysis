@@ -1,8 +1,8 @@
 # Import required libraries
+import os
+import webbrowser
 import variables
 from utils import get_script_dir, read_file, construct_file_path, parse_simple_output, parse_list_output, parse_detailed_output, capitalise_first_word
-import webbrowser
-import os
 
 # Function to generate a summary report from the various analysis output files
 def generate_summary_report():
