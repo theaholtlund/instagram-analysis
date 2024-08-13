@@ -1,13 +1,13 @@
 # Import required libraries
 import os
 import variables
-from utils import get_script_dir, read_file, parse_simple_output, parse_list_output, parse_detailed_output, capitalise_first_word
+from utils import get_script_dir, read_file, construct_file_path, parse_simple_output, parse_list_output, parse_detailed_output, capitalise_first_word
 
 # Function to generate a summary report from the various analysis output files
 def generate_summary_report():
     script_dir = get_script_dir()
-    analysis_output_dir = os.path.join(script_dir, variables.output_dir)
-    summary_file_path = os.path.join(variables.output_dir, "summary_report.md")
+    analysis_output_dir = construct_file_path(script_dir, variables.output_dir)
+    summary_file_path = construct_file_path(variables.output_dir, "summary_report.md")
 
     # Dictionary mapping filenames to their corresponding parser functions
     files_parsers = {
@@ -22,26 +22,17 @@ def generate_summary_report():
     }
 
     # Dictionary to store parsed data from each file
-    summary_data = {}
-
-    # Loop through each file, parse the data and store in summary data dictionary
-    for file_name, parser in files_parsers.items():
-        file_path = os.path.join(analysis_output_dir, file_name)
-        data = read_file(file_path)
-        if data:
-            count, items = parser(data)
-            summary_data[file_name] = (count, items)
-        else:
-            summary_data[file_name] = (0, [])
+    summary_data = {
+        file_name: parser(read_file(construct_file_path(analysis_output_dir, file_name)))
+        for file_name, parser in files_parsers.items()
+    }
 
     # Write the summary report to a Markdown file
     with open(summary_file_path, "w", encoding="utf-8") as file:
-        file.write("# Analysis Summary Report\n")
-        file.write("\n")
+        file.write("# Analysis Summary Report\n\n")
 
         for file_name, (count, items) in summary_data.items():
-            title = file_name.replace("_", " ").replace(".txt", "")
-            title = capitalise_first_word(title)
+            title = capitalise_first_word(file_name.replace("_", " ").replace(".txt", ""))
             file.write(f"## {title}: {count}\n\n")
             
             if items:
