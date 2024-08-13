@@ -40,15 +40,7 @@ To utilise the script:
 
 #### Summary report:
 
-A summary report of all analysis outputs can be generated through the `summary_report` file, once all scripts have been executed. For ease of viewing the outputs with applied formatting in an editor such as Visual Studio Code:
-
-> Press `Cmd+Shift+V` on macOS
-
-or
-
-> Press `Ctrl+Shift+V` on Windows/Linux
-
-to open the Markdown preview side-by-side with the text editor.
+A summary report of all analysis outputs can be generated through the `summary_report` file, once all scripts have been executed. The report will automatically open in a browser when the script is executed.
 
 #### Supporting files:
 
