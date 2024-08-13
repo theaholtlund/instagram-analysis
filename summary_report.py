@@ -1,6 +1,7 @@
 # Import required libraries
 import variables
 from utils import get_script_dir, read_file, construct_file_path, parse_simple_output, parse_list_output, parse_detailed_output, capitalise_first_word
+import webbrowser
 import os
 
 # Function to generate a summary report from the various analysis output files
@@ -70,6 +71,7 @@ def generate_summary_report():
 
     # Print out confirmation of file export and open in browser
     print(f"The summary report has been generated and saved to '{summary_file_path}'.")
+    webbrowser.open(f'file://{os.path.abspath(summary_file_path)}')
 
 # Main function to coordinate execution of the script
 if __name__ == "__main__":
