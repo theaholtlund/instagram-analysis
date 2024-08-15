@@ -28,30 +28,6 @@ def generate_summary_report():
         for file_name, parser in files_parsers.items()
     }
 
-    # HTML template for the report
-    html_template = """
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Analysis Summary Report</title>
-        <style>
-            body {{ font-family: Arial, sans-serif; margin: 20px; }}
-            h1, h2 {{ color: #2c3e50; }}
-            details {{ margin: 10px 0; }}
-            summary {{ cursor: pointer; font-weight: bold; }}
-            .content-list {{ padding-left: 20px; }}
-        </style>
-    </head>
-    <body>
-        <h1>Analysis Summary Report</h1>
-        {content}
-        <h2>End of summary report</h2>
-    </body>
-    </html>
-    """
-
     # Generate the HTML content
     report_content = ""
     for file_name, (count, items) in summary_data.items():
@@ -67,7 +43,7 @@ def generate_summary_report():
 
     # Write the HTML file
     with open(summary_file_path, "w", encoding="utf-8") as file:
-        file.write(html_template.format(content=report_content))
+        file.write(variables.html_template.format(content=report_content))
 
     # Print out confirmation of file export and open in browser
     print(f"The summary report has been generated and saved to '{summary_file_path}'.")
