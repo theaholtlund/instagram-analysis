@@ -1,3 +1,4 @@
+/* Styling for the entire body */
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
@@ -6,6 +7,7 @@ body {
   line-height: 1.6;
 }
 
+/* Styling for heading elements */
 h1,
 h2 {
   color: #2c3e50;
@@ -14,10 +16,12 @@ h2 {
   margin-bottom: 20px;
 }
 
+/* Styling specifically for h2 headings */
 h2 {
   font-size: 1.5em;
 }
 
+/* Styling for the details element */
 details {
   margin: 10px 0;
   border: 1px solid #ddd;
@@ -26,6 +30,7 @@ details {
   border-radius: 5px;
 }
 
+/* Styling for the summary element */
 summary {
   cursor: pointer;
   font-weight: bold;
@@ -34,24 +39,29 @@ summary {
   align-items: center;
 }
 
+/* Styling for hover effect in the summary element */
 summary:hover {
   background-color: #ecf0f1;
   border-radius: 5px;
 }
 
+/* Styling for custom marker in the summary element */
 summary::marker {
   content: "► ";
 }
 
+/* Styling for custom marker when details is open */
 details[open] summary::marker {
   content: "▼ ";
 }
 
+/* Styling for the content list */
 .content-list {
   padding-left: 20px;
   margin-top: 10px;
 }
 
+/* Styling for paragraphs within the content list */
 .content-list p {
   margin: 5px 0;
   padding: 5px;
@@ -60,6 +70,7 @@ details[open] summary::marker {
   border-radius: 3px;
 }
 
+/* Styling for design adjustments depending on screen size */
 @media (max-width: 600px) {
   body {
     margin: 10px;
