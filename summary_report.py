@@ -4,11 +4,17 @@ import webbrowser
 import variables
 from utils import get_script_dir, read_file, construct_file_path, parse_simple_output, parse_list_output, parse_detailed_output, capitalise_first_word
 
+# Function to read the HTML template from a file
+def read_html_template(file_path):
+    with open(file_path, "r", encoding="utf-8") as file:
+        return file.read()
+
 # Function to generate a summary report from the various analysis output files
 def generate_summary_report():
     script_dir = get_script_dir()
     analysis_output_dir = construct_file_path(script_dir, variables.output_dir)
     summary_file_path = construct_file_path(variables.output_dir, "summary_report.html")
+    template_file_path = construct_file_path(script_dir, "summary_template.html")
 
     # Dictionary mapping filenames to their corresponding parser functions
     files_parsers = {
@@ -41,9 +47,12 @@ def generate_summary_report():
                 report_content += f"<p>- {item}</p>\n"
             report_content += "</div>\n</details>\n\n"
 
+    # Read the HTML template
+    html_template = read_html_template(template_file_path)
+
     # Write the HTML file
     with open(summary_file_path, "w", encoding="utf-8") as file:
-        file.write(variables.html_template.format(content=report_content))
+        file.write(html_template.format(content=report_content))
 
     # Print out confirmation of file export and open in browser
     print(f"The summary report has been generated and saved to '{summary_file_path}'.")
