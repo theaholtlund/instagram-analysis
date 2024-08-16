@@ -10,7 +10,7 @@ sys.path.append(root_dir)
 
 # Import shared functionality
 import variables
-from utils import (get_script_dir, read_file, construct_file_path, parse_simple_output, parse_list_output, parse_detailed_output, capitalise_first_word)
+from utils import (read_file, construct_file_path, parse_simple_output, parse_list_output, parse_detailed_output, capitalise_first_word)
 
 # Function to read the HTML template from a file
 def read_html_template(file_path):
