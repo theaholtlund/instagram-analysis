@@ -1,8 +1,22 @@
-# Import required libraries
 import os
+import sys
 import webbrowser
+
+# Add the root directory to the system path
+script_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.dirname(script_dir)
+sys.path.append(root_dir)
+
 import variables
-from utils import get_script_dir, read_file, construct_file_path, parse_simple_output, parse_list_output, parse_detailed_output, capitalise_first_word
+from utils import (
+    get_script_dir,
+    read_file,
+    construct_file_path,
+    parse_simple_output,
+    parse_list_output,
+    parse_detailed_output,
+    capitalise_first_word
+)
 
 # Function to read the HTML template from a file
 def read_html_template(file_path):
@@ -11,9 +25,9 @@ def read_html_template(file_path):
 
 # Function to generate a summary report from the various analysis output files
 def generate_summary_report():
-    script_dir = get_script_dir()
-    analysis_output_dir = construct_file_path(script_dir, variables.output_dir)
-    summary_file_path = construct_file_path(variables.output_dir, "summary_report.html")
+    # Define the directories based on the new structure
+    analysis_output_dir = construct_file_path(root_dir, variables.output_dir)
+    summary_file_path = construct_file_path(analysis_output_dir, "summary_report.html")
     template_file_path = construct_file_path(script_dir, "summary_template.html")
 
     # Dictionary mapping filenames to their corresponding parser functions
