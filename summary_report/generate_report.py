@@ -21,7 +21,7 @@ def read_html_template(file_path):
 def generate_summary_report():
     # Define the directories based on the new structure
     analysis_output_dir = construct_file_path(root_dir, variables.output_dir)
-    summary_file_path = construct_file_path(analysis_output_dir, "summary_report.html")
+    summary_file_path = construct_file_path(script_dir, "summary_report.html")
     template_file_path = construct_file_path(script_dir, "report_template.html")
 
     # Dictionary mapping filenames to their corresponding parser functions
