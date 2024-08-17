@@ -27,7 +27,7 @@ To utilise the script:
 
 ### Repository Contents
 
-#### Analysis scripts:
+#### Scripts for Analysis:
 
 - `blocked_accounts`: Finds the number of blocked accounts, and their usernames.
 - `close_friends`: Finds the number of close friends, and their usernames.
@@ -38,11 +38,11 @@ To utilise the script:
 - `most_liked_posts`: Finds the accounts to which the user has given the most likes.
 - `not_following_back`: Finds users who the account follows that does not follow back.
 
-#### Summary report:
+#### Scripts for Summary Report:
 
-A summary report of all analysis outputs can be generated through the `summary_report` file, once all scripts have been executed. The report will automatically open in a browser when the script is executed.
+A summary report of all analysis outputs can be generated through the `generate_report` file, located in the `summary_report` directory, once all scripts have been executed. The report will automatically open in a browser when the script is executed.
 
-#### Supporting files:
+#### Shared Functionality Files:
 
 - `utils`: For functionality shared between scripts, such as writing to file
 - `variables`: Stores shared variables, such as file and directory names for analysis data
