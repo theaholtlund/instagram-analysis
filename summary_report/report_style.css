@@ -1,6 +1,8 @@
 /* Styling for the entire body */
 body {
   font-family: "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
   background-color: #f4f6f8;
   color: #333;
   line-height: 1.6;
@@ -26,6 +28,18 @@ footer {
   border-radius: 8px 8px 0 0;
 }
 
+/* Styling for the main header */
+header h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+/* Styling for the footer heading */
+footer h2 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
 /* Styling for the main content area */
 main {
   padding: 20px;
@@ -43,6 +57,7 @@ h2 {
 /* Styling for the details element */
 details {
   margin: 10px 0;
+  padding: 10px;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -83,6 +98,7 @@ details[open] summary::marker {
 /* Styling for paragraphs within the content list */
 .content-list p {
   margin: 5px 0;
+  padding: 8px;
   background-color: #e9f5ff;
   border-left: 3px solid #3498db;
   border-radius: 3px;
