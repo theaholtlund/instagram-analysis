@@ -21,33 +21,13 @@ body {
 /* Styling for the header and footer elements */
 header,
 footer {
+  margin: 0;
+  color: #fff;
   text-align: center;
   padding: 10px;
-  background-color: #e67e22;
-  color: #fff;
-  border-radius: 8px 8px 0 0;
-}
-
-/* Ensure footer clears any floating content and is visible */
-footer {
-  clear: both;
-
-  padding-top: 20px;
-  margin-top: 20px;
-  background-color: #e74c3c;
-}
-
-/* Styling for the footer heading */
-footer h2 {
-  margin: 0;
   font-size: 1.2em;
-  color: #fff;
-}
-
-/* Styling for the main header */
-header h1 {
-  margin: 0;
-  font-size: 2em;
+  background-color: #e67e22;
+  border-radius: 8px 8px 0 0;
 }
 
 /* Styling for the main content area */
