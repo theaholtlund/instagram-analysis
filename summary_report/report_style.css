@@ -93,19 +93,3 @@ details[open] summary::marker {
   border-left: 3px solid #d35400;
   border-radius: 3px;
 }
-
-/* Styling related to responsive design adjustments */
-@media (max-width: 600px) {
-  .container {
-    margin: 10px;
-    padding: 15px;
-  }
-  header h1,
-  footer h2,
-  h2 {
-    font-size: 1.2em;
-  }
-  .content-list p {
-    font-size: 0.9em;
-  }
-}
