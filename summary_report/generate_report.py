@@ -1,12 +1,12 @@
 # Import required libraries
+import os
 import sys
 import webbrowser
-from pathlib import Path
 
 # Add the root directory to the system path
-script_dir = Path(__file__).resolve().parent
-root_dir = script_dir.parent
-sys.path.append(str(root_dir))
+script_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.dirname(script_dir)
+sys.path.append(root_dir)
 
 # Import shared functionality
 import variables
@@ -21,8 +21,8 @@ def read_html_template(file_path):
 def generate_summary_report():
     # Define the directories based on the new structure
     analysis_output_dir = construct_file_path(root_dir, variables.output_dir)
-    summary_file_path = Path(construct_file_path(script_dir, "summary_report.html"))
-    template_file_path = Path(construct_file_path(script_dir, "report_template.html"))
+    summary_file_path = construct_file_path(script_dir, "summary_report.html")
+    template_file_path = construct_file_path(script_dir, "report_template.html")
 
     # Dictionary mapping filenames to their corresponding parser functions
     files_parsers = {
@@ -64,7 +64,7 @@ def generate_summary_report():
 
     # Print out confirmation of file export and open in browser
     print(f"The summary report has been generated and saved to '{summary_file_path}'.")
-    webbrowser.open(f'file://{summary_file_path.resolve()}')
+    webbrowser.open(f'file://{os.path.abspath(summary_file_path)}')
 
 # Main function to coordinate execution of the script
 if __name__ == "__main__":
