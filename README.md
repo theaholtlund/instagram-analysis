@@ -40,9 +40,9 @@ To utilise the script:
 
 #### Scripts for Summary Report:
 
-A summary report of all analysis outputs can be generated through the `generate_report` file, located in the `summary_report` directory, once all scripts have been executed. The report will automatically open in a browser when the script is executed.
+A summary report of all analysis outputs can be generated through the `generate_report` file, located in the `summary_report` directory, once all scripts have been executed. The report will automatically open in a browser once generated.
 
 #### Shared Functionality Files:
 
-- `utils`: For functionality shared between scripts, such as writing to file
-- `variables`: Stores shared variables, such as file and directory names for analysis data
+- `utils`: For functionality shared between scripts, such as writing to file.
+- `variables`: Stores shared variables, such as file and directory names for analysis data.
