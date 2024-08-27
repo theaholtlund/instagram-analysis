@@ -57,9 +57,9 @@ def main():
         f.write("\n".join(output_data) + "\n")
     
     # Print out confirmation of file export
-    message = (f"Top 5 repeated comments have been saved to '{output_file_path}'."
+    message = (f"Top repeated comments have been saved to '{output_file_path}'."
                if top_repeated_comments else
-               f"No repeated comments found. Status saved to '{output_file_path}'.")
+               f"No repeat comments found, status saved to '{output_file_path}'.")
     print(message)
 
 if __name__ == "__main__":
