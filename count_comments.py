@@ -37,7 +37,7 @@ def main():
     write_to_file_simple(output_file_path, [total_comments], "Total number of comments left on Instagram")
     
     # Print out confirmation of file export
-    print(f"The total number of comments left by the user has been saved to '{output_file_path}'.")
+    print(f"Number of comments made has been saved to '{output_file_path}'.")
 
 if __name__ == "__main__":
     main()
