@@ -1,4 +1,13 @@
 # Import required libraries
+import os
+import sys
+
+# Add the project root directory to the system path
+script_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.dirname(script_dir)
+sys.path.append(root_dir)
+
+# Import the required modules
 import variables
 from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file_simple
 
