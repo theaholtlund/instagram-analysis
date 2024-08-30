@@ -33,7 +33,7 @@ def main():
     write_to_file_simple(output_file_path, [total_likes], "Total number of likes given on Instagram")
     
     # Print out confirmation of file export
-    print(f"The total number of likes given by the user has been saved to '{output_file_path}'.")
+    print(f"Number of likes given has been saved to '{output_file_path}'.")
 
 if __name__ == "__main__":
     main()
