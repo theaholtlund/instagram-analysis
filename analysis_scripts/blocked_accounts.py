@@ -1,4 +1,13 @@
 # Import required libraries
+import os
+import sys
+
+# Add the project root directory to the system path
+script_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.dirname(script_dir)
+sys.path.append(root_dir)  # Add the root directory to sys.path
+
+# Now import the required modules
 import variables
 from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file_detailed
 
@@ -8,21 +17,24 @@ def extract_usernames(soup):
 
 # Main function to coordinate execution of the script
 def main():
+    # Get the current script directory
     script_dir = get_script_dir()
-    
+
     # Define path for the blocked accounts HTML file
     blocked_accounts_path = construct_file_path(script_dir, variables.data_dir, variables.connections_dir, variables.followers_dir, "blocked_accounts.html")
-    
+
     # Load and parse the HTML content
     blocked_accounts_soup = load_and_parse_html(blocked_accounts_path)
-    
+
     # Extract blocked accounts usernames
     blocked_accounts_usernames = extract_usernames(blocked_accounts_soup)
-    
+
+    # Construct the output file path relative to the script directory
+    output_file_path = construct_file_path(script_dir, variables.output_dir, "blocked_accounts.txt")
+
     # Output the result to a file
-    output_file_path = construct_file_path(variables.output_dir, "blocked_accounts.txt")
     write_to_file_detailed(output_file_path, blocked_accounts_usernames, "Number of blocked accounts", "Blocked accounts")
-    
+
     # Print out confirmation of file export
     print(f"Blocked accounts list has been saved to '{output_file_path}'.")
 
