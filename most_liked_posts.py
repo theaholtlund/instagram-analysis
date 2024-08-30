@@ -34,7 +34,7 @@ def main():
     write_to_file_simple(output_file_path, formatted_data, "Top 5 users who you liked the most posts from")
     
     # Print out confirmation of file export
-    print(f"The top 5 users who you liked the most posts from have been saved to '{output_file_path}'.")
+    print(f"Top users received the most likes on their posts have been saved to '{output_file_path}'.")
 
 if __name__ == "__main__":
     main()
