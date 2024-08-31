@@ -3,7 +3,7 @@ import os
 import sys
 import webbrowser
 
-# Add the root directory to the system path
+# Add the project root directory to the system path
 script_dir = os.path.dirname(os.path.abspath(__file__))
 root_dir = os.path.dirname(script_dir)
 sys.path.append(root_dir)
@@ -45,7 +45,7 @@ def generate_summary_report():
         for file_name, parser in files_parsers.items()
     }
 
-    # Generate the HTML content
+    # Generate HTML content for the report
     report_content = ""
     for file_name, (count, items) in summary_data.items():
         title = capitalise_first_word(file_name.replace("_", " ").replace(".txt", ""))
@@ -61,7 +61,7 @@ def generate_summary_report():
     # Read the HTML template
     html_template = read_html_template(template_file_path)
 
-    # Write the HTML file
+    # Write to the HTML file with content
     with open(summary_file_path, "w", encoding="utf-8") as file:
         file.write(html_template.format(content=report_content))
 
