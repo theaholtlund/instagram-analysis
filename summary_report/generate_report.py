@@ -19,9 +19,6 @@ def read_html_template(file_path):
 
 # Function to generate a summary report from the various analysis output files
 def generate_summary_report():
-    # Define the path for the analysis scripts directory
-    analysis_scripts_dir = construct_file_path(script_dir, "analysis_scripts")
-
     # Define the directories based on the new structure
     analysis_output_dir = construct_file_path(root_dir, variables.output_dir)
     summary_file_path = construct_file_path(script_dir, "summary_report.html")
