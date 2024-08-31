@@ -1,14 +1,6 @@
 # Import required libraries
 import os
-import sys
 from bs4 import BeautifulSoup
-
-# Function to add project root directory to system path
-def add_root_to_sys_path():
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    root_dir = os.path.dirname(script_dir)
-    if root_dir not in sys.path:
-        sys.path.append(root_dir)
 
 # Function to get the directory of the current script
 def get_script_dir():
