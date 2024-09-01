@@ -49,7 +49,12 @@ def generate_summary_report():
     report_content = ""
     for file_name, (count, items) in summary_data.items():
         title = capitalise_first_word(file_name.replace("_", " ").replace(".txt", ""))
-        report_content += f"<h2>{title}: {count}</h2>\n"
+
+        # Check if the file is in the list to show the count
+        if file_name in show_count_files:
+            report_content += f"<h2>{title}: {count}</h2>\n"
+        else:
+            report_content += f"<h2>{title}:</h2>\n"
 
         if items:
             report_content += "<details><summary>Click to expand</summary>\n"
