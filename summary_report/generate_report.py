@@ -42,6 +42,9 @@ def generate_summary_report():
         for file_name, parser in files_parsers.items()
     }
 
+    # Files that should display a count after the title
+    show_count_files = {"count_comments.txt", "count_liked_comments.txt", "count_liked_posts.txt"}
+
     # Generate HTML content for the report
     report_content = ""
     for file_name, (count, items) in summary_data.items():
