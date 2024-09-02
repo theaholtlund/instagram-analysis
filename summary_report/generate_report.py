@@ -17,6 +17,27 @@ def read_html_template(file_path):
     with open(file_path, "r", encoding="utf-8") as file:
         return file.read()
 
+# Function to generate HTML content for the report
+def generate_html_content(summary_data, show_count_files):
+    report_content = ""
+    for file_name, (count, items) in summary_data.items():
+        title = capitalise_first_word(file_name.replace("_", " ").replace(".txt", ""))
+
+        # Check if the file is in the list to show the count
+        if file_name in show_count_files:
+            report_content += f"<h2>{title}: {count}</h2>\n"
+        else:
+            report_content += f"<h2>{title}:</h2>\n"
+
+        if items:
+            report_content += "<details><summary>Click to expand</summary>\n"
+            report_content += "<div class='content-list'>\n"
+            for item in items:
+                report_content += f"<p>- {item}</p>\n"
+            report_content += "</div>\n</details>\n\n"
+    
+    return report_content
+
 # Function to generate a summary report from the various analysis output files
 def generate_summary_report():
     # Define the directories based on the new structure
@@ -46,22 +67,7 @@ def generate_summary_report():
     show_count_files = {"count_comments.txt", "count_liked_comments.txt", "count_liked_posts.txt"}
 
     # Generate HTML content for the report
-    report_content = ""
-    for file_name, (count, items) in summary_data.items():
-        title = capitalise_first_word(file_name.replace("_", " ").replace(".txt", ""))
-
-        # Check if the file is in the list to show the count
-        if file_name in show_count_files:
-            report_content += f"<h2>{title}: {count}</h2>\n"
-        else:
-            report_content += f"<h2>{title}:</h2>\n"
-
-        if items:
-            report_content += "<details><summary>Click to expand</summary>\n"
-            report_content += "<div class='content-list'>\n"
-            for item in items:
-                report_content += f"<p>- {item}</p>\n"
-            report_content += "</div>\n</details>\n\n"
+    report_content = generate_html_content(summary_data, show_count_files)
 
     # Read the HTML template
     html_template = read_html_template(template_file_path)
