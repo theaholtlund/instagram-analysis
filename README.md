@@ -22,7 +22,7 @@ Before running the analysis scripts, please copy all contents from the download 
 
 To utilise the script:
 
-1. Run the script for which you want to perform an analysis.
+1. All analysis scripts are located in the `analysis_scripts` directory. Run the script for which you want to perform an analysis.
 2. Once the analysis is complete, the output can be found in the `analysis_outputs` directory, with a name corresponding to the area of analysis.
 
 ### Repository Contents
@@ -40,7 +40,7 @@ To utilise the script:
 
 #### Scripts for Summary Report:
 
-A summary report of all analysis outputs can be generated through the `generate_report` file, located in the `summary_report` directory, once all scripts have been executed. The report will automatically open in a browser once generated.
+A summary report of all analysis outputs can be generated through the `generate_report` file, located in the `summary_report` directory, once all scripts have been executed. The report will be created in the same directory, and automatically open in a browser once generated.
 
 #### Shared Functionality Files:
 
