@@ -43,6 +43,19 @@ def write_to_file_detailed(file_path, data, header, data_label):
         for item in data:
             file.write(f"- {item}\n")
 
+# Function to write various results to a file
+def write_to_file(file_path, data, header, detailed=False, data_label=None):
+    with open(file_path, "w", encoding="utf-8") as file:
+        if detailed:
+            file.write(f"{header}: {len(data)}\n")
+            file.write(f"{data_label}:\n")
+            for item in data:
+                file.write(f"- {item}\n")
+        else:
+            file.write(f"{header}: ")
+            for item in data:
+                file.write(f"{item}")
+
 # Function to parse a simple output file
 def parse_simple_output(data):
     header = data[0].strip()
