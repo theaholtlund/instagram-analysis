@@ -9,7 +9,7 @@ sys.path.append(root_dir)
 
 # Import the required modules
 import variables
-from utils import get_script_dir, construct_file_path, list_files_and_construct_paths, load_and_parse_html, write_to_file_simple
+from utils import get_script_dir, construct_file_path, list_files_and_construct_paths, load_and_parse_html, write_to_file
 
 # Function to extract comments
 def extract_comments(soup):
@@ -43,7 +43,7 @@ def main():
     
     # Output the result to a file
     output_file_path = construct_file_path(variables.output_dir, "count_comments.txt")
-    write_to_file_simple(output_file_path, [total_comments], "Total number of comments left on Instagram")
+    write_to_file(output_file_path, [total_comments], "Total number of comments left on Instagram", detailed=False)
     
     # Print out confirmation of file export
     print(f"Number of comments made has been saved to '{output_file_path}'.")
