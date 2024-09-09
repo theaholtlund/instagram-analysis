@@ -9,7 +9,7 @@ sys.path.append(root_dir)
 
 # Import the required modules
 import variables
-from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file_simple
+from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file
 
 # Function to extract likes
 def extract_likes(soup):
@@ -39,7 +39,7 @@ def main():
     
     # Output the result to a file
     output_file_path = construct_file_path(variables.output_dir, "count_liked_posts.txt")
-    write_to_file_simple(output_file_path, [total_likes], "Total number of likes given on Instagram")
+    write_to_file(output_file_path, [total_likes], "Total number of likes given on Instagram", detailed=False)
     
     # Print out confirmation of file export
     print(f"Number of likes given has been saved to '{output_file_path}'.")
