@@ -9,7 +9,7 @@ sys.path.append(root_dir)
 
 # Import the required modules
 import variables
-from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file_detailed
+from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file
 
 # Function to extract usernames
 def extract_usernames(soup):
@@ -41,7 +41,7 @@ def main():
     output_file_path = construct_file_path(variables.output_dir, "not_following_back.txt")
     
     # Output the result to a file
-    write_to_file_detailed(output_file_path, not_following_back, "Accounts not following back", "Usernames not following back")
+    write_to_file(output_file_path, not_following_back, "Accounts not following back", detailed=True, data_label="Usernames not following back")
     
     # Print out confirmation of file export
     print(f"Accounts not following back have been saved to '{output_file_path}'.")
