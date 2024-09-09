@@ -35,15 +35,16 @@ def main():
     # Get the top 5 usernames with the most likes
     top_5_liked_users = username_counts.most_common(5)
     
-    # Format the data for output
-    formatted_data = [f"\n- {username}: {count}" for username, count in top_5_liked_users]
-    
+    # Prepare the output data with proper formatting
+    output_data = ["Top 5 users who you liked the most posts from:"]
+    output_data.extend([f"- {username}: {count}" for username, count in top_5_liked_users])
+
     # Output the result to a file
     output_file_path = construct_file_path(variables.output_dir, "most_liked_posts.txt")
-    write_to_file(output_file_path, formatted_data, "Top 5 users who you liked the most posts from", detailed=False)
+    write_to_file(output_file_path, data=output_data, header="", detailed=False)
     
     # Print out confirmation of file export
-    print(f"Top users who received the most likes on their posts have been saved to '{output_file_path}'.")
+    print(f"Top users received the most likes on their posts have been saved to '{output_file_path}'.")
 
 if __name__ == "__main__":
     main()
