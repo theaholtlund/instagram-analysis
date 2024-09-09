@@ -53,7 +53,7 @@ def write_to_file(file_path, data, header, detailed=False, data_label=None):
                 file.write(f"- {item}\n")
         else:
             if header:
-                file.write(f"{header}\n")
+                file.write(f"{header}: ")
             for item in data:
                 file.write(f"{item}\n")
 
