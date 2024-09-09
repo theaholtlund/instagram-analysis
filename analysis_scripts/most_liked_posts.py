@@ -10,9 +10,9 @@ sys.path.append(root_dir)
 
 # Import the required modules
 import variables
-from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file_simple
+from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file
 
-# Function to extract usernames behind liked post
+# Function to extract usernames behind liked posts
 def extract_liked_usernames(soup):
     return [username.text for username in soup.find_all("div", class_="_3-95 _2pim _a6-h _a6-i")]
 
@@ -40,10 +40,10 @@ def main():
     
     # Output the result to a file
     output_file_path = construct_file_path(variables.output_dir, "most_liked_posts.txt")
-    write_to_file_simple(output_file_path, formatted_data, "Top 5 users who you liked the most posts from")
+    write_to_file(output_file_path, formatted_data, "Top 5 users who you liked the most posts from", detailed=False)
     
     # Print out confirmation of file export
-    print(f"Top users received the most likes on their posts have been saved to '{output_file_path}'.")
+    print(f"Top users who received the most likes on their posts have been saved to '{output_file_path}'.")
 
 if __name__ == "__main__":
     main()
