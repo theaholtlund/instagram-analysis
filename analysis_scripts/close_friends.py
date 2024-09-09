@@ -9,7 +9,7 @@ sys.path.append(root_dir)
 
 # Import the required modules
 import variables
-from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file_detailed
+from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file
 
 # Function to extract usernames
 def extract_usernames(soup):
@@ -30,7 +30,7 @@ def main():
     
     # Output the result to a file
     output_file_path = construct_file_path(variables.output_dir, "close_friends.txt")
-    write_to_file_detailed(output_file_path, close_friends_usernames, "Number of close friends", "Users on close friends list")
+    write_to_file(output_file_path, close_friends_usernames, "Number of close friends", detailed=True, data_label="Users on close friends list")
     
     # Print out confirmation of file export
     print(f"Close friends list has been saved to '{output_file_path}'.")
