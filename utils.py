@@ -52,9 +52,11 @@ def write_to_file(file_path, data, header, detailed=False, data_label=None):
             for item in data:
                 file.write(f"- {item}\n")
         else:
-            file.write(f"{header}: ")
+            if header:
+                file.write(f"{header}\n")
             for item in data:
-                file.write(f"{item}")
+                file.write(f"{item}\n")
+
 
 # Function to parse a simple output file
 def parse_simple_output(data):
