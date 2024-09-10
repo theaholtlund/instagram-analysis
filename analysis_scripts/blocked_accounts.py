@@ -29,10 +29,8 @@ def main():
     # Extract blocked accounts usernames
     blocked_accounts_usernames = extract_usernames(blocked_accounts_soup)
 
-    # Construct the output file path relative to the script directory
+    # Construct output file path and output the result to file
     output_file_path = construct_file_path(script_dir, variables.output_dir, "blocked_accounts.txt")
-
-    # Output the result to a file
     write_to_file(output_file_path, blocked_accounts_usernames, "Number of blocked accounts", detailed=True, data_label="Blocked accounts")
 
     # Print out confirmation of file export
