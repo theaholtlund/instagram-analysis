@@ -28,21 +28,6 @@ def load_and_parse_html(file_path):
         html_content = file.read()
     return BeautifulSoup(html_content, "html.parser")
 
-# Function to write results to a file in simple format
-def write_to_file_simple(file_path, data, header):
-    with open(file_path, "w", encoding="utf-8") as file:
-        file.write(f"{header}: ")
-        for item in data:
-            file.write(f"{item}")
-
-# Function to write results to a file in detailed format
-def write_to_file_detailed(file_path, data, header, data_label):
-    with open(file_path, "w", encoding="utf-8") as file:
-        file.write(f"{header}: {len(data)}\n")
-        file.write(f"{data_label}:\n")
-        for item in data:
-            file.write(f"- {item}\n")
-
 # Function to write various results to a file
 def write_to_file(file_path, data, header, detailed=False, data_label=None):
     with open(file_path, "w", encoding="utf-8") as file:
