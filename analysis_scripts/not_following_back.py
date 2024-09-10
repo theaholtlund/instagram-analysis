@@ -37,10 +37,8 @@ def main():
     # Find account names the user is following, that are not following them back
     not_following_back = following_usernames - followers_usernames
     
-    # Construct output file path
+    # Construct output file path and output the result to file
     output_file_path = construct_file_path(variables.output_dir, "not_following_back.txt")
-    
-    # Output the result to a file
     write_to_file(output_file_path, not_following_back, "Accounts not following back", detailed=True, data_label="Usernames not following back")
     
     # Print out confirmation of file export
