@@ -36,12 +36,15 @@ def main():
     top_5_liked_users = username_counts.most_common(5)
     
     # Prepare the output data with proper formatting
-    output_data = ["Top 5 users who you liked the most posts from:"]
-    output_data.extend([f"- {username}: {count}" for username, count in top_5_liked_users])
+    header = "Top 5 users who you liked the most posts from:"
+    output_data = [f"- {username}: {count}" for username, count in top_5_liked_users]
 
-    # Output the result to a file
+    # Add a newline character before the data starts
+    formatted_header = f"{header}\n"
+    
+    # Construct output file path and output the result to file
     output_file_path = construct_file_path(variables.output_dir, "most_liked_posts.txt")
-    write_to_file(output_file_path, data=output_data, header="", detailed=False)
+    write_to_file(output_file_path, data=output_data, header=formatted_header, detailed=False)
     
     # Print out confirmation of file export
     print(f"Top users received the most likes on their posts have been saved to '{output_file_path}'.")
