@@ -52,16 +52,15 @@ def main():
     top_repeated_comments = sorted(repeated_comments.items(), key=lambda x: x[1], reverse=True)[:5]
     
     # Prepare the output data with proper formatting
-    output_data = ["Top 5 repeated comments and the number of times they were made:"]
-    for comment, count in top_repeated_comments:
-        formatted_comment = f"- {comment.replace('Comment', '').strip()}, comment made {count} times"
-        output_data.append(formatted_comment)
+    header = "Top 5 repeated comments and the number of times they were made:"
+    output_data = [f"- {comment.replace('Comment', '').strip()}, comment made {count} times" for comment, count in top_repeated_comments]
 
-    # Output the result to a file using write_to_file
-    output_file_path = construct_file_path(variables.output_dir, "content_comments.txt")
+    # Format header with newline character before the data starts
+    formatted_header = f"{header}\n"
     
-    # Write the output with proper formatting
-    write_to_file(output_file_path, data=output_data, header="", detailed=False)
+    # Construct output file path and output the result to file
+    output_file_path = construct_file_path(variables.output_dir, "content_comments.txt")
+    write_to_file(output_file_path, data=output_data, header=formatted_header, detailed=False)
     
     # Print out confirmation of file export
     message = (f"Top repeated comments have been saved to '{output_file_path}'."
