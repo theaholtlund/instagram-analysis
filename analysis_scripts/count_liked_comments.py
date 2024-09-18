@@ -32,12 +32,12 @@ def main():
     comments_soup = load_and_parse_html(file_path)
     
     # Extract likes from the HTML content
-    likes = extract_likes(comments_soup)
+    comment_likes = extract_likes(comments_soup)
     
     # Update the total likes count
-    total_likes = len(likes)
+    total_likes = len(comment_likes)
     
-    # Output the result to a file
+    # Construct output file path and output the result to file
     output_file_path = construct_file_path(variables.output_dir, "count_liked_comments.txt")
     write_to_file(output_file_path, [total_likes], "Total number of likes given on Instagram comments: ", detailed=False)
     
