@@ -28,7 +28,7 @@ def main():
     # Extract close friends usernames
     close_friends_usernames = extract_usernames(close_friends_soup)
     
-    # Output the result to a file
+    # Construct output file path and output the result to file
     output_file_path = construct_file_path(variables.output_dir, "close_friends.txt")
     write_to_file(output_file_path, close_friends_usernames, "Number of close friends", detailed=True, data_label="Users on close friends list")
     
