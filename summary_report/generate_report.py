@@ -10,12 +10,7 @@ sys.path.append(root_dir)
 
 # Import shared functionality
 import variables
-from utils import (read_file, construct_file_path, parse_simple_output, parse_list_output, parse_detailed_output, capitalise_first_word)
-
-# Function to read the HTML template from a file
-def read_html_template(file_path):
-    with open(file_path, "r", encoding="utf-8") as file:
-        return file.read()
+from utils import read_file, construct_file_path, parse_simple_output, parse_list_output, parse_detailed_output, capitalise_first_word
 
 # Function to generate HTML content for the report
 def generate_html_content(summary_data, show_count_files):
@@ -59,7 +54,7 @@ def generate_summary_report():
 
     # Dictionary to store parsed data from each file
     summary_data = {
-        file_name: parser(read_file(construct_file_path(analysis_output_dir, file_name)))
+        file_name: parser(read_file(construct_file_path(analysis_output_dir, file_name), as_lines=True))
         for file_name, parser in files_parsers.items()
     }
 
@@ -70,7 +65,7 @@ def generate_summary_report():
     report_content = generate_html_content(summary_data, show_count_files)
 
     # Read the HTML template
-    html_template = read_html_template(template_file_path)
+    html_template = read_file(template_file_path)
 
     # Write to the HTML file with content
     with open(summary_file_path, "w", encoding="utf-8") as file:
