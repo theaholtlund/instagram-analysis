@@ -18,9 +18,9 @@ def list_files_and_construct_paths(directory):
     return file_paths
 
 # Function to read file content
-def read_file(file_path):
+def read_file(file_path, as_lines=False):
     with open(file_path, "r", encoding="utf-8") as file:
-        return file.readlines()
+        return file.readlines() if as_lines else file.read()
 
 # Function to handle loading and parsing HTML content
 def load_and_parse_html(file_path):
