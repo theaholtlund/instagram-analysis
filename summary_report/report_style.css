@@ -103,3 +103,8 @@ button {
   font-size: 16px;
   border: none;
 }
+
+/* Styling for report print button on hover */
+button:hover {
+  background-color: #45a049;
+}
