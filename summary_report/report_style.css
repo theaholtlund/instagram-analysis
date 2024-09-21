@@ -97,7 +97,7 @@ details[open] summary::marker {
 /* Styling for report print button */
 button {
   margin: 20px 0;
-  background-color: #ea9e47;
+  background-color: #eea34d;
   color: white;
   padding: 10px 20px;
   font-size: 16px;
@@ -106,10 +106,10 @@ button {
 
 /* Styling for report print button on hover */
 button:hover {
-  background-color: #bb923f;
+  background-color: #eb9a3e;
 }
 
 /* Styling for report print button on active */
 button:active {
-  background-color: #d8943c;
+  background-color: rgb(223, 136, 22);
 }
