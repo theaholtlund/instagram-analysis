@@ -108,3 +108,8 @@ button {
 button:hover {
   background-color: #45a049;
 }
+
+/* Styling for report print button on active */
+button:active {
+  background-color: #388e3c;
+}
