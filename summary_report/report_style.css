@@ -93,3 +93,10 @@ details[open] summary::marker {
   border-left: 3px solid #fd8c41;
   border-radius: 3px;
 }
+
+/* Style for the print button */
+button {
+  margin: 20px 0;
+  background-color: #4caf50;
+  color: white;
+}
