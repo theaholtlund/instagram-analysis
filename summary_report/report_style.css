@@ -106,10 +106,10 @@ button {
 
 /* Styling for report print button on hover */
 button:hover {
-  background-color: #45a049;
+  background-color: #bb923f;
 }
 
 /* Styling for report print button on active */
 button:active {
-  background-color: #388e3c;
+  background-color: #d8943c;
 }
