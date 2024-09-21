@@ -11,7 +11,14 @@
       <header>
         <h1>Analysis Summary Report</h1>
       </header>
-      <main>{content}</main>
+
+      <!-- Print button section -->
+      <section class="report-meta">
+        <button onclick="window.print()">Print Report</button>
+      </section>
+
+      <main>{{{content}}}</main>
+
       <footer>
         <h1>End of Summary Report</h1>
       </footer>
