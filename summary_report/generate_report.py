@@ -69,7 +69,7 @@ def generate_summary_report():
 
     # Write to the HTML file with content
     with open(summary_file_path, "w", encoding="utf-8") as file:
-        file.write(html_template.format(content=report_content))
+        file.write(html_template.replace("{{{content}}}", report_content))
 
     # Print out confirmation of file export and open in browser
     print(f"The summary report has been generated and saved to '{summary_file_path}'.")
