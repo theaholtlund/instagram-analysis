@@ -103,6 +103,7 @@ button {
   font-size: 16px;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 /* Styling for print report button on hover */
