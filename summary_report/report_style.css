@@ -94,9 +94,13 @@ details[open] summary::marker {
   border-radius: 3px;
 }
 
+/* Styling for footer actions */
+.footer-actions {
+  margin-top: 20px;
+}
+
 /* Styling for print report button */
 button {
-  margin: 20px 0;
   background-color: #eea34d;
   color: white;
   padding: 10px 20px;
