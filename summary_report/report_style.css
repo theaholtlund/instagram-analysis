@@ -30,6 +30,11 @@ footer {
   border-radius: 8px 8px 0 0;
 }
 
+/* Styling for report footer */
+.footer-actions {
+  margin-top: 10px;
+}
+
 /* Styling for the main content area */
 main {
   padding: 20px;
@@ -92,13 +97,6 @@ details[open] summary::marker {
   background-color: #f6dfc3;
   border-left: 3px solid #fd8c41;
   border-radius: 3px;
-}
-
-/* Styling for footer actions */
-.footer-actions {
-  margin-top: 20px;
-  padding: 20px;
-  text-align: center;
 }
 
 /* Styling for print report button */
