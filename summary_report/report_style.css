@@ -30,9 +30,11 @@ footer {
   border-radius: 8px 8px 0 0;
 }
 
-/* Styling for report footer actions, on click */
+/* Styling for report footer actions on click */
 .footer-actions {
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 /* Styling for the main content area */
