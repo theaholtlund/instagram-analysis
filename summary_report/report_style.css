@@ -27,7 +27,7 @@ footer {
   padding: 10px;
   font-size: 1.2em;
   background-color: #ffa64e;
-  border-radius: 8px 8px 0 0;
+  border-radius: 8px;
 }
 
 /* Styling for report footer actions on click */
