@@ -26,7 +26,7 @@ def generate_html_content(summary_data, show_count_files):
 
         # Expandable details for file contents
         if items:
-            report_content += "<details><summary>Click to expand</summary>\n"
+            report_content += "<details><summary>CLICK TO EXPAND</summary>\n"
             report_content += "<div class='content-list'>\n"
             for item in items:
                 report_content += f"<p>- {item}</p>\n"
