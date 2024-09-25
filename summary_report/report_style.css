@@ -32,8 +32,7 @@ footer {
 
 /* Styling for report footer actions on click */
 .footer-actions {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0;
   text-align: center;
 }
 
@@ -81,7 +80,7 @@ summary::marker {
   content: "► ";
 }
 
-/* Styling for custom marker when details is open */
+/* Styling for custom marker when details are open */
 details[open] summary::marker {
   content: "▼ ";
 }
