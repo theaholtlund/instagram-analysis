@@ -16,7 +16,8 @@ from utils import read_file, construct_file_path, parse_simple_output, parse_lis
 def generate_html_content(summary_data, show_count_files):
     report_content = ""
     for file_name, (count, items) in summary_data.items():
-        title = capitalise_first_word(file_name.replace("_", " ").replace(".txt", ""))
+        # Convert entire title to upper case
+        title = file_name.replace("_", " ").replace(".txt", "").upper()
 
         # Show count in the title if applicable
         if file_name in show_count_files:
