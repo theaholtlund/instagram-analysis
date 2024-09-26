@@ -60,9 +60,3 @@ def parse_detailed_output(data):
     header = data[0].strip()
     items = [line.strip("- \n") for line in data[1:] if line.strip()]
     return len(items), items
-
-# Function to capitalise only the first word
-def capitalise_first_word(text):
-    if not text:
-        return text
-    return text[0].upper() + text[1:].lower()
