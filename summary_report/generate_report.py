@@ -10,7 +10,7 @@ sys.path.append(root_dir)
 
 # Import shared functionality
 import variables
-from utils import read_file, construct_file_path, parse_simple_output, parse_list_output, parse_detailed_output, capitalise_first_word
+from utils import read_file, construct_file_path, parse_simple_output, parse_list_output, parse_detailed_output
 
 # Function to generate HTML content for the report
 def generate_html_content(summary_data, show_count_files):
