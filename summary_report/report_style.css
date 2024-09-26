@@ -103,8 +103,8 @@ details[open] summary::marker {
 
 /* Styling for print report button */
 button {
-  background-color: #eea34d;
-  color: white;
+  background-color: #f39c3a;
+  color: #fff;
   padding: 12px 24px;
   font-size: 18px;
   border: none;
