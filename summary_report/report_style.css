@@ -96,15 +96,15 @@ details[open] summary::marker {
 .content-list p {
   margin: 5px 0;
   padding: 8px;
-  background-color: #ffca80;
+  background-color: #f5cd95;
   border-left: 3px solid #fd8c41;
   border-radius: 3px;
 }
 
 /* Styling for print report button */
 button {
-  background-color: #ffa64e;
   color: #fff;
+  background-color: #ffa64e;
   padding: 12px 24px;
   font-size: 18px;
   font-weight: bold;
