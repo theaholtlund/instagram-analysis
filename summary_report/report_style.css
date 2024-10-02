@@ -24,17 +24,17 @@ footer {
   margin: 0;
   color: #fff;
   text-align: center;
-  max-height: 100px;
   padding: 10px;
-  font-size: 1.2em;
+  font-size: 1em;
   background-color: #ffa64e;
   border-radius: 8px;
 }
 
-/* Styling for report footer actions on click */
+/* Styling for report footer actions */
 .footer-actions {
   margin: 20px 0;
   text-align: center;
+  padding: 10px 0;
 }
 
 /* Styling for the main content area */
