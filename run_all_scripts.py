@@ -2,14 +2,14 @@
 import os
 import subprocess
 
-# Define path to the folder where the analysis scripts are located
+# Define path to the folder where analysis scripts are located
 scripts_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'analysis_scripts')
 
-# Functionality to run all scripts in the analysis directory
+# Functionality to run all scripts in analysis directory
 def run_script(script_name):
     script_path = os.path.join(scripts_dir, script_name)
     try:
-        # Run the script with python3 and wait for it to complete
+        # Run the script with Python and wait for it to complete
         result = subprocess.run(["python3", script_path], check=True, capture_output=True, text=True)
         print(f"Successfully ran {script_name}:\n{result.stdout}")
     except subprocess.CalledProcessError as e:
