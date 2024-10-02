@@ -115,6 +115,8 @@ button {
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
   box-sizing: border-box;
+  margin: 0 auto;
+  display: block;
 }
 
 /* Styling for print report button on hover */
