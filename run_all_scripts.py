@@ -5,19 +5,7 @@ import subprocess
 # Define path to the folder where the analysis scripts are located
 scripts_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'analysis_scripts')
 
-# List of scripts to run
-scripts_to_run = [
-    "blocked_accounts.py",
-    "close_friends.py",
-    "content_comments.py",
-    "count_comments.py",
-    "count_liked_comments.py",
-    "count_liked_posts.py",
-    "most_liked_posts.py",
-    "not_following_back.py"
-]
-
-# Functionality to run all scripts in analysis directory
+# Functionality to run all scripts in the analysis directory
 def run_script(script_name):
     script_path = os.path.join(scripts_dir, script_name)
     try:
@@ -27,8 +15,16 @@ def run_script(script_name):
     except subprocess.CalledProcessError as e:
         print(f"Error running {script_name}:\n{e.stderr}")
 
-# Main function to coordinate execution of the script
+# Main function to coordinate execution of all Python scripts
 def main():
+    # Get a list of all Python files in the analysis_scripts directory
+    scripts_to_run = [f for f in os.listdir(scripts_dir) if f.endswith('.py')]
+
+    if not scripts_to_run:
+        print("No Python scripts found in the analysis_scripts directory.")
+        return
+
+    # Run each script
     for script in scripts_to_run:
         print(f"Running {script}...")
         run_script(script)
