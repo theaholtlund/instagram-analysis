@@ -20,10 +20,12 @@ scripts_to_run = [
 # Functionality to run all scripts in analysis directory
 def run_script(script_name):
     script_path = os.path.join(scripts_dir, script_name)
-    # Run the script with python3 and wait for it to complete
-    result = subprocess.run(["python3", script_path], check=True, capture_output=True, text=True)
-    print(f"Successfully ran {script_name}:\n{result.stdout}")
- 
+    try:
+        # Run the script with python3 and wait for it to complete
+        result = subprocess.run(["python3", script_path], check=True, capture_output=True, text=True)
+        print(f"Successfully ran {script_name}:\n{result.stdout}")
+    except subprocess.CalledProcessError as e:
+        print(f"Error running {script_name}:\n{e.stderr}")
 
 # Main function to coordinate execution of the script
 def main():
