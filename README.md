@@ -8,10 +8,10 @@ The repository can be used to analyse various areas for Instagram, based on file
 
 To request data from Instagram:
 
-1. Go to "Settings" > "Accounts Centre" > "Information and Permissions" > "Download Your Information".
-2. Choose profiles and data range, by choosing to download all your data.
-3. Specify that the date range should be "All time" and that the format should be "HTML".
-4. Confirm choices by clicking "Create files".
+1. Go to "Settings" > "Accounts Centre" > "Your Information and Permissions" > "Download Your Information".
+2. Select your profile and then choose to download "All Available Information", then "Download to Device".
+3. Specify that the date range should be "All Time" and that the format should be "HTML".
+4. Confirm choices by clicking "Create Files".
 5. Expect an e-mail with the download link within 30 days.
 
 ### Adding Data
