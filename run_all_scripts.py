@@ -15,9 +15,9 @@ def run_script(script_name):
     except subprocess.CalledProcessError as e:
         print(f"Error running {script_name}:\n{e.stderr}")
 
-# Main function to coordinate execution of all Python scripts
+# Main function to coordinate execution of the script
 def main():
-    # Get a list of all Python files in the analysis_scripts directory
+    # List all Python files in the analysis_scripts directory
     scripts_to_run = [f for f in os.listdir(scripts_dir) if f.endswith('.py')]
 
     if not scripts_to_run:
