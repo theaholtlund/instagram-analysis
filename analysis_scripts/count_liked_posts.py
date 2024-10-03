@@ -26,9 +26,6 @@ def main():
     file_path = construct_file_path(likes_path, variables.liked_posts_file)
     likes_soup = load_and_parse_html(file_path)
     likes = extract_likes(likes_soup)
-        
-    # Initialise the likes count
-    total_likes = 0
     
     # Update the total likes count
     total_likes = len(likes)
