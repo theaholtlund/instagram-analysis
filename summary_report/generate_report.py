@@ -63,10 +63,8 @@ def generate_summary_report():
     # Files that should display a count after the title
     show_count_files = {"count_comments.txt", "count_liked_comments.txt", "count_liked_posts.txt"}
 
-    # Generate HTML content for the report
+    # Generate and read HTML template
     report_content = generate_html_content(summary_data, show_count_files)
-
-    # Read the HTML template
     html_template = read_file(template_file_path)
 
     # Write content into the template and save the report
@@ -77,6 +75,5 @@ def generate_summary_report():
     print(f"The summary report has been generated and saved to '{summary_file_path}'.")
     webbrowser.open(f'file://{os.path.abspath(summary_file_path)}')
 
-# Main function to trigger the summary report generation
 if __name__ == "__main__":
     generate_summary_report()
