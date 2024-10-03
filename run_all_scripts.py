@@ -9,7 +9,7 @@ scripts_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'analysis
 def run_script(script_name):
     script_path = os.path.join(scripts_dir, script_name)
     try:
-        # Run the script with Python and wait for it to complete
+        # Run the script and wait for process to complete
         result = subprocess.run(["python3", script_path], check=True, capture_output=True, text=True)
         print(f"Successfully ran {script_name}:\n{result.stdout}")
     except subprocess.CalledProcessError as e:
@@ -18,10 +18,10 @@ def run_script(script_name):
 # Main function to coordinate execution of the script
 def main():
     # List all Python files in the analysis_scripts directory
-    scripts_to_run = [f for f in os.listdir(scripts_dir) if f.endswith('.py')]
+    scripts_to_run = os.listdir(scripts_dir)
 
     if not scripts_to_run:
-        print("No Python scripts found in the analysis_scripts directory.")
+        print("No scripts found in the analysis_scripts directory.")
         return
 
     # Run each script
