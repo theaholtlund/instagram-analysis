@@ -52,10 +52,7 @@ def main():
     # Construct output file path and output result to file
     output_file_path = construct_file_path(variables.output_dir, "content_comments.txt")
     write_to_file(output_file_path, data=output_data, header=formatted_header, detailed=False)
-    message = (f"Top repeated comments have been saved to '{output_file_path}'."
-               if top_repeated_comments else
-               f"No repeat comments found, status saved to '{output_file_path}'.")
-    print(message)
+    print(f"{'Top repeated comments have been saved' if top_repeated_comments else 'No repeat comments found, status saved'} to '{output_file_path}'.")
 
 if __name__ == "__main__":
     main()
