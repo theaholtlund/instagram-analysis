@@ -2,7 +2,7 @@
 import os
 import sys
 
-# Add the project root directory to the system path
+# Add project root directory to system path
 script_dir = os.path.dirname(os.path.abspath(__file__))
 root_dir = os.path.dirname(script_dir)
 sys.path.append(root_dir)
@@ -20,16 +20,12 @@ def main():
     # Get the current script directory
     script_dir = get_script_dir()
 
-    # Define path for the blocked accounts HTML file
+    # Load, parse and extract blocked accounts from HTML content
     blocked_accounts_path = construct_file_path(script_dir, variables.data_dir, variables.connections_dir, variables.followers_dir, "blocked_accounts.html")
-
-    # Load and parse the HTML content
     blocked_accounts_soup = load_and_parse_html(blocked_accounts_path)
-
-    # Extract blocked accounts usernames
     blocked_accounts_usernames = extract_usernames(blocked_accounts_soup)
 
-    # Construct output file path and output the result to file
+    # Construct output file path and output result to file
     output_file_path = construct_file_path(script_dir, variables.output_dir, "blocked_accounts.txt")
     write_to_file(output_file_path, blocked_accounts_usernames, "Number of blocked accounts", detailed=True, data_label="Blocked accounts")
 

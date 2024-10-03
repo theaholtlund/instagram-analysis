@@ -2,7 +2,7 @@
 import os
 import sys
 
-# Add the project root directory to the system path
+# Add project root directory to system path
 script_dir = os.path.dirname(os.path.abspath(__file__))
 root_dir = os.path.dirname(script_dir)
 sys.path.append(root_dir)
@@ -34,10 +34,10 @@ def main():
     followers_usernames = extract_usernames(followers_soup)
     following_usernames = extract_usernames(following_soup)
     
-    # Find account names the user is following, that are not following them back
+    # Find accounts the user is following, that are not following them back
     not_following_back = following_usernames - followers_usernames
     
-    # Construct output file path and output the result to file
+    # Construct output file path and output result to file
     output_file_path = construct_file_path(variables.output_dir, "not_following_back.txt")
     write_to_file(output_file_path, not_following_back, "Accounts not following back", detailed=True, data_label="Usernames not following back")
     

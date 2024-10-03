@@ -2,7 +2,7 @@
 import os
 import sys
 
-# Add the project root directory to the system path
+# Add project root directory to system path
 script_dir = os.path.dirname(os.path.abspath(__file__))
 root_dir = os.path.dirname(script_dir)
 sys.path.append(root_dir)
@@ -22,22 +22,18 @@ def main():
     # Define the path for the likes folder
     likes_path = construct_file_path(script_dir, variables.data_dir, variables.activity_dir, variables.likes_dir)
     
+    # Load, parse and extract liked comments from HTML content
+    file_path = construct_file_path(likes_path, variables.liked_comments_file)
+    comments_soup = load_and_parse_html(file_path)
+    comment_likes = extract_likes(comments_soup)
+
     # Initialise the likes count
     total_likes = 0
-    
-    # Define path for file to process
-    file_path = construct_file_path(likes_path, variables.liked_comments_file)
-    
-    # Parse the HTML content using BeautifulSoup
-    comments_soup = load_and_parse_html(file_path)
-    
-    # Extract likes from the HTML content
-    comment_likes = extract_likes(comments_soup)
     
     # Update the total likes count
     total_likes = len(comment_likes)
     
-    # Construct output file path and output the result to file
+    # Construct output file path and output result to file
     output_file_path = construct_file_path(variables.output_dir, "count_liked_comments.txt")
     write_to_file(output_file_path, [total_likes], "Total number of likes given on Instagram comments: ", detailed=False)
     

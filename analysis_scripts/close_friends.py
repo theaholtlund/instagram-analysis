@@ -2,7 +2,7 @@
 import os
 import sys
 
-# Add the project root directory to the system path
+# Add project root directory to system path
 script_dir = os.path.dirname(os.path.abspath(__file__))
 root_dir = os.path.dirname(script_dir)
 sys.path.append(root_dir)
@@ -19,16 +19,12 @@ def extract_usernames(soup):
 def main():
     script_dir = get_script_dir()
     
-    # Define path for the close friends HTML file
+    # Load, parse and extract close friends accounts from HTML content
     close_friends_path = construct_file_path(script_dir, variables.data_dir, variables.connections_dir, variables.followers_dir, "close_friends.html")
-    
-    # Load and parse the HTML content
     close_friends_soup = load_and_parse_html(close_friends_path)
-    
-    # Extract close friends usernames
     close_friends_usernames = extract_usernames(close_friends_soup)
     
-    # Construct output file path and output the result to file
+    # Construct output file path and output result to file
     output_file_path = construct_file_path(variables.output_dir, "close_friends.txt")
     write_to_file(output_file_path, close_friends_usernames, "Number of close friends", detailed=True, data_label="Users on close friends list")
     

@@ -3,7 +3,7 @@ import os
 import sys
 from collections import Counter
 
-# Add the project root directory to the system path
+# Add project root directory to system path
 script_dir = os.path.dirname(os.path.abspath(__file__))
 root_dir = os.path.dirname(script_dir)
 sys.path.append(root_dir)
@@ -20,13 +20,9 @@ def extract_liked_usernames(soup):
 def main():
     script_dir = get_script_dir()
     
-    # Define path for the likes HTML file
+    # Load, parse and extract liked posts from HTML content
     likes_path = construct_file_path(script_dir, variables.data_dir, variables.activity_dir, variables.likes_dir, "liked_posts.html")
-    
-    # Parse the HTML content using BeautifulSoup
     likes_soup = load_and_parse_html(likes_path)
-    
-    # Extract liked post usernames
     liked_usernames = extract_liked_usernames(likes_soup)
     
     # Count occurrences of each username
@@ -35,14 +31,12 @@ def main():
     # Get the top 5 usernames with the most likes
     top_5_liked_users = username_counts.most_common(5)
     
-    # Prepare the output data with proper formatting
+    # Prepare output data with proper formatting
     header = "Top 5 users who you liked the most posts from:"
     output_data = [f"- {username}: {count}" for username, count in top_5_liked_users]
-
-    # Add a newline character before the data starts
     formatted_header = f"{header}\n"
     
-    # Construct output file path and output the result to file
+    # Construct output file path and output result to file
     output_file_path = construct_file_path(variables.output_dir, "most_liked_posts.txt")
     write_to_file(output_file_path, data=output_data, header=formatted_header, detailed=False)
     

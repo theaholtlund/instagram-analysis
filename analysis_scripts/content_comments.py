@@ -3,7 +3,7 @@ import os
 import sys
 from collections import Counter
 
-# Add the project root directory to the system path
+# Add project root directory to system path
 script_dir = os.path.dirname(os.path.abspath(__file__))
 root_dir = os.path.dirname(script_dir)
 sys.path.append(root_dir)
@@ -20,10 +20,8 @@ def extract_comments(soup):
 def main():
     script_dir = get_script_dir()
     
-    # Define the path for the comments folder
+    # Get files from comments folder
     comments_path = construct_file_path(script_dir, variables.data_dir, variables.activity_dir, variables.comments_dir)
-    
-    # List files in the comments directory
     file_paths = list_files_and_construct_paths(comments_path)
 
     # Initialise the comment list
@@ -31,12 +29,9 @@ def main():
     
     # Iterate over all files in the comments directory
     for filename in file_paths:
+        # Load, parse and extract comments from HTML content
         file_path = construct_file_path(comments_path, filename)
-        
-        # Parse the HTML content using BeautifulSoup
         comments_soup = load_and_parse_html(file_path)
-        
-        # Extract comments from the HTML content
         comments = extract_comments(comments_soup)
         
         # Add extracted comments to the list of all comments
@@ -45,20 +40,16 @@ def main():
     # Count the frequency of each comment
     comment_counts = Counter(all_comments)
     
-    # Filter out comments that were repeated more than once
+    # Filter out repeated comments and select top 5 by frequency in descending order
     repeated_comments = {comment: count for comment, count in comment_counts.items() if count > 1}
-    
-    # Sort repeated comments by frequency in descending order and take the top 5
     top_repeated_comments = sorted(repeated_comments.items(), key=lambda x: x[1], reverse=True)[:5]
     
-    # Prepare the output data with proper formatting
+    # Prepare output data with proper formatting
     header = "Top 5 repeated comments and the number of times they were made:"
     output_data = [f"- {comment.replace('Comment', '').strip()}, comment made {count} times" for comment, count in top_repeated_comments]
-
-    # Format header with newline character before the data starts
     formatted_header = f"{header}\n"
     
-    # Construct output file path and output the result to file
+    # Construct output file path and output result to file
     output_file_path = construct_file_path(variables.output_dir, "content_comments.txt")
     write_to_file(output_file_path, data=output_data, header=formatted_header, detailed=False)
     
