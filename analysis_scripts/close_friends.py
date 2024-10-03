@@ -27,8 +27,6 @@ def main():
     # Construct output file path and output result to file
     output_file_path = construct_file_path(variables.output_dir, "close_friends.txt")
     write_to_file(output_file_path, close_friends_usernames, "Number of close friends", detailed=True, data_label="Users on close friends list")
-    
-    # Print out confirmation of file export
     print(f"Close friends list has been saved to '{output_file_path}'.")
 
 if __name__ == "__main__":

@@ -33,8 +33,6 @@ def main():
     # Construct output file path and output result to file
     output_file_path = construct_file_path(variables.output_dir, "count_liked_comments.txt")
     write_to_file(output_file_path, [total_likes], "Total number of likes given on Instagram comments: ", detailed=False)
-    
-    # Print out confirmation of file export
     print(f"Number of likes given on comments has been saved to '{output_file_path}'.")
 
 if __name__ == "__main__":

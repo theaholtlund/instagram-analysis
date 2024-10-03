@@ -40,8 +40,6 @@ def main():
     # Construct output file path and output result to file
     output_file_path = construct_file_path(variables.output_dir, "not_following_back.txt")
     write_to_file(output_file_path, not_following_back, "Accounts not following back", detailed=True, data_label="Usernames not following back")
-    
-    # Print out confirmation of file export
     print(f"Accounts not following back have been saved to '{output_file_path}'.")
 
 if __name__ == "__main__":

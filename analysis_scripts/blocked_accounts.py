@@ -28,8 +28,6 @@ def main():
     # Construct output file path and output result to file
     output_file_path = construct_file_path(script_dir, variables.output_dir, "blocked_accounts.txt")
     write_to_file(output_file_path, blocked_accounts_usernames, "Number of blocked accounts", detailed=True, data_label="Blocked accounts")
-
-    # Print out confirmation of file export
     print(f"Blocked accounts list has been saved to '{output_file_path}'.")
 
 if __name__ == "__main__":
