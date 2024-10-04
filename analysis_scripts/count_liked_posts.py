@@ -20,10 +20,10 @@ def main():
     script_dir = get_script_dir()
     
     # Define the path for the likes folder
-    likes_path = construct_file_path(script_dir, variables.data_dir, variables.activity_dir, variables.likes_dir)
+    likes_path = construct_file_path(script_dir, variables.DATA_DIR, variables.ACTIVITY_DIR, variables.LIKES_DIR)
     
     # Load, parse and extract liked posts from HTML content
-    file_path = construct_file_path(likes_path, variables.liked_posts_file)
+    file_path = construct_file_path(likes_path, variables.LIKED_POSTS_FILE)
     likes_soup = load_and_parse_html(file_path)
     likes = extract_likes(likes_soup)
     
@@ -31,7 +31,7 @@ def main():
     total_likes = len(likes)
     
     # Construct output file path and output result to file
-    output_file_path = construct_file_path(variables.output_dir, "count_liked_posts.txt")
+    output_file_path = construct_file_path(variables.OUTPUT_DIR, "count_liked_posts.txt")
     write_to_file(output_file_path, [total_likes], "Total number of likes given on Instagram: ", detailed=False)
     print(f"Number of likes given has been saved to '{output_file_path}'.")
 

@@ -21,7 +21,7 @@ def main():
     script_dir = get_script_dir()
     
     # Get files from comments folder
-    comments_path = construct_file_path(script_dir, variables.data_dir, variables.activity_dir, variables.comments_dir)
+    comments_path = construct_file_path(script_dir, variables.DATA_DIR, variables.ACTIVITY_DIR, variables.COMMENTS_DIR)
     file_paths = list_files_and_construct_paths(comments_path)
 
     # Initialise the comment list
@@ -50,7 +50,7 @@ def main():
     formatted_header = f"{header}\n"
     
     # Construct output file path and output result to file
-    output_file_path = construct_file_path(variables.output_dir, "content_comments.txt")
+    output_file_path = construct_file_path(variables.OUTPUT_DIR, "content_comments.txt")
     write_to_file(output_file_path, data=output_data, header=formatted_header, detailed=False)
     print(f"{'Top repeated comments have been saved' if top_repeated_comments else 'No repeat comments found, status saved'} to '{output_file_path}'.")
 

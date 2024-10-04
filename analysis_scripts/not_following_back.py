@@ -20,7 +20,7 @@ def main():
     script_dir = get_script_dir()
     
     # Define base paths for the followers and following HTML files
-    base_path = construct_file_path(script_dir, variables.data_dir, variables.connections_dir, variables.followers_dir)
+    base_path = construct_file_path(script_dir, variables.DATA_DIR, variables.CONNECTIONS_DIR, variables.FOLLOWERS_DIR)
     
     # Construct paths for the followers and following HTML files
     followers_path = construct_file_path(base_path, "followers_1.html")
@@ -38,7 +38,7 @@ def main():
     not_following_back = following_usernames - followers_usernames
     
     # Construct output file path and output result to file
-    output_file_path = construct_file_path(variables.output_dir, "not_following_back.txt")
+    output_file_path = construct_file_path(variables.OUTPUT_DIR, "not_following_back.txt")
     write_to_file(output_file_path, not_following_back, "Accounts not following back", detailed=True, data_label="Usernames not following back")
     print(f"Accounts not following back have been saved to '{output_file_path}'.")
 

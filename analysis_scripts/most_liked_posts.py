@@ -21,7 +21,7 @@ def main():
     script_dir = get_script_dir()
     
     # Load, parse and extract liked posts from HTML content
-    likes_path = construct_file_path(script_dir, variables.data_dir, variables.activity_dir, variables.likes_dir, "liked_posts.html")
+    likes_path = construct_file_path(script_dir, variables.DATA_DIR, variables.ACTIVITY_DIR, variables.LIKES_DIR, "liked_posts.html")
     likes_soup = load_and_parse_html(likes_path)
     liked_usernames = extract_liked_usernames(likes_soup)
     
@@ -37,7 +37,7 @@ def main():
     formatted_header = f"{header}\n"
     
     # Construct output file path and output result to file
-    output_file_path = construct_file_path(variables.output_dir, "most_liked_posts.txt")
+    output_file_path = construct_file_path(variables.OUTPUT_DIR, "most_liked_posts.txt")
     write_to_file(output_file_path, data=output_data, header=formatted_header, detailed=False)
     print(f"Top users received the most likes on their posts have been saved to '{output_file_path}'.")
 

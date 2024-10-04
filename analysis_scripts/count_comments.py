@@ -20,7 +20,7 @@ def main():
     script_dir = get_script_dir()
     
     # Get files from comments folder
-    comments_path = construct_file_path(script_dir, variables.data_dir, variables.activity_dir, variables.comments_dir)
+    comments_path = construct_file_path(script_dir, variables.DATA_DIR, variables.ACTIVITY_DIR, variables.COMMENTS_DIR)
     file_paths = list_files_and_construct_paths(comments_path)
     
     # Initialise the comment count
@@ -37,7 +37,7 @@ def main():
         total_comments += len(comments)
     
     # Construct output file path and output result to file
-    output_file_path = construct_file_path(variables.output_dir, "count_comments.txt")
+    output_file_path = construct_file_path(variables.OUTPUT_DIR, "count_comments.txt")
     write_to_file(output_file_path, [total_comments], "Total number of comments left on Instagram: ", detailed=False)
     print(f"Number of comments made has been saved to '{output_file_path}'.")
 

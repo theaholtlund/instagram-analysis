@@ -20,12 +20,12 @@ def main():
     script_dir = get_script_dir()
     
     # Load, parse and extract close friends accounts from HTML content
-    close_friends_path = construct_file_path(script_dir, variables.data_dir, variables.connections_dir, variables.followers_dir, "close_friends.html")
+    close_friends_path = construct_file_path(script_dir, variables.DATA_DIR, variables.CONNECTIONS_DIR, variables.FOLLOWERS_DIR, "close_friends.html")
     close_friends_soup = load_and_parse_html(close_friends_path)
     close_friends_usernames = extract_usernames(close_friends_soup)
     
     # Construct output file path and output result to file
-    output_file_path = construct_file_path(variables.output_dir, "close_friends.txt")
+    output_file_path = construct_file_path(variables.OUTPUT_DIR, "close_friends.txt")
     write_to_file(output_file_path, close_friends_usernames, "Number of close friends", detailed=True, data_label="Users on close friends list")
     print(f"Close friends list has been saved to '{output_file_path}'.")
 
