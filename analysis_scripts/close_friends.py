@@ -7,7 +7,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 root_dir = os.path.dirname(script_dir)
 sys.path.append(root_dir)
 
-# Import the required modules
+# Import modules and variables
 import variables
 from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file
 

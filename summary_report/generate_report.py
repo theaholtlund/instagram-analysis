@@ -8,7 +8,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 root_dir = os.path.dirname(script_dir)
 sys.path.append(root_dir)
 
-# Import shared functionality
+# Import modules and variables
 import variables
 from utils import read_file, construct_file_path, parse_simple_output, parse_list_output, parse_detailed_output
 
