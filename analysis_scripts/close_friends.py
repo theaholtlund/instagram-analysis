@@ -20,7 +20,7 @@ def main():
     script_dir = get_script_dir()
     
     # Load, parse and extract close friends accounts from HTML content
-    close_friends_path = construct_file_path(script_dir, variables.DATA_DIR, variables.CONNECTIONS_DIR, variables.FOLLOWERS_DIR, "close_friends.html")
+    close_friends_path = construct_file_path(script_dir, variables.DATA_DIR, variables.CONNECTIONS_DIR, variables.FOLLOWERS_DIR, variables.CLOSE_FRIENDS_FILE)
     close_friends_soup = load_and_parse_html(close_friends_path)
     close_friends_usernames = extract_usernames(close_friends_soup)
     
