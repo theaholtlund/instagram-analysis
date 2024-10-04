@@ -15,7 +15,6 @@ from utils import get_script_dir, construct_file_path, load_and_parse_html, writ
 def extract_usernames(soup):
     return {a['href'].split("/_u/")[-1] for a in soup.find_all("a", href=True)}
 
-# Main function to coordinate execution of the script
 def main():
     # Get the current script directory
     script_dir = get_script_dir()
