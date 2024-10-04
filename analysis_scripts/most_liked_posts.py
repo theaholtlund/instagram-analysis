@@ -21,7 +21,7 @@ def main():
     script_dir = get_script_dir()
     
     # Load, parse and extract liked posts from HTML content
-    likes_path = construct_file_path(script_dir, variables.DATA_DIR, variables.ACTIVITY_DIR, variables.LIKES_DIR, "liked_posts.html")
+    likes_path = construct_file_path(script_dir, variables.DATA_DIR, variables.ACTIVITY_DIR, variables.LIKES_DIR, variables.LIKED_POSTS_FILE)
     likes_soup = load_and_parse_html(likes_path)
     liked_usernames = extract_liked_usernames(likes_soup)
     
