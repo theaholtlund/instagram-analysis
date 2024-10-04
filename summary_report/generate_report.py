@@ -38,7 +38,7 @@ def generate_html_content(summary_data, show_count_files):
 # Function to generate a summary report from analysis output files
 def generate_summary_report():
     # Define directories and paths
-    analysis_output_dir = construct_file_path(root_dir, variables.output_dir)
+    analysis_output_dir = construct_file_path(root_dir, variables.OUTPUT_DIR)
     summary_file_path = construct_file_path(script_dir, "summary_report.html")
     template_file_path = construct_file_path(script_dir, "report_template.html")
 
