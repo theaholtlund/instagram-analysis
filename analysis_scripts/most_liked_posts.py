@@ -16,7 +16,6 @@ from utils import get_script_dir, construct_file_path, load_and_parse_html, writ
 def extract_liked_usernames(soup):
     return [username.text for username in soup.find_all("div", class_="_3-95 _2pim _a6-h _a6-i")]
 
-# Main function to coordinate execution of the script
 def main():
     script_dir = get_script_dir()
     
