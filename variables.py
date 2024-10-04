@@ -1,12 +1,12 @@
-# Define configuration variables for files
-liked_posts_file = "liked_posts.html"
-liked_comments_file = "liked_comments.html"
+# Configuration variables for file names
+LIKED_POSTS_FILE = "liked_posts.html"
+LIKED_COMMENTS_FILE = "liked_comments.html"
 
-# Define configuration variables for folders
-data_dir = "instagram_data"
-likes_dir = "likes"
-connections_dir = "connections"
-followers_dir = "followers_and_following"
-activity_dir = "your_instagram_activity"
-comments_dir = "comments"
-output_dir = "analysis_outputs"
+# Configuration variables for directories
+DATA_DIR = "instagram_data"
+LIKES_DIR = "likes"
+CONNECTIONS_DIR = "connections"
+FOLLOWERS_DIR = "followers_and_following"
+ACTIVITY_DIR = "your_instagram_activity"
+COMMENTS_DIR = "comments"
+OUTPUT_DIR = "analysis_outputs"
