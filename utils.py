@@ -1,5 +1,6 @@
 # Import required libraries
 import os
+from pathlib import Path
 from bs4 import BeautifulSoup
 
 # Function to get the directory of current script
@@ -8,7 +9,7 @@ def get_script_dir():
 
 # Function to construct file path
 def construct_file_path(*path_parts):
-    return os.path.join(*path_parts)
+    return Path(*path_parts)
 
 # Function to list files in a directory and construct file path
 def list_files_and_construct_paths(directory):
