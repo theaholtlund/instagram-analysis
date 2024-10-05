@@ -2,13 +2,13 @@
 import os
 import subprocess
 from pathlib import Path
+import variables
 
 # Define path to folder where analysis scripts are located
-scripts_dir = Path(__file__).resolve().parent / 'analysis_scripts'
+scripts_dir = Path(__file__).resolve().parent / variables.SCRIPTS_DIR
 
 # Function to run all scripts in analysis directory
 def run_script(script_name):
-    script_path = os.path.join(scripts_dir, script_name)
     try:
         result = subprocess.run(["python3", scripts_dir / script_name], check=True, capture_output=True, text=True)
         print(f"Successfully ran {script_name}:\n{result.stdout}{'=' * 40}\n")
