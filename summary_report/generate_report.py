@@ -69,8 +69,7 @@ def generate_summary_report():
     html_template = read_file(template_file_path)
 
     # Write content into the template and save the report
-    with open(summary_file_path, "w", encoding="utf-8") as file:
-        file.write(html_template.replace("{{{content}}}", report_content))
+    summary_file_path.write_text(html_template.replace("{{{content}}}", report_content), encoding="utf-8")
 
     # Confirmation and automatic report opening
     print(f"The summary report has been generated and saved to '{summary_file_path}'.")
