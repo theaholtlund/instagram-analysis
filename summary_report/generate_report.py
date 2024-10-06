@@ -2,11 +2,12 @@
 import os
 import sys
 import webbrowser
+from pathlib import Path
 
 # Add the project root directory to the system path
-script_dir = os.path.dirname(os.path.abspath(__file__))
-root_dir = os.path.dirname(script_dir)
-sys.path.append(root_dir)
+script_dir = Path(__file__).resolve().parent
+root_dir = script_dir.parent
+sys.path.append(str(root_dir))
 
 # Import modules and variables
 import variables
@@ -73,7 +74,7 @@ def generate_summary_report():
 
     # Confirmation and automatic report opening
     print(f"The summary report has been generated and saved to '{summary_file_path}'.")
-    webbrowser.open(f'file://{os.path.abspath(summary_file_path)}')
+    webbrowser.open(summary_file_path.as_uri())
 
 if __name__ == "__main__":
     generate_summary_report()
