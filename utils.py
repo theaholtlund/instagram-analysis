@@ -13,14 +13,13 @@ def construct_file_path(*path_parts):
 
 # Function to list files in a directory and construct file path
 def list_files_and_construct_paths(directory):
-    file_paths = []
-    for filename in os.listdir(directory):
-        file_paths.append(os.path.join(directory, filename))
-    return file_paths
+    directory = Path(directory)
+    return [str(f) for f in directory.iterdir() if f.is_file()]
 
 # Function to read file content
 def read_file(file_path, as_lines=False):
-    with open(file_path, "r", encoding="utf-8") as file:
+    file_path = Path(file_path)
+    with file_path.open("r", encoding="utf-8") as file:
         return file.readlines() if as_lines else file.read()
 
 # Function to handle loading and parsing HTML content
