@@ -7,7 +7,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 root_dir = os.path.dirname(script_dir)
 sys.path.append(root_dir)
 
-# Import the required modules
+# Import modules and variables
 import variables
 from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file
 
@@ -15,7 +15,6 @@ from utils import get_script_dir, construct_file_path, load_and_parse_html, writ
 def extract_usernames(soup):
     return {a.text for a in soup.find_all("a", href=True)}
 
-# Main function to coordinate execution of the script
 def main():
     script_dir = get_script_dir()
     
@@ -23,8 +22,8 @@ def main():
     base_path = construct_file_path(script_dir, variables.DATA_DIR, variables.CONNECTIONS_DIR, variables.FOLLOWERS_DIR)
     
     # Construct paths for the followers and following HTML files
-    followers_path = construct_file_path(base_path, "followers_1.html")
-    following_path = construct_file_path(base_path, "following.html")
+    followers_path = construct_file_path(base_path, variables.FOLLOWERS_FILE)
+    following_path = construct_file_path(base_path, variables.FOLLOWING_FILE)
     
     # Parse the HTML content using BeautifulSoup
     followers_soup = load_and_parse_html(followers_path)
