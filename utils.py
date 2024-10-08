@@ -24,7 +24,8 @@ def read_file(file_path, as_lines=False):
 
 # Function to handle loading and parsing HTML content
 def load_and_parse_html(file_path):
-    with open(file_path, "r", encoding="utf-8") as file:
+    file_path = Path(file_path)
+    with file_path.open("r", encoding="utf-8") as file:
         html_content = file.read()
     return BeautifulSoup(html_content, "html.parser")
 
