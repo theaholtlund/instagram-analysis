@@ -21,10 +21,7 @@ def generate_html_content(summary_data, show_count_files):
         title = file_name.replace("_", " ").replace(".txt", "").upper()
 
         # Show count in the title if applicable
-        if file_name in show_count_files:
-            report_content += f"<h2>{title}: {count}</h2>\n"
-        else:
-            report_content += f"<h2>{title}:</h2>\n"
+        report_content += f"<h2>{title}: {count}</h2>\n" if file_name in show_count_files else f"<h2>{title}:</h2>\n"
 
         # Expandable details for file contents
         if items:
