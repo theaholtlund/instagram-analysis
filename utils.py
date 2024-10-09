@@ -31,7 +31,8 @@ def load_and_parse_html(file_path):
 
 # Function to write analysis outputs to file
 def write_to_file(file_path, data, header, detailed=False, data_label=None):
-    with open(file_path, "w", encoding="utf-8") as file:
+    file_path = Path(file_path)
+    with file_path.open("w", encoding="utf-8") as file:
         if detailed:
             file.write(f"{header}: {len(data)}\n")
             file.write(f"{data_label}:\n")
@@ -46,7 +47,8 @@ def write_to_file(file_path, data, header, detailed=False, data_label=None):
 # Function to parse simple output file
 def parse_simple_output(data):
     header = data[0].strip()
-    return int(header.split(": ")[1]), []
+    count = int(header.split(": ")[1])
+    return count, []
 
 # Function to parse list output file
 def parse_list_output(data):
