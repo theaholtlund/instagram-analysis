@@ -58,7 +58,7 @@ def generate_summary_report():
 
     # Parse each file and store results
     summary_data = {
-        file_name: parser(read_file(construct_file_path(analysis_output_dir, file_name), as_lines=True))
+        file_name: parser(read_file(analysis_output_dir / file_name, as_lines=True))
         for file_name, parser in files_parsers.items()
     }
 
