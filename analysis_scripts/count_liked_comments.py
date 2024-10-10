@@ -7,7 +7,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 root_dir = os.path.dirname(script_dir)
 sys.path.append(root_dir)
 
-# Import the required modules
+# Import modules and variables
 import variables
 from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file
 
@@ -15,15 +15,11 @@ from utils import get_script_dir, construct_file_path, load_and_parse_html, writ
 def extract_likes(soup):
     return [like for like in soup.find_all("a", href=True) if like.text == "👍"]
 
-# Main function to coordinate execution of the script
 def main():
     script_dir = get_script_dir()
     
-    # Define the path for the likes folder
-    likes_path = construct_file_path(script_dir, variables.DATA_DIR, variables.ACTIVITY_DIR, variables.LIKES_DIR)
-    
     # Load, parse and extract liked comments from HTML content
-    file_path = construct_file_path(likes_path, variables.LIKED_COMMENTS_FILE)
+    file_path = construct_file_path(script_dir, variables.DATA_DIR, variables.ACTIVITY_DIR, variables.LIKES_DIR, variables.LIKED_COMMENTS_FILE)
     comments_soup = load_and_parse_html(file_path)
     comment_likes = extract_likes(comments_soup)
     
