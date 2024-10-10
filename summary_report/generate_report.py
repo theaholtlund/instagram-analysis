@@ -1,5 +1,4 @@
 # Import required libraries
-import os
 import sys
 import webbrowser
 from pathlib import Path
@@ -11,7 +10,7 @@ sys.path.append(str(root_dir))
 
 # Import modules and variables
 import variables
-from utils import read_file, construct_file_path, parse_simple_output, parse_list_output, parse_detailed_output
+from utils import read_file, parse_simple_output, parse_list_output, parse_detailed_output
 
 # Function to generate HTML content for the report
 def generate_html_content(summary_data, show_count_files):
