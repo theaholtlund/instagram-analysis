@@ -23,8 +23,15 @@ def list_files_and_construct_paths(directory):
 def read_file(file_path, as_lines=False):
     """Reads content from a file. Can return as a list of lines or a full string"""
     file_path = Path(file_path)
-    with file_path.open("r", encoding="utf-8") as file:
-        return file.readlines() if as_lines else file.read()
+    try:
+        with file_path.open("r", encoding="utf-8") as file:
+            return file.readlines() if as_lines else file.read()
+    except FileNotFoundError:
+        print(f"File not found: {file_path}")
+        return None
+    except Exception as e:
+        print(f"Error reading file {file_path}: {e}")
+        return None
 
 # Function to handle loading and parsing HTML content
 def load_and_parse_html(file_path):
