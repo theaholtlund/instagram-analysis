@@ -15,5 +15,7 @@ ACTIVITY_DIR = "your_instagram_activity"
 COMMENTS_DIR = "comments"
 OUTPUT_DIR = "analysis_outputs"
 SCRIPTS_DIR = "analysis_scripts"
+
+# Constant variables for summary report
 REPORT_TEMPLATE = "report_template.html"
 SUMMARY_REPORT = "summary_report.html"
