@@ -10,7 +10,7 @@ sys.path.append(str(root_dir))
 
 # Import modules and variables
 import variables
-from utils import read_file, parse_simple_output, parse_list_output, parse_detailed_output
+from utils import read_file, parse_simple_output, parse_list_output, parse_detailed_output, ensure_directory_exists
 
 # Function to generate HTML content for the report
 def generate_html_content(summary_data, show_count_files):
@@ -40,6 +40,9 @@ def generate_summary_report():
     summary_file_path = script_dir / variables.SUMMARY_REPORT
     template_file_path = script_dir / variables.REPORT_TEMPLATE
 
+    # Ensure output directories exist
+    ensure_directory_exists(variables.OUTPUT_DIR)
+
     # Map filenames to parser functions
     files_parsers = {
         "blocked_accounts.txt": parse_list_output,
@@ -56,6 +59,7 @@ def generate_summary_report():
     summary_data = {
         file_name: parser(read_file(analysis_output_dir / file_name, as_lines=True))
         for file_name, parser in files_parsers.items()
+        if (analysis_output_dir / file_name).exists()
     }
 
     # Files that should display a count after the title
