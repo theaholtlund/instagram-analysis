@@ -78,3 +78,10 @@ def parse_detailed_output(data):
     header = data[0].strip()
     items = [line.strip("- \n") for line in data[1:] if line.strip()]
     return len(items), items
+
+# Function to check if a directory exists, and create it if not
+def ensure_directory_exists(directory_path):
+    """Ensures the given directory exists, creates it if not"""
+    directory = Path(directory_path)
+    if not directory.exists():
+        directory.mkdir(parents=True, exist_ok=True)
