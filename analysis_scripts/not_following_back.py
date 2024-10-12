@@ -29,6 +29,10 @@ def main():
     followers_soup = load_and_parse_html(followers_path)
     following_soup = load_and_parse_html(following_path)
     
+    if followers_soup is None or following_soup is None:
+        print("Error loading or parsing HTML files.")
+        return
+    
     # Extract followers and following usernames
     followers_usernames = extract_usernames(followers_soup)
     following_usernames = extract_usernames(following_soup)
