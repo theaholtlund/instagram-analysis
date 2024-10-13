@@ -37,9 +37,13 @@ def read_file(file_path, as_lines=False):
 def load_and_parse_html(file_path):
     """Loads and parses HTML content from a file using BeautifulSoup"""
     file_path = Path(file_path)
-    with file_path.open("r", encoding="utf-8") as file:
-        html_content = file.read()
-    return BeautifulSoup(html_content, "html.parser")
+    try:
+        with file_path.open("r", encoding="utf-8") as file:
+            html_content = file.read()
+        return BeautifulSoup(html_content, "html.parser")
+    except Exception as e:
+        print(f"Error parsing HTML file {file_path}: {e}")
+        return None
 
 # Function to write analysis outputs to file
 def write_to_file(file_path, data, header, detailed=False, data_label=None):
