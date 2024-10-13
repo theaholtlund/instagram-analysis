@@ -2,13 +2,9 @@
 import subprocess
 from pathlib import Path
 import variables
-from utils import ensure_directory_exists
 
 # Define path to folder where analysis scripts are located
 scripts_dir = Path(__file__).resolve().parent / variables.SCRIPTS_DIR
-
-# Ensure output directories exist
-ensure_directory_exists(variables.OUTPUT_DIR)
 
 # Function to run a script
 def run_script(script_name):

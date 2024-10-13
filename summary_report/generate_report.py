@@ -10,7 +10,7 @@ sys.path.append(str(root_dir))
 
 # Import modules and variables
 import variables
-from utils import read_file, parse_simple_output, parse_list_output, parse_detailed_output, ensure_directory_exists
+from utils import read_file, parse_simple_output, parse_list_output, parse_detailed_output
 
 # Function to generate HTML content for the report
 def generate_html_content(summary_data, show_count_files):
@@ -39,9 +39,6 @@ def generate_summary_report():
     analysis_output_dir = Path(variables.OUTPUT_DIR)
     summary_file_path = script_dir / variables.SUMMARY_REPORT
     template_file_path = script_dir / variables.REPORT_TEMPLATE
-
-    # Ensure output directories exist
-    ensure_directory_exists(variables.OUTPUT_DIR)
 
     # Map filenames to parser functions
     files_parsers = {
