@@ -1,4 +1,4 @@
-# Configuration variables for file names
+# Configuration variables for filenames
 BLOCKED_PROFILES_FILE = "blocked_profiles.html"
 CLOSE_FRIENDS_FILE = "close_friends.html"
 LIKED_POSTS_FILE = "liked_posts.html"
