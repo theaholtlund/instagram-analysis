@@ -49,17 +49,20 @@ def load_and_parse_html(file_path):
 def write_to_file(file_path, data, header, detailed=False, data_label=None):
     """Writes data to a file, with optional headers and detailed formatting"""
     file_path = Path(file_path)
-    with file_path.open("w", encoding="utf-8") as file:
-        if detailed:
-            file.write(f"{header}: {len(data)}\n")
-            file.write(f"{data_label}:\n")
-            for item in data:
-                file.write(f"- {item}\n")
-        else:
-            if header:
-                file.write(f"{header}")
-            for item in data:
-                file.write(f"{item}\n")
+    try:
+        with file_path.open("w", encoding="utf-8") as file:
+            if detailed:
+                file.write(f"{header}: {len(data)}\n")
+                file.write(f"{data_label}:\n")
+                for item in data:
+                    file.write(f"- {item}\n")
+            else:
+                if header:
+                    file.write(f"{header}")
+                for item in data:
+                    file.write(f"{item}\n")
+    except Exception as e:
+        print(f"Error writing to file {file_path}: {e}")
 
 # Function to parse simple output file
 def parse_simple_output(data):
