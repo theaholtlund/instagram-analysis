@@ -28,10 +28,9 @@ def read_file(file_path, as_lines=False):
             return file.readlines() if as_lines else file.read()
     except FileNotFoundError:
         print(f"File not found: {file_path}")
-        return None
     except Exception as e:
         print(f"Error reading file {file_path}: {e}")
-        return None
+    return None
 
 # Function to handle loading and parsing HTML content
 def load_and_parse_html(file_path):
@@ -39,11 +38,10 @@ def load_and_parse_html(file_path):
     file_path = Path(file_path)
     try:
         with file_path.open("r", encoding="utf-8") as file:
-            html_content = file.read()
-        return BeautifulSoup(html_content, "html.parser")
+            return BeautifulSoup(file.read(), "html.parser")
     except Exception as e:
         print(f"Error parsing HTML file {file_path}: {e}")
-        return None
+    return None
 
 # Function to write analysis outputs to file
 def write_to_file(file_path, data, header="", detailed=False, data_label=None):
