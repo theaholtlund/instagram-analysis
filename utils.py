@@ -73,15 +73,23 @@ def parse_simple_output(data):
 
 # Function to parse list output file
 def parse_list_output(data):
-    """Parse list output file with items starting from the third line."""
-    header = data[0].strip()
-    count = int(header.split(": ")[1])
-    items = [line.strip("- \n") for line in data[2:]]
-    return count, items
+    """Parse a list output file with items starting from the third line."""
+    try:
+        header = data[0].strip()
+        count = int(header.split(": ")[1])
+        items = [line.strip("- \n") for line in data[2:]]
+        return count, items
+    except (IndexError, ValueError) as e:
+        print(f"Error parsing list output: {e}")
+        return 0, []
 
 # Function to parse detailed content output file
 def parse_detailed_output(data):
-    """Parse detailed output file with items after the first line."""
-    header = data[0].strip()
-    items = [line.strip("- \n") for line in data[1:] if line.strip()]
-    return len(items), items
+    """Parse a detailed output file with items after the first line."""
+    try:
+        header = data[0].strip()
+        items = [line.strip("- \n") for line in data[1:] if line.strip()]
+        return len(items), items
+    except IndexError as e:
+        print(f"Error parsing detailed output: {e}")
+        return 0, []
