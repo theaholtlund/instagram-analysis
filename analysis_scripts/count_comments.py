@@ -13,9 +13,11 @@ from utils import get_script_dir, construct_file_path, list_files_and_construct_
 
 # Function to extract comments
 def extract_comments(soup):
+    """Extract comments from HTML content."""
     return [comment.text for comment in soup.find_all("td", class_="_2pin _a6_q") if "Comment" in comment.text]
 
 def main():
+    """Count the total number of comments made and save to text file."""
     script_dir = get_script_dir()
     
     # Get files from comments folder
