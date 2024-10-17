@@ -3,7 +3,7 @@ import sys
 import webbrowser
 from pathlib import Path
 
-# Add the project root directory to the system path
+# Add the project root directory to the system path if not already present
 script_dir = Path(__file__).resolve().parent
 root_dir = script_dir.parent
 sys.path.append(str(root_dir))
@@ -16,7 +16,7 @@ from utils import read_file, parse_simple_output, parse_list_output, parse_detai
 def generate_html_content(summary_data, show_count_files):
     report_content = ""
     for file_name, (count, items) in summary_data.items():
-        # Convert entire title to upper case
+        # Convert title to upper case and format it
         title = file_name.replace("_", " ").replace(".txt", "").upper()
 
         # Show count in the title if applicable
@@ -30,12 +30,11 @@ def generate_html_content(summary_data, show_count_files):
                 "".join(f"<p>- {item}</p>\n" for item in items) +
                 "</div>\n</details>\n\n"
             )
-    
+
     return report_content
 
 # Function to generate a summary report from analysis output files
 def generate_summary_report():
-    # Define directories and paths using pathlib
     analysis_output_dir = Path(variables.OUTPUT_DIR)
     summary_file_path = script_dir / variables.SUMMARY_REPORT
     template_file_path = script_dir / variables.REPORT_TEMPLATE
