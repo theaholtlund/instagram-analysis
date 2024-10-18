@@ -13,9 +13,11 @@ from utils import get_script_dir, construct_file_path, load_and_parse_html, writ
 
 # Function to extract likes
 def extract_likes(soup):
+    """Extract liked posts from HTML content."""
     return [like for like in soup.find_all("a", href=True) if like.text == "👍"]
 
 def main():
+    """Count the total number of liked posts and save to text file."""
     script_dir = get_script_dir()
     
     # Load, parse and extract liked posts from HTML content
