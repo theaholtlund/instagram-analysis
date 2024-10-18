@@ -3,7 +3,7 @@ import subprocess
 from pathlib import Path
 import variables
 
-# Define path to folder where analysis scripts are located
+# Define path to the folder where analysis scripts are located
 scripts_dir = Path(__file__).resolve().parent / variables.SCRIPTS_DIR
 
 # Function to run a script
@@ -19,12 +19,12 @@ def run_script(script_name):
     except subprocess.CalledProcessError as e:
         print(f"Error running '{script_name}':\n{e.stderr}\n{'=' * 40}\n")
 
-# Main function to coordinate execution of the script
+# Main function to coordinate execution of all scripts
 def main():
     # List all Python files in the analysis script directory
     scripts_to_run = [script.name for script in scripts_dir.glob("*.py")]
 
-    # Run each script in the analysis script directory
+    # Run each script found in the directory
     for script in scripts_to_run:
         print(f"Running {script}...")
         run_script(script)
