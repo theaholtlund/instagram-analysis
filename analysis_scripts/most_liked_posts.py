@@ -40,7 +40,7 @@ def main():
     # Construct output file path and output result to file
     output_file_path = construct_file_path(variables.OUTPUT_DIR, "most_liked_posts.txt")
     write_to_file(output_file_path, data=output_data, header=formatted_header, detailed=False)
-    print(f"Top users received the most likes on their posts have been saved to '{output_file_path}'.")
+    print(f"Top users who received the most likes on their posts have been saved to '{output_file_path}'.")
 
 if __name__ == "__main__":
     main()
