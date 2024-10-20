@@ -10,7 +10,7 @@ scripts_dir = Path(__file__).resolve().parent / variables.SCRIPTS_DIR
 def run_script(script_name):
     script_path = scripts_dir / script_name
     if not script_path.exists():
-        print(f"Error: script '{script_name}' not found.")
+        print(f"Error: Script '{script_name}' not found.")
         return
 
     try:
@@ -26,7 +26,7 @@ def main():
 
     # Run each script found in the directory
     for script in scripts_to_run:
-        print(f"Running {script}...")
+        print(f"Running '{script}'...")
         run_script(script)
 
 if __name__ == "__main__":
