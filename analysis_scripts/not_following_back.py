@@ -13,9 +13,11 @@ from utils import get_script_dir, construct_file_path, load_and_parse_html, writ
 
 # Function to extract usernames
 def extract_usernames(soup):
+    """Extract usernames from HTML content."""
     return {a.text for a in soup.find_all("a", href=True)}
 
 def main():
+    """Identify accounts not following back and save the list to text file."""
     script_dir = get_script_dir()
     
     # Define base paths for the followers and following HTML files
@@ -37,7 +39,7 @@ def main():
     followers_usernames = extract_usernames(followers_soup)
     following_usernames = extract_usernames(following_soup)
     
-    # Find accounts the user is following, that are not following them back
+    # Find accounts the user is following that are not following them back
     not_following_back = following_usernames - followers_usernames
     
     # Construct output file path and output result to file
