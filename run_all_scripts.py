@@ -8,6 +8,7 @@ scripts_dir = Path(__file__).resolve().parent / variables.SCRIPTS_DIR
 
 # Function to run a script
 def run_script(script_name):
+    """Run a specific Python script from the analysis_scripts directory."""
     script_path = scripts_dir / script_name
     if not script_path.exists():
         print(f"Error: Script '{script_name}' not found.")
@@ -21,6 +22,7 @@ def run_script(script_name):
 
 # Main function to coordinate execution of all scripts
 def main():
+    """Run all Python scripts in the analysis_scripts directory."""
     # List all Python files in the analysis script directory
     scripts_to_run = [script.name for script in scripts_dir.glob("*.py")]
 
