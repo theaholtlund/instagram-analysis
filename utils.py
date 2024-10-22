@@ -12,7 +12,7 @@ def construct_file_path(*path_parts):
     """Construct a file path from the given parts."""
     return Path(*path_parts)
 
-# Function to list files in a directory and construct file path
+# Function to list files in a directory and construct their full paths
 def list_files_and_construct_paths(directory):
     """List files in a directory and construct their full paths."""
     directory = Path(directory)
@@ -42,7 +42,7 @@ def load_and_parse_html(file_path):
         print(f"Error parsing HTML file {file_path}: {e}")
     return None
 
-# Function to write analysis outputs to file
+# Function to write analysis outputs to a file
 def write_to_file(file_path, data, header="", detailed=False, data_label=None):
     """Write data to a file, with optional headers and detailed formatting."""
     file_path = Path(file_path)
@@ -61,14 +61,14 @@ def write_to_file(file_path, data, header="", detailed=False, data_label=None):
     except Exception as e:
         print(f"Error writing to file {file_path}: {e}")
 
-# Function to parse simple output file
+# Function to parse a simple output file with a count on the first line
 def parse_simple_output(data):
     """Parse a simple output file with a count in the first line"""
     header = data[0].strip()
     count = int(header.split(": ")[1])
     return count, []
 
-# Function to parse list output file
+# Function to parse list output files
 def parse_list_output(data):
     """Parse a list output file with items starting from the third line."""
     try:
@@ -80,7 +80,7 @@ def parse_list_output(data):
         print(f"Error parsing list output: {e}")
         return 0, []
 
-# Function to parse detailed content output file
+# Function to parse detailed content output files
 def parse_detailed_output(data):
     """Parse a detailed output file with items after the first line."""
     try:
