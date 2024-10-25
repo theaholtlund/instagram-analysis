@@ -20,7 +20,7 @@ def list_files_and_construct_paths(directory):
 
 # Function to read file content
 def read_file(file_path, as_lines=False):
-    """Read content from a file, returning either a string or list of lines."""
+    """Read content from a file, returning either a string or a list of lines."""
     file_path = Path(file_path)
     try:
         with file_path.open("r", encoding="utf-8") as file:
@@ -63,7 +63,7 @@ def write_to_file(file_path, data, header="", detailed=False, data_label=None):
 
 # Function to parse a simple output file with a count on the first line
 def parse_simple_output(data):
-    """Parse a simple output file with a count in the first line"""
+    """Parse a simple output file where the first line contains a count."""
     header = data[0].strip()
     count = int(header.split(": ")[1])
     return count, []
@@ -82,7 +82,7 @@ def parse_list_output(data):
 
 # Function to parse detailed content output files
 def parse_detailed_output(data):
-    """Parse a detailed output file with items after the first line."""
+    """Parse a detailed output file where items appear after the first line."""
     try:
         header = data[0].strip()
         items = [line.strip("- \n") for line in data[1:] if line.strip()]
