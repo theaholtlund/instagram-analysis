@@ -28,7 +28,7 @@ def read_file(file_path, as_lines=False):
     except FileNotFoundError:
         print(f"File not found: {file_path}")
     except Exception as e:
-        print(f"Error reading file {file_path}: {e}")
+        print(f"Error reading file '{file_path}': {e}")
     return None
 
 # Function to handle loading and parsing HTML content
@@ -39,7 +39,7 @@ def load_and_parse_html(file_path):
         with file_path.open("r", encoding="utf-8") as file:
             return BeautifulSoup(file.read(), "html.parser")
     except Exception as e:
-        print(f"Error parsing HTML file {file_path}: {e}")
+        print(f"Error parsing HTML file '{file_path}': {e}")
     return None
 
 # Function to write analysis outputs to a file
@@ -59,7 +59,7 @@ def write_to_file(file_path, data, header="", detailed=False, data_label=None):
                 for item in data:
                     file.write(f"{item}\n")
     except Exception as e:
-        print(f"Error writing to file {file_path}: {e}")
+        print(f"Error writing to file '{file_path}': {e}")
 
 # Function to parse a simple output file with a count on the first line
 def parse_simple_output(data):
