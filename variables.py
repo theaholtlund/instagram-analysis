@@ -9,6 +9,8 @@ FOLLOWING_FILE = "following.html"
 # Configuration variables for directories
 DATA_DIR = "instagram_data"
 LIKES_DIR = "likes"
+MEDIA_DIR = "media"
+STORIES_DIR = "stories"
 CONNECTIONS_DIR = "connections"
 FOLLOWERS_DIR = "followers_and_following"
 ACTIVITY_DIR = "your_instagram_activity"
