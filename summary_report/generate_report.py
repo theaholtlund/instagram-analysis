@@ -15,7 +15,9 @@ from utils import read_file, parse_simple_output, parse_list_output, parse_detai
 
 # Function to generate HTML content for the report
 def generate_html_content(summary_data, show_count_files):
+    """Generate HTML content for the summary report."""
     report_content = ""
+    
     for file_name, (count, items) in summary_data.items():
         # Convert title to upper case and format it
         title = file_name.replace("_", " ").replace(".txt", "").upper()
@@ -36,6 +38,7 @@ def generate_html_content(summary_data, show_count_files):
 
 # Function to generate a summary report from analysis output files
 def generate_summary_report():
+    """Generate the HTML summary report from analysis output files."""
     analysis_output_dir = Path(variables.OUTPUT_DIR)
     summary_file_path = script_dir / variables.SUMMARY_REPORT
     template_file_path = script_dir / variables.REPORT_TEMPLATE
