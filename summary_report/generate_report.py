@@ -69,6 +69,10 @@ def generate_summary_report():
     report_content = generate_html_content(summary_data, show_count_files)
     html_template = read_file(template_file_path)
 
+    if html_template is None:
+        print("Error: Failed to load HTML template.")
+        return
+
     # Write content into the template and save the report
     summary_file_path.write_text(html_template.replace("{{{content}}}", report_content), encoding="utf-8")
 
