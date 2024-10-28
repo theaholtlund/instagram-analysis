@@ -19,10 +19,10 @@ def generate_html_content(summary_data, show_count_files):
     report_content = ""
     
     for file_name, (count, items) in summary_data.items():
-        # Convert title to upper case and format it
+        # Convert title to uppercase and format it
         title = file_name.replace("_", " ").replace(".txt", "").upper()
-
-        # Show count in the title if applicable
+        
+        # Add count to the title if applicable
         report_content += f"<h2>{title}: {count}</h2>\n" if file_name in show_count_files else f"<h2>{title}:</h2>\n"
 
         # Expandable details for file contents
