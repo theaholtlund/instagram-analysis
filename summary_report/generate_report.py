@@ -51,6 +51,7 @@ def generate_summary_report():
         "count_comments.txt": parse_simple_output,
         "count_liked_comments.txt": parse_simple_output,
         "count_liked_posts.txt": parse_simple_output,
+        "count_stories.txt": parse_simple_output,
         "most_liked_posts.txt": parse_detailed_output,
         "not_following_back.txt": parse_list_output
     }
@@ -63,7 +64,7 @@ def generate_summary_report():
     }
 
     # Files that should display a count after the title
-    show_count_files = {"count_comments.txt", "count_liked_comments.txt", "count_liked_posts.txt"}
+    show_count_files = {"count_comments.txt", "count_liked_comments.txt", "count_liked_posts.txt", "count_stories.txt"}
 
     # Generate and read HTML template
     report_content = generate_html_content(summary_data, show_count_files)
