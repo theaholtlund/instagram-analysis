@@ -3,7 +3,7 @@ import sys
 import webbrowser
 from pathlib import Path
 
-# Add the project root directory to the system path if not already present
+# Add project root directory to system path
 script_dir = Path(__file__).resolve().parent
 root_dir = script_dir.parent
 if str(root_dir) not in sys.path:
@@ -24,8 +24,8 @@ def generate_html_content(summary_data, show_count_files):
         
         # Add count to the title if applicable
         report_content += f"<h2>{title}: {count}</h2>\n" if file_name in show_count_files else f"<h2>{title}:</h2>\n"
-
-        # Expandable details for file contents
+        
+        # Add expandable details for file contents
         if items:
             report_content += (
                 "<details><summary>CLICK TO EXPAND</summary>\n"
@@ -33,7 +33,7 @@ def generate_html_content(summary_data, show_count_files):
                 "".join(f"<p>- {item}</p>\n" for item in items) +
                 "</div>\n</details>\n\n"
             )
-
+    
     return report_content
 
 # Function to generate a summary report from analysis output files
