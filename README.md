@@ -18,6 +18,30 @@ To request data from Instagram:
 
 Before running the analysis scripts, please copy all contents from the download folder as they are, with its current structure, into the `instagram_data` project folder.
 
+### Create a Virtual Environment
+
+Set up a virtual environment if desired (optional but recommended).
+
+Windows:
+
+```bash
+python -m venv venv
+.\venv\Scripts\Activate
+```
+
+MacOS and Linux:
+
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+Install required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
 ### Running the Analysis
 
 To utilise the script:
