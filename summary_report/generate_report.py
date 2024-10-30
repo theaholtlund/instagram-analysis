@@ -29,9 +29,9 @@ def generate_html_content(summary_data, show_count_files):
         if items:
             report_content += (
                 "<details><summary>CLICK TO EXPAND</summary>\n"
-                "<div class='content-list'>\n" +
-                "".join(f"<p>- {item}</p>\n" for item in items) +
-                "</div>\n</details>\n\n"
+                "<div class='content-list'>\n"
+                + "".join(f"<p>- {item}</p>\n" for item in items)
+                + "</div>\n</details>\n\n"
             )
     
     return report_content
@@ -75,11 +75,12 @@ def generate_summary_report():
         return
 
     # Write content into the template and save the report
-    summary_file_path.write_text(html_template.replace("{{{content}}}", report_content), encoding="utf-8")
-
-    # Confirmation and automatic report opening
-    print(f"The summary report has been generated and saved to '{summary_file_path}'.")
-    webbrowser.open(summary_file_path.as_uri())
+    try:
+        summary_file_path.write_text(html_template.replace("{{{content}}}", report_content), encoding="utf-8")
+        print(f"The summary report has been generated and saved to '{summary_file_path}'.")
+        webbrowser.open(summary_file_path.as_uri())
+    except Exception as e:
+        print(f"Error writing the summary report: {e}")
 
 if __name__ == "__main__":
     generate_summary_report()
