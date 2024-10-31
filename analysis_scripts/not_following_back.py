@@ -9,12 +9,7 @@ sys.path.append(root_dir)
 
 # Import modules and variables
 import variables
-from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file
-
-# Function to extract usernames
-def extract_usernames(soup):
-    """Extract usernames from HTML content."""
-    return {a.text for a in soup.find_all("a", href=True)}
+from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file, extract_content
 
 def main():
     """Identify accounts not following back and save the list to text file."""
@@ -36,8 +31,8 @@ def main():
         return
     
     # Extract followers and following usernames
-    followers_usernames = extract_usernames(followers_soup)
-    following_usernames = extract_usernames(following_soup)
+    followers_usernames = extract_content(followers_soup, tag="a", content_type="text")
+    following_usernames = extract_content(following_soup, tag="a", content_type="text")
     
     # Find accounts the user is following that are not following them back
     not_following_back = following_usernames - followers_usernames
