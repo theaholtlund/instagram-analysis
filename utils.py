@@ -42,6 +42,20 @@ def load_and_parse_html(file_path):
         print(f"Error parsing HTML file '{file_path}': {e}")
     return None
 
+# Generalised function to extract content based on tag and filters
+def extract_content(soup, tag, attr=None, text_condition=None, content_type="text"):
+    """Extract content from HTML based on tag, attributes and optional text conditions."""
+    elements = soup.find_all(tag, attrs=attr)
+    extracted = set()
+
+    for element in elements:
+        if text_condition and text_condition not in element.get_text():
+            continue
+        content = element['href'].split("/_u/")[-1] if content_type == "href" else element.get_text()
+        extracted.add(content)
+    
+    return extracted
+
 # Function to write analysis outputs to a file
 def write_to_file(file_path, data, header="", detailed=False, data_label=None):
     """Write data to a file, with optional headers and detailed formatting."""
