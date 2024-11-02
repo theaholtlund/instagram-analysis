@@ -9,12 +9,7 @@ sys.path.append(root_dir)
 
 # Import modules and variables
 import variables
-from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file
-
-# Function to extract likes
-def extract_likes(soup):
-    """Extract liked posts from HTML content."""
-    return [like for like in soup.find_all("a", href=True) if like.text == "👍"]
+from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file, extract_content
 
 def main():
     """Count the total number of liked posts and save to text file."""
@@ -23,7 +18,7 @@ def main():
     # Load, parse and extract liked posts from HTML content
     file_path = construct_file_path(script_dir, variables.DATA_DIR, variables.ACTIVITY_DIR, variables.LIKES_DIR, variables.LIKED_POSTS_FILE)
     likes_soup = load_and_parse_html(file_path)
-    likes = extract_likes(likes_soup)
+    likes = extract_content(likes_soup, tag="a", content_type="href")
     
     # Update the total likes count
     total_likes = len(likes)
