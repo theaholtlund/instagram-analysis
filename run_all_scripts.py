@@ -23,10 +23,8 @@ def run_script(script_name):
 # Main function to coordinate execution of all scripts
 def main():
     """Run all Python scripts in the analysis_scripts directory."""
-    # List all Python files in the analysis script directory
     scripts_to_run = [script.name for script in scripts_dir.glob("*.py")]
 
-    # Run each script found in the directory
     for script in scripts_to_run:
         print(f"Running '{script}'...")
         run_script(script)
