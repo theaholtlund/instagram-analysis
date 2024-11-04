@@ -13,11 +13,9 @@ if str(root_dir) not in sys.path:
 import variables
 from utils import read_file, parse_simple_output, parse_list_output, parse_detailed_output
 
-# Function to generate HTML content for the report
 def generate_html_content(summary_data, show_count_files):
     """Generate HTML content for the summary report."""
     report_content = ""
-    
     for file_name, (count, items) in summary_data.items():
         # Convert title to uppercase and format it
         title = file_name.replace("_", " ").replace(".txt", "").upper()
@@ -36,7 +34,6 @@ def generate_html_content(summary_data, show_count_files):
     
     return report_content
 
-# Function to generate a summary report from analysis output files
 def generate_summary_report():
     """Generate the HTML summary report from analysis output files."""
     analysis_output_dir = Path(variables.OUTPUT_DIR)
