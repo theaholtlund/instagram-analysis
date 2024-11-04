@@ -2,23 +2,19 @@
 from pathlib import Path
 from bs4 import BeautifulSoup
 
-# Function to get the directory of current script
 def get_script_dir():
     """Return the directory of the current script."""
     return Path(__file__).resolve().parent
 
-# Function to construct file path
 def construct_file_path(*path_parts):
     """Construct a file path from the given parts."""
     return Path(*path_parts)
 
-# Function to list files in a directory and construct their full paths
 def list_files_and_construct_paths(directory):
     """List files in a directory and construct their full paths."""
     directory = Path(directory)
     return [str(f) for f in directory.iterdir() if f.is_file()]
 
-# Function to read file content
 def read_file(file_path, as_lines=False):
     """Read content from a file, returning either a string or a list of lines."""
     file_path = Path(file_path)
@@ -31,7 +27,6 @@ def read_file(file_path, as_lines=False):
         print(f"Error reading file '{file_path}': {e}")
     return None
 
-# Function to handle loading and parsing HTML content
 def load_and_parse_html(file_path):
     """Load and parse HTML content from a file using BeautifulSoup."""
     file_path = Path(file_path)
@@ -42,7 +37,6 @@ def load_and_parse_html(file_path):
         print(f"Error parsing HTML file '{file_path}': {e}")
     return None
 
-# Generalised function to extract content based on tag and filters
 def extract_content(soup, tag, attr=None, text_condition=None, content_type="text"):
     """Extract content from HTML based on tag, attributes and optional text conditions."""
     elements = soup.find_all(tag, attrs=attr)
@@ -56,7 +50,6 @@ def extract_content(soup, tag, attr=None, text_condition=None, content_type="tex
     
     return extracted
 
-# Function to write analysis outputs to a file
 def write_to_file(file_path, data, header="", detailed=False, data_label=None):
     """Write data to a file, with optional headers and detailed formatting."""
     file_path = Path(file_path)
@@ -75,14 +68,12 @@ def write_to_file(file_path, data, header="", detailed=False, data_label=None):
     except Exception as e:
         print(f"Error writing to file '{file_path}': {e}")
 
-# Function to parse a simple output file with a count on the first line
 def parse_simple_output(data):
     """Parse a simple output file where the first line contains a count."""
     header = data[0].strip()
     count = int(header.split(": ")[1])
     return count, []
 
-# Function to parse list output files
 def parse_list_output(data):
     """Parse a list output file with items starting from the third line."""
     try:
@@ -94,7 +85,6 @@ def parse_list_output(data):
         print(f"Error parsing list output: {e}")
         return 0, []
 
-# Function to parse detailed content output files
 def parse_detailed_output(data):
     """Parse a detailed output file where items appear after the first line."""
     try:
