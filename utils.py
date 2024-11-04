@@ -70,9 +70,13 @@ def write_to_file(file_path, data, header="", detailed=False, data_label=None):
 
 def parse_simple_output(data):
     """Parse a simple output file where the first line contains a count."""
-    header = data[0].strip()
-    count = int(header.split(": ")[1])
-    return count, []
+    try:
+        header = data[0].strip()
+        count = int(header.split(": ")[1])
+        return count, []
+    except (IndexError, ValueError) as e:
+        print(f"Error parsing simple output: {e}")
+        return 0, []
 
 def parse_list_output(data):
     """Parse a list output file with items starting from the third line."""
