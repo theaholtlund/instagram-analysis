@@ -6,8 +6,7 @@ from pathlib import Path
 # Add project root directory to system path
 script_dir = Path(__file__).resolve().parent
 root_dir = script_dir.parent
-if str(root_dir) not in sys.path:
-    sys.path.append(str(root_dir))
+sys.path.append(str(root_dir)) if str(root_dir) not in sys.path else None
 
 # Import modules and variables
 import variables
