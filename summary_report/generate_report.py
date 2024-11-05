@@ -11,6 +11,7 @@ sys.path.append(str(root_dir)) if str(root_dir) not in sys.path else None
 # Import modules and variables
 import variables
 from utils import read_file, parse_simple_output, parse_list_output, parse_detailed_output
+from create_plot import create_activity_plot
 
 def generate_html_content(summary_data, show_count_files):
     """Generate HTML content for the summary report."""
