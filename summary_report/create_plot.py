@@ -15,5 +15,6 @@ def create_activity_plot(output_path, comments_file, likes_file):
         with likes_path.open("r") as f:
             likes_line = f.readline().strip()
             total_likes = int(likes_line.split(":")[1].strip())
-    except:
-        print("Error reading data files")
+    except (FileNotFoundError, ValueError, IndexError) as e:
+        print("Error reading data files:", e)
+        return
