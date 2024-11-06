@@ -18,3 +18,12 @@ def create_activity_plot(output_path, comments_file, likes_file):
     except (FileNotFoundError, ValueError, IndexError) as e:
         print("Error reading data files:", e)
         return
+
+    # Create a bar chart for total likes and comments
+    bar_chart_path = output_path.parent / "activity_chart_bar.png"
+    plt.figure(figsize=(8, 5))
+    plt.bar(["Likes", "Comments"], [total_likes, total_comments], color=["orange", "red"])
+    plt.title("Total Instagram Activity: Likes and Comments")
+    plt.ylabel("Count")
+
+    print(f"Bar chart saved to: {bar_chart_path}")
