@@ -1,8 +1,9 @@
 # Import required libraries
-import matplotlib.pyplot as plt
 from pathlib import Path
+import matplotlib.pyplot as plt
 
-def create_activity_plot(comments_file, likes_file):
+def create_activity_plot(output_path, comments_file, likes_file):
+    """Generate and save charts showing total likes, comments and their ratio."""
     comments_path = Path(comments_file)
     likes_path = Path(likes_file)
 
