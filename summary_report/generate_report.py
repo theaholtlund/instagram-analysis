@@ -31,11 +31,11 @@ def generate_html_content(summary_data, show_count_files):
                 + "".join(f"<p>- {item}</p>\n" for item in items)
                 + "</div>\n</details>\n\n"
             )
-    
+
     return report_content
 
 def generate_summary_report():
-    """Generate the HTML summary report from analysis output files."""
+    """Generate the HTML summary report with plots from analysis output files."""
     analysis_output_dir = Path(variables.OUTPUT_DIR)
     summary_file_path = script_dir / variables.SUMMARY_REPORT
     template_file_path = script_dir / variables.REPORT_TEMPLATE

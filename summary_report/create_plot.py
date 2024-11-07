@@ -8,10 +8,12 @@ def create_activity_plot(output_path, comments_file, likes_file):
     likes_path = Path(likes_file)
 
     try:
+        # Read total comments
         with comments_path.open("r") as f:
             comments_line = f.readline().strip()
             total_comments = int(comments_line.split(":")[1].strip())
         
+        # Read total likes
         with likes_path.open("r") as f:
             likes_line = f.readline().strip()
             total_likes = int(likes_line.split(":")[1].strip())
