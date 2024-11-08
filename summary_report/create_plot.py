@@ -30,4 +30,8 @@ def create_activity_plot(output_path, comments_file, likes_file):
     plt.savefig(bar_chart_path)
     plt.close()
 
+    # Create a pie chart for the likes-to-comments ratio
+    pie_chart_path = output_path.parent / "activity_chart_pie.png"
+    plt.figure(figsize=(6, 6))
+
     print(f"Bar chart saved to: {bar_chart_path}")
