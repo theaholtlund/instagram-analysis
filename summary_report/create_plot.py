@@ -27,5 +27,7 @@ def create_activity_plot(output_path, comments_file, likes_file):
     plt.bar(["Likes", "Comments"], [total_likes, total_comments], color=["orange", "red"])
     plt.title("Total Instagram Activity: Likes and Comments")
     plt.ylabel("Count")
+    plt.savefig(bar_chart_path)
+    plt.close()
 
     print(f"Bar chart saved to: {bar_chart_path}")
