@@ -13,9 +13,17 @@ import variables
 from utils import read_file, parse_simple_output, parse_list_output, parse_detailed_output
 from create_plot import create_activity_plot
 
-def generate_html_content(summary_data, show_count_files):
-    """Generate HTML content for the summary report."""
+def generate_html_content(summary_data, show_count_files, bar_chart_path, pie_chart_path):
+    """Generate HTML content for the summary report, including bar and pie charts."""
     report_content = ""
+    analysis_output_dir = Path(variables.OUTPUT_DIR)
+
+    # Add the bar chart and pie chart to the report
+    report_content += "<h2>Instagram Activity Summary</h2>\n"
+    report_content += f'<img src="../{analysis_output_dir/bar_chart_path.name}" alt="Total Likes and Comments" style="width:60%; margin:auto; display:block;">\n'
+    report_content += f'<img src="../{analysis_output_dir/pie_chart_path.name}" alt="Likes-to-Comments Ratio" style="width:60%; margin:auto; display:block;">\n'
+
+    # Add summaries for each output file
     for file_name, (count, items) in summary_data.items():
         # Convert title to uppercase and format it
         title = file_name.replace("_", " ").replace(".txt", "").upper()
@@ -39,6 +47,15 @@ def generate_summary_report():
     analysis_output_dir = Path(variables.OUTPUT_DIR)
     summary_file_path = script_dir / variables.SUMMARY_REPORT
     template_file_path = script_dir / variables.REPORT_TEMPLATE
+    bar_chart_path = analysis_output_dir / "activity_chart_bar.png"
+    pie_chart_path = analysis_output_dir / "activity_chart_pie.png"
+
+    # Generate bar and pie charts with activity data
+    create_activity_plot(
+        output_path=bar_chart_path,
+        comments_file=analysis_output_dir / "count_comments.txt",
+        likes_file=analysis_output_dir / "count_liked_posts.txt"
+    )
 
     # Map filenames to parser functions
     files_parsers = {
@@ -64,7 +81,7 @@ def generate_summary_report():
     show_count_files = {"count_comments.txt", "count_liked_comments.txt", "count_liked_posts.txt", "count_stories.txt"}
 
     # Generate and read HTML template
-    report_content = generate_html_content(summary_data, show_count_files)
+    report_content = generate_html_content(summary_data, show_count_files, bar_chart_path, pie_chart_path)
     html_template = read_file(template_file_path)
 
     if html_template is None:
