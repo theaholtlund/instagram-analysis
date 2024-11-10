@@ -13,21 +13,12 @@ def read_total_from_file(file_path, label):
 
 def create_activity_plot(output_path, comments_file, likes_file):
     """Generate and save charts showing total likes, comments and their ratio."""
-    comments_path = Path(comments_file)
-    likes_path = Path(likes_file)
-
-    try:
-        # Read total comments
-        with comments_path.open("r") as f:
-            comments_line = f.readline().strip()
-            total_comments = int(comments_line.split(":")[1].strip())
-        
-        # Read total likes
-        with likes_path.open("r") as f:
-            likes_line = f.readline().strip()
-            total_likes = int(likes_line.split(":")[1].strip())
-    except (FileNotFoundError, ValueError, IndexError) as e:
-        print("Error reading data files:", e)
+    # Retrieve data
+    total_comments = read_total_from_file(comments_file, "comments")
+    total_likes = read_total_from_file(likes_file, "likes")
+    
+    if total_comments is None or total_likes is None:
+        print("Error: Could not retrieve data for one or both metrics.")
         return
 
     # Create a bar chart for total likes and comments
