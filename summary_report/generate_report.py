@@ -15,7 +15,7 @@ from create_plot import create_activity_plot
 
 def generate_html_content(summary_data, show_count_files, bar_chart_path, pie_chart_path):
     """Generate HTML content for the summary report, including bar and pie charts."""
-    report_content = ""
+    report_content = "<div class='container'>"
     analysis_output_dir = Path(variables.OUTPUT_DIR)
 
     # Add the bar chart and pie chart to the report
@@ -40,6 +40,7 @@ def generate_html_content(summary_data, show_count_files, bar_chart_path, pie_ch
                 + "</div>\n</details>\n\n"
             )
 
+    report_content += "</div>"
     return report_content
 
 def generate_summary_report():
