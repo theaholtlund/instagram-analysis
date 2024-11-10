@@ -2,6 +2,15 @@
 from pathlib import Path
 import matplotlib.pyplot as plt
 
+def read_total_from_file(file_path, label):
+    """Helper function to read total counts from a file."""
+    try:
+        with open(file_path, "r") as f:
+            return int(f.readline().strip().split(":")[1].strip())
+    except (FileNotFoundError, ValueError, IndexError) as e:
+        print(f"Error reading {label} data:", e)
+        return None
+
 def create_activity_plot(output_path, comments_file, likes_file):
     """Generate and save charts showing total likes, comments and their ratio."""
     comments_path = Path(comments_file)
