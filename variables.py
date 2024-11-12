@@ -21,3 +21,7 @@ SCRIPTS_DIR = "analysis_scripts"
 # Constants for summary report filenames
 REPORT_TEMPLATE = "report_template.html"
 SUMMARY_REPORT = "summary_report.html"
+
+# Constants for styling of report plots
+COLOR_LIKES = "#ffa64e"
+COLOR_COMMENTS = "#ff8b19"

@@ -1,10 +1,15 @@
 # Import required libraries
+import sys
 from pathlib import Path
 import matplotlib.pyplot as plt
 
-# Define color constants
-COLOR_LIKES = "#ffa64e"
-COLOR_COMMENTS = "#ff8b19"
+# Add project root directory to system path
+script_dir = Path(__file__).resolve().parent
+root_dir = script_dir.parent
+sys.path.append(str(root_dir)) if str(root_dir) not in sys.path else None
+
+# Import modules and variables
+import variables
 
 def read_total_from_file(file_path, label):
     """Helper function to read total counts from a file."""
@@ -31,7 +36,7 @@ def create_activity_plot(output_path, comments_file, likes_file):
     # Bar chart for total likes and comments
     bar_chart_path = output_path.parent / "activity_chart_bar.png"
     plt.figure(figsize=(8, 5))
-    plt.bar(["Likes", "Comments"], [total_likes, total_comments], color=[colors["Likes"], colors["Comments"]])
+    plt.bar(["Likes", "Comments"], [total_likes, total_comments], color=[variables.COLOR_LIKES, variables.COLOR_COMMENTS])
     plt.title("Total Instagram Activity: Likes and Comments")
     plt.xlabel("Activity Type")
     plt.ylabel("Count")
@@ -44,7 +49,7 @@ def create_activity_plot(output_path, comments_file, likes_file):
     plt.pie(
         [total_likes, total_comments], labels=["Likes", "Comments"],
         autopct="%1.1f%%", startangle=140,
-        colors=[colors["Likes"], colors["Comments"]], wedgeprops={'edgecolor': 'black', 'linewidth': 1}
+        colors=[variables.COLOR_LIKES, variables.COLOR_COMMENTS], wedgeprops={"edgecolor": "black", "linewidth": 1}
     )
     plt.title("Likes-to-Comments Ratio")
     plt.savefig(pie_chart_path, dpi=150, bbox_inches='tight')
