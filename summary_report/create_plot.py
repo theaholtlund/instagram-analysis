@@ -2,6 +2,10 @@
 from pathlib import Path
 import matplotlib.pyplot as plt
 
+# Define color constants
+COLOR_LIKES = "#ffa64e"
+COLOR_COMMENTS = "#ff8b19"
+
 def read_total_from_file(file_path, label):
     """Helper function to read total counts from a file."""
     try:
