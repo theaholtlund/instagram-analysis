@@ -21,21 +21,29 @@ def create_activity_plot(output_path, comments_file, likes_file):
         print("Error: Could not retrieve data for one or both metrics.")
         return
 
-    # Create a bar chart for total likes and comments
+    # Define colors for consistency and contrast
+    colors = {"Likes": "#ffa64e", "Comments": "#ff8b19"}
+
+    # Bar chart for total likes and comments
     bar_chart_path = output_path.parent / "activity_chart_bar.png"
     plt.figure(figsize=(8, 5))
-    plt.bar(["Likes", "Comments"], [total_likes, total_comments], color=["orange", "red"])
+    plt.bar(["Likes", "Comments"], [total_likes, total_comments], color=[colors["Likes"], colors["Comments"]])
     plt.title("Total Instagram Activity: Likes and Comments")
+    plt.xlabel("Activity Type")
     plt.ylabel("Count")
-    plt.savefig(bar_chart_path)
+    plt.savefig(bar_chart_path, dpi=150, bbox_inches='tight')
     plt.close()
 
-    # Create a pie chart for the likes-to-comments ratio
+    # Pie chart for likes-to-comments ratio
     pie_chart_path = output_path.parent / "activity_chart_pie.png"
     plt.figure(figsize=(6, 6))
-    plt.pie([total_likes, total_comments], labels=["Likes", "Comments"], autopct="%1.1f%%", colors=["orange", "red"])
+    plt.pie(
+        [total_likes, total_comments], labels=["Likes", "Comments"],
+        autopct="%1.1f%%", startangle=140,
+        colors=[colors["Likes"], colors["Comments"]], wedgeprops={'edgecolor': 'black', 'linewidth': 1}
+    )
     plt.title("Likes-to-Comments Ratio")
-    plt.savefig(pie_chart_path)
+    plt.savefig(pie_chart_path, dpi=150, bbox_inches='tight')
     plt.close()
 
     print(f"Bar chart saved to: {bar_chart_path}")
