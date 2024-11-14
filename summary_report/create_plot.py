@@ -18,7 +18,7 @@ def read_total_from_file(file_path, label):
         with open(file_path, "r") as f:
             return int(f.readline().strip().split(":")[1].strip())
     except (FileNotFoundError, ValueError, IndexError) as e:
-        print(f"Error reading {label} data:", e)
+        print(f"Error reading {label} data: {e}")
         return None
 
 def create_activity_plot(output_path, comments_file, likes_file):
@@ -28,7 +28,7 @@ def create_activity_plot(output_path, comments_file, likes_file):
     total_likes = read_total_from_file(likes_file, "likes")
     
     if total_comments is None or total_likes is None:
-        print("Error: Could not retrieve data for one or both metrics.")
+        print("Error: Data retrieval failed for one or both metrics.")
         return
 
     # Define colors for consistency and contrast
