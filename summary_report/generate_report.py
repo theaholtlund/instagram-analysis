@@ -21,8 +21,16 @@ def generate_html_content(summary_data, show_count_files, bar_chart_path, pie_ch
 
     # Add the bar chart and pie chart to the report
     report_content += "<h2>Instagram Activity Summary</h2>\n"
-    report_content += f'<img src="../{analysis_output_dir/bar_chart_path.name}" alt="Total Likes and Comments" style="width:60%; margin:auto; display:block;">\n'
-    report_content += f'<img src="../{analysis_output_dir/pie_chart_path.name}" alt="Likes-to-Comments Ratio" style="width:60%; margin:auto; display:block;">\n'
+    
+    # Centering charts in the HTML report
+    report_content += f'''
+        <div class="chart-container">
+            <h3>Total Likes and Comments</h3>
+            <img src="../{analysis_output_dir/bar_chart_path.name}" alt="Total Likes and Comments" style="width:100%; max-width:500px;">
+            <h3>Likes-to-Comments Ratio</h3>
+            <img src="../{analysis_output_dir/pie_chart_path.name}" alt="Likes-to-Comments Ratio" style="width:100%; max-width:500px;">
+        </div>
+    '''
 
     # Add summaries for each output file
     for file_name, (count, items) in summary_data.items():
