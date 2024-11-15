@@ -41,11 +41,11 @@ def create_activity_plot(output_path, comments_file, likes_file):
     plt.title("Total Instagram Activity: Likes and Comments")
     plt.xlabel("Activity Type")
     plt.ylabel("Count")
-    plt.savefig(bar_chart_path, dpi=150, bbox_inches='tight')
+    plt.savefig(bar_chart_path, dpi=150, bbox_inches="tight")
     plt.close()
 
     # Pie chart for likes-to-comments ratio
-    pie_chart_path = output_path.parent / "activity_chart_pie.png"
+    pie_chart_path = output_dir / "activity_chart_pie.png"
     plt.figure(figsize=(6, 6))
     plt.pie(
         [total_likes, total_comments], labels=["Likes", "Comments"],
@@ -53,7 +53,7 @@ def create_activity_plot(output_path, comments_file, likes_file):
         colors=[variables.COLOR_LIKES, variables.COLOR_COMMENTS], wedgeprops={"edgecolor": "black", "linewidth": 1}
     )
     plt.title("Likes-to-Comments Ratio")
-    plt.savefig(pie_chart_path, dpi=150, bbox_inches='tight')
+    plt.savefig(pie_chart_path, dpi=150, bbox_inches="tight")
     plt.close()
 
     print(f"Bar chart saved to: {bar_chart_path}")
