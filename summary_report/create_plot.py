@@ -31,11 +31,11 @@ def create_activity_plot(output_path, comments_file, likes_file):
         print("Error: Data retrieval failed for one or both metrics.")
         return
 
-    # Define colors for consistency and contrast
-    colors = {"Likes": "#ffa64e", "Comments": "#ff8b19"}
+    # Define output directory
+    output_dir = output_path.parent
 
     # Bar chart for total likes and comments
-    bar_chart_path = output_path.parent / "activity_chart_bar.png"
+    bar_chart_path = output_dir / "activity_chart_bar.png"
     plt.figure(figsize=(8, 5))
     plt.bar(["Likes", "Comments"], [total_likes, total_comments], color=[variables.COLOR_LIKES, variables.COLOR_COMMENTS])
     plt.title("Total Instagram Activity: Likes and Comments")
