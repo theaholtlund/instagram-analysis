@@ -1,12 +1,14 @@
 # Import required libraries
 import os
 import sys
+from pathlib import Path
 from collections import Counter
 
-# Add project root directory to system path
-script_dir = os.path.dirname(os.path.abspath(__file__))
-root_dir = os.path.dirname(script_dir)
-sys.path.append(root_dir)
+# Add project root directory to system path if not already present
+script_dir = Path(__file__).resolve().parent
+root_dir = script_dir.parent
+if str(root_dir) not in sys.path:
+    sys.path.append(str(root_dir))
 
 # Import modules and variables
 import variables
