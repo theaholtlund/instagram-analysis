@@ -12,7 +12,6 @@ if str(root_dir) not in sys.path:
 import variables
 from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file
 
-# Function to extract likes
 def extract_likes(soup):
     """Extract liked comments from HTML content."""
     return [like for like in soup.find_all("a", href=True) if like.text == "👍"]
