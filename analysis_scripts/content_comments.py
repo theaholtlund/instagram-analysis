@@ -13,7 +13,6 @@ if str(root_dir) not in sys.path:
 import variables
 from utils import get_script_dir, construct_file_path, list_files_and_construct_paths, load_and_parse_html, write_to_file
 
-# Function to extract comments
 def extract_comments(soup):
     """Extract comments from HTML content."""
     return [comment.text for comment in soup.find_all("td", class_="_2pin _a6_q") if "Comment" in comment.text]

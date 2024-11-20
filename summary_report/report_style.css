@@ -129,13 +129,13 @@ button:active {
   transform: scale(0.98);
 }
 
-/* Chart section styling */
+/* Styling for report chart section */
 .chart-container {
   text-align: center;
   margin: 20px 0;
 }
 
-/* Styling for charts within chart-container */
+/* Styling for chart headers within chart container */
 .chart-container h3 {
   font-size: 1.3em;
   color: #333;

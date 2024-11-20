@@ -67,7 +67,7 @@ def generate_summary_report():
         likes_file=analysis_output_dir / "count_liked_posts.txt"
     )
 
-    # Map filenames to parser functions
+    # Define parsers for each file type
     files_parsers = {
         "blocked_accounts.txt": parse_list_output,
         "close_friends.txt": parse_list_output,
