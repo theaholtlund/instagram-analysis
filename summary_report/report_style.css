@@ -144,9 +144,11 @@ button:active {
 
 /* Styling for chart images within chart container */
 .chart-container img {
+  max-width: 100%;
+  height: auto;
   display: block;
   margin: 15px auto;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
   border-radius: 8px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
 }
