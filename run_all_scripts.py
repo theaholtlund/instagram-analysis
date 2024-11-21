@@ -19,6 +19,8 @@ def run_script(script_name):
         print(f"Successfully ran '{script_name}':\n{result.stdout}\n{'=' * 40}\n")
     except subprocess.CalledProcessError as e:
         print(f"Error running '{script_name}':\n{e.stderr}\n{'=' * 40}\n")
+    except Exception as e:
+        print(f"An unexpected error occurred while running '{script_name}': {e}\n{'=' * 40}\n")
 
 def main():
     """Run all Python scripts in the analysis_scripts directory."""
