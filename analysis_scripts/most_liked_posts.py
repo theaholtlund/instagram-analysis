@@ -13,7 +13,6 @@ if str(root_dir) not in sys.path:
 import variables
 from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file
 
-# Function to extract usernames behind liked posts
 def extract_liked_usernames(soup):
     """Extract usernames from liked posts in the HTML content."""
     return [username.text for username in soup.find_all("div", class_="_3-95 _2pim _a6-h _a6-i")]

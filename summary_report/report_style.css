@@ -142,6 +142,7 @@ button:active {
   margin-top: 10px;
 }
 
+/* Styling for chart images within chart container */
 .chart-container img {
   display: block;
   margin: 15px auto;
