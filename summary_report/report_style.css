@@ -144,6 +144,7 @@ button:active {
   font-size: 1.3em;
   color: #333;
   margin-top: 10px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* Styling for chart images within chart container */
