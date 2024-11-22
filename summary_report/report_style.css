@@ -133,6 +133,10 @@ button:active {
 .chart-container {
   text-align: center;
   margin: 20px 0;
+  padding: 10px;
+  background-color: #fdf5e6;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Styling for chart headers within chart container */
