@@ -24,7 +24,7 @@ def run_script(script_name):
 
 def main():
     """Run all Python scripts in the analysis_scripts directory."""
-    scripts_to_run = [script.name for script in scripts_dir.glob("*.py")]
+    scripts_to_run = sorted(script.name for script in scripts_dir.glob("*.py"))
 
     if not scripts_to_run:
         print("No scripts found to execute in the analysis scripts directory.")
