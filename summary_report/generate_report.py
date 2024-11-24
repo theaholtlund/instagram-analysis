@@ -23,7 +23,7 @@ def generate_html_content(summary_data, show_count_files, bar_chart_path, pie_ch
     report_content.append(f"""
         <div class="chart-container">
             <h3>Total Likes and Comments</h3>
-            <img src="../{analysis_output_dir/bar_chart_path.name}" alt="Total Likes and Comments" style="width:100%; max-width:500px;">
+            <img src="../{analysis_output_dir / bar_chart_path.name}" alt="Total Likes and Comments">
             <h3>Likes-to-Comments Ratio</h3>
             <img src="../{analysis_output_dir/pie_chart_path.name}" alt="Likes-to-Comments Ratio" style="width:100%; max-width:500px;">
         </div>
