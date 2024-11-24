@@ -16,14 +16,11 @@ from create_plot import create_activity_plot
 
 def generate_html_content(summary_data, show_count_files, bar_chart_path, pie_chart_path):
     """Generate HTML content for the summary report, including bar and pie charts."""
-    report_content = "<div class='container'>"
     analysis_output_dir = Path(variables.OUTPUT_DIR)
+    report_content = ["<div class='container'>", "<h2>Instagram Activity Summary</h2>\n"]
 
-    # Add the bar chart and pie chart to the report
-    report_content += "<h2>Instagram Activity Summary</h2>\n"
-    
-    # Centering charts in the HTML report
-    report_content += f'''
+    # Add charts with class names for styling
+    report_content.append(f"""
         <div class="chart-container">
             <h3>Total Likes and Comments</h3>
             <img src="../{analysis_output_dir/bar_chart_path.name}" alt="Total Likes and Comments" style="width:100%; max-width:500px;">
