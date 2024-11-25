@@ -89,9 +89,9 @@ def generate_summary_report():
 
     # Generate and read HTML template
     report_content = generate_html_content(summary_data, show_count_files, bar_chart_path, pie_chart_path)
-    html_template = read_file(template_file_path)
 
-    if html_template is None:
+    html_template = read_file(template_file_path)
+    if not html_template:
         print("Error: Failed to load HTML template.")
         return
 
