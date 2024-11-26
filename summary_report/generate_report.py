@@ -34,10 +34,9 @@ def generate_html_content(summary_data, show_count_files, bar_chart_path, pie_ch
         # Convert title to uppercase and format it
         title = file_name.replace("_", " ").replace(".txt", "").upper()
         
-        # Add count to the title if applicable
-        report_content += f"<h2>{title}: {count}</h2>\n" if file_name in show_count_files else f"<h2>{title}:</h2>\n"
-        
         # Add expandable details for file contents
+        report_content.append(f"<h2>{title}: {count}</h2>\n" if file_name in show_count_files else f"<h2>{title}:</h2>\n")
+
         if items:
             report_content += (
                 "<details><summary>CLICK TO EXPAND</summary>\n"
