@@ -14,6 +14,11 @@ import variables
 
 def read_total_from_file(file_path, label):
     """Helper function to read total counts from a file."""
+    file_path = Path(file_path)
+    if not file_path.exists():
+        print(f"Error: {label} file '{file_path}' not found.")
+        return None
+
     try:
         with open(file_path, "r") as f:
             return int(f.readline().strip().split(":")[1].strip())
