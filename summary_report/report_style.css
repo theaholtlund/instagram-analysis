@@ -129,6 +129,13 @@ button:active {
   transform: scale(0.98);
 }
 
+/* Styling for instructions by print button */
+.print-instructions {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
 /* Styling for report chart section */
 .chart-container {
   text-align: center;
