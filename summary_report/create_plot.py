@@ -20,7 +20,7 @@ def read_total_from_file(file_path, label):
         return None
 
     try:
-        with open(file_path, "r") as f:
+        with file_path.open("r") as f:
             return int(f.readline().strip().split(":")[1].strip())
     except (FileNotFoundError, ValueError, IndexError) as e:
         print(f"Error reading {label} data: {e}")
