@@ -38,12 +38,14 @@ def generate_html_content(summary_data, show_count_files, bar_chart_path, pie_ch
         report_content.append(f"<h2>{title}: {count}</h2>\n" if file_name in show_count_files else f"<h2>{title}:</h2>\n")
 
         if items:
-            report_content += (
-                "<details><summary>CLICK TO EXPAND</summary>\n"
-                "<div class='content-list'>\n"
-                + "".join(f"<p>- {item}</p>\n" for item in items)
-                + "</div>\n</details>\n\n"
-            )
+            item_list = "".join(f"<p>- {item}</p>\n" for item in items)
+            report_content.append(f"""
+                <details><summary>CLICK TO EXPAND</summary>
+                    <div class='content-list'>
+                        {item_list}
+                    </div>
+                </details>\n
+            """)
 
     report_content += "</div>"
     return report_content
