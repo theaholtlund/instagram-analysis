@@ -32,11 +32,7 @@ def create_activity_plot(output_path, comments_file, likes_file):
     total_comments = read_total_from_file(comments_file, "comments")
     total_likes = read_total_from_file(likes_file, "likes")
     
-    if total_comments is None:
-        print(f"Error: Comments file '{comments_file}' is missing or unreadable.")
-        return
-    if total_likes is None:
-        print(f"Error: Likes file '{likes_file}' is missing or unreadable.")
+    if total_comments is None or total_likes is None:
         return
 
     # Define output directory and file names dynamically
