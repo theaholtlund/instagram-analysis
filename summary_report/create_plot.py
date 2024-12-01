@@ -22,8 +22,8 @@ def read_total_from_file(file_path, label):
     try:
         with file_path.open("r") as f:
             return int(f.readline().strip().split(":")[1].strip())
-    except (FileNotFoundError, ValueError, IndexError) as e:
-        print(f"Error reading {label} data: {e}")
+    except (ValueError, IndexError) as e:
+        print(f"Error reading {label} data in '{file_path}': {e}")
         return None
 
 def create_activity_plot(output_path, comments_file, likes_file):
