@@ -47,8 +47,8 @@ def generate_html_content(summary_data, show_count_files, bar_chart_path, pie_ch
                 </details>\n
             """)
 
-    report_content += "</div>"
-    return report_content
+    report_content.append("</div>")
+    return "\n".join(report_content)
 
 def generate_summary_report():
     """Generate the HTML summary report with plots from analysis output files."""
