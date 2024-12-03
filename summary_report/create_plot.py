@@ -34,7 +34,6 @@ def create_activity_plot(output_path, comments_file, likes_file):
     if total_comments is None or total_likes is None:
         return
 
-    # Define output directory and file names dynamically
     output_dir = output_path.parent
 
     try:
