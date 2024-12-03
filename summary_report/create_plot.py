@@ -37,27 +37,29 @@ def create_activity_plot(output_path, comments_file, likes_file):
     # Define output directory and file names dynamically
     output_dir = output_path.parent
 
-    # Bar chart for total likes and comments
-    bar_chart_path = output_dir / "activity_chart_bar.png"
-    plt.figure(figsize=(8, 5))
-    plt.bar(["Likes", "Comments"], [total_likes, total_comments], color=[variables.COLOR_LIKES, variables.COLOR_COMMENTS])
-    plt.title("Total Instagram Activity: Likes and Comments")
-    plt.xlabel("Activity Type")
-    plt.ylabel("Count")
-    plt.savefig(bar_chart_path, dpi=150, bbox_inches="tight")
-    plt.close()
+    try:
+        # Bar chart for total likes and comments
+        bar_chart_path = output_dir / "activity_chart_bar.png"
+        plt.figure(figsize=(8, 5))
+        plt.bar(["Likes", "Comments"], [total_likes, total_comments], color=[variables.COLOR_LIKES, variables.COLOR_COMMENTS])
+        plt.title("Total Instagram Activity: Likes and Comments")
+        plt.xlabel("Activity Type")
+        plt.ylabel("Count")
+        plt.savefig(bar_chart_path, dpi=150, bbox_inches="tight")
+        plt.close()
 
-    # Pie chart for likes-to-comments ratio
-    pie_chart_path = output_dir / "activity_chart_pie.png"
-    plt.figure(figsize=(6, 6))
-    plt.pie(
-        [total_likes, total_comments], labels=["Likes", "Comments"],
-        autopct="%1.1f%%", startangle=140,
-        colors=[variables.COLOR_LIKES, variables.COLOR_COMMENTS], wedgeprops={"edgecolor": "black", "linewidth": 1}
-    )
-    plt.title("Likes-to-Comments Ratio")
-    plt.savefig(pie_chart_path, dpi=150, bbox_inches="tight")
-    plt.close()
+        # Pie chart for likes-to-comments ratio
+        pie_chart_path = output_dir / "activity_chart_pie.png"
+        plt.figure(figsize=(6, 6))
+        plt.pie(
+            [total_likes, total_comments], labels=["Likes", "Comments"],
+            autopct="%1.1f%%", startangle=140,
+            colors=[variables.COLOR_LIKES, variables.COLOR_COMMENTS], wedgeprops={"edgecolor": "black", "linewidth": 1}
+        )
+        plt.title("Likes-to-Comments Ratio")
+        plt.savefig(pie_chart_path, dpi=150, bbox_inches="tight")
+        plt.close()
 
-    print(f"Bar chart saved to: {bar_chart_path}")
-    print(f"Pie chart saved to: {pie_chart_path}")
+    except:
+        print(f"Bar chart saved to: {bar_chart_path}")
+        print(f"Pie chart saved to: {pie_chart_path}")
