@@ -63,3 +63,12 @@ def create_activity_plot(output_path, comments_file, likes_file, fig_size_bar=(8
         print(f"Pie chart saved to: {pie_chart_path}")
     except Exception as e:
         print(f"Error creating charts: {e}")
+
+def create_follower_growth_plot():
+    """Generate and save a line chart showing follower growth over time."""
+    try:
+        # Line chart for growth
+        plt.title("Instagram Follower Growth Over Time")
+
+    except Exception as e:
+        print(f"Error creating growth chart: {e}")
