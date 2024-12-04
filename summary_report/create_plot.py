@@ -59,6 +59,7 @@ def create_activity_plot(output_path, comments_file, likes_file):
         plt.savefig(pie_chart_path, dpi=150, bbox_inches="tight")
         plt.close()
 
-    except:
         print(f"Bar chart saved to: {bar_chart_path}")
         print(f"Pie chart saved to: {pie_chart_path}")
+    except Exception as e:
+        print(f"Error creating charts: {e}")
