@@ -2,6 +2,8 @@
 import sys
 import webbrowser
 from pathlib import Path
+from fpdf import FPDF
+from weasyprint import HTML
 
 # Add project root directory to system path if not already present
 script_dir = Path(__file__).resolve().parent
