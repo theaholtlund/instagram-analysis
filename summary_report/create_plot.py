@@ -80,6 +80,13 @@ def create_follower_growth_plot(output_path, growth_file, fig_size=(8, 5)):
         plt.figure(figsize=fig_size)
         plt.plot(dates, followers, marker='o', linestyle='-', color='b')
         plt.title("Instagram Follower Growth Over Time")
+        plt.xlabel("Date")
+        plt.ylabel("Followers")
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+        plt.savefig(output_path, dpi=150, bbox_inches="tight")
+        plt.close()
 
+        print(f"Follower growth chart saved to: {output_path}")
     except Exception as e:
         print(f"Error creating growth chart: {e}")
