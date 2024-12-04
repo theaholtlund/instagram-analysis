@@ -108,9 +108,11 @@ def generate_summary_report():
     try:
         summary_file_path.write_text(html_template.replace("{{{content}}}", report_content), encoding="utf-8")
         print(f"The summary report has been generated and saved to '{summary_file_path}'.")
+
+        # Open the report in a browser
         webbrowser.open(summary_file_path.as_uri())
     except Exception as e:
-        print(f"Error writing the summary report: {e}")
+        print(f"Error writing summary report: {e}")
 
 if __name__ == "__main__":
     generate_summary_report()
