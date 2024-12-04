@@ -64,7 +64,7 @@ def create_activity_plot(output_path, comments_file, likes_file, fig_size_bar=(8
     except Exception as e:
         print(f"Error creating charts: {e}")
 
-def create_follower_growth_plot(growth_file):
+def create_follower_growth_plot(output_path, growth_file, fig_size=(8, 5)):
     """Generate and save a line chart showing follower growth over time."""
     growth_file = Path(growth_file)
     if not growth_file.exists():
@@ -72,6 +72,10 @@ def create_follower_growth_plot(growth_file):
         return
 
     try:
+        with growth_file.open("r") as f:
+            lines = f.readlines()
+            dates, followers = zip(*[line.strip().split(",") for line in lines])
+
         # Line chart for growth
         plt.title("Instagram Follower Growth Over Time")
 
