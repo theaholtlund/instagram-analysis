@@ -77,6 +77,8 @@ def create_follower_growth_plot(output_path, growth_file, fig_size=(8, 5)):
             dates, followers = zip(*[line.strip().split(",") for line in lines])
 
         # Line chart for growth
+        plt.figure(figsize=fig_size)
+        plt.plot(dates, followers, marker='o', linestyle='-', color='b')
         plt.title("Instagram Follower Growth Over Time")
 
     except Exception as e:
