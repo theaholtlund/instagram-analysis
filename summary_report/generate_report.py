@@ -52,6 +52,19 @@ def generate_html_content(summary_data, show_count_files, bar_chart_path, pie_ch
     report_content.append("</div>")
     return "\n".join(report_content)
 
+def export_to_pdf(summary_file_path, pdf_output_path):
+    """Export the summary report HTML to a PDF file."""
+    try:
+        from weasyprint import HTML
+        html_content = summary_file_path.read_text(encoding="utf-8")
+        pdf = HTML(string=html_content).write_pdf()
+        pdf_output_path.write_bytes(pdf)
+        print(f"PDF report saved to: {pdf_output_path}")
+    except ImportError:
+        print("Error: Install 'weasyprint' for PDF export functionality.")
+    except Exception as e:
+        print(f"Error exporting to PDF: {e}")
+
 def generate_summary_report():
     """Generate the HTML summary report with plots from analysis output files."""
     analysis_output_dir = Path(variables.OUTPUT_DIR)
