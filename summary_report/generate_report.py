@@ -58,12 +58,16 @@ def generate_summary_report():
     bar_chart_path = analysis_output_dir / "activity_chart_bar.png"
     pie_chart_path = analysis_output_dir / "activity_chart_pie.png"
 
-    # Generate bar and pie charts with activity data
-    create_activity_plot(
-        output_path=bar_chart_path,
-        comments_file=analysis_output_dir / "count_comments.txt",
-        likes_file=analysis_output_dir / "count_liked_posts.txt"
-    )
+    try:
+        # Generate bar and pie charts with activity data
+        create_activity_plot(
+            output_path=bar_chart_path,
+            comments_file=analysis_output_dir / "count_comments.txt",
+            likes_file=analysis_output_dir / "count_liked_posts.txt"
+        )
+    except Exception as e:
+        print(f"Error creating plots: {e}")
+        return
 
     # Define parsers for each file type
     files_parsers = {
@@ -79,13 +83,15 @@ def generate_summary_report():
     }
 
     # Parse each file and store results
-    summary_data = {
-        file_name: parser(read_file(analysis_output_dir / file_name, as_lines=True))
-        for file_name, parser in files_parsers.items()
-        if (analysis_output_dir / file_name).exists()
-    }
+    summary_data = {}
+    for file_name, parser in files_parsers.items():
+        file_path = analysis_output_dir / file_name
+        if file_path.exists():
+            try:
+                summary_data[file_name] = parser(read_file(file_path, as_lines=True))
+            except Exception as e:
+                print(f"Error parsing '{file_name}': {e}")
 
-    # Files that should display a count after the title
     show_count_files = {"count_comments.txt", "count_liked_comments.txt", "count_liked_posts.txt", "count_stories.txt"}
 
     # Generate and read HTML template
