@@ -1,2 +1,4 @@
+FPDF
+HTML
 matplotlib
 beautifulsoup4
