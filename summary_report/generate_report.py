@@ -2,8 +2,6 @@
 import sys
 import webbrowser
 from pathlib import Path
-from fpdf import FPDF
-from weasyprint import HTML
 
 # Add project root directory to system path if not already present
 script_dir = Path(__file__).resolve().parent
@@ -125,8 +123,8 @@ def generate_summary_report():
         # Open the report in a browser
         webbrowser.open(summary_file_path.as_uri())
 
-        # Export to PDF
-        export_to_pdf(summary_file_path, analysis_output_dir / "Instagram_Report.pdf")
+        # Export the report in PDF format
+        export_to_pdf(summary_file_path, analysis_output_dir / "instagram_report.pdf")
     except Exception as e:
         print(f"Error writing summary report: {e}")
 
