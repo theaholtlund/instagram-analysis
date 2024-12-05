@@ -124,6 +124,9 @@ def generate_summary_report():
 
         # Open the report in a browser
         webbrowser.open(summary_file_path.as_uri())
+
+        # Export to PDF
+        export_to_pdf(summary_file_path, analysis_output_dir / "Instagram_Report.pdf")
     except Exception as e:
         print(f"Error writing summary report: {e}")
 
