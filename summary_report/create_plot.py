@@ -87,3 +87,15 @@ def create_following_vs_close_friends_plot(output_path, close_friends_file, foll
         
         # Get the usernames of close friends, skipping the header lines
         close_friends = set(line.strip().lstrip("- ").strip() for line in lines[2:])
+    
+    # Read the following file (following.html)
+    if not following_file.exists():
+        print(f"Error: Following file '{following_file}' not found.")
+        return
+    
+    # Parse the following HTML content using BeautifulSoup
+    following_soup = load_and_parse_html(following_file)
+    
+    if following_soup is None:
+        print(f"Error loading or parsing the following HTML file '{following_file}'.")
+        return
