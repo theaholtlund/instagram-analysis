@@ -11,6 +11,7 @@ if str(root_dir) not in sys.path:
 
 # Import modules and variables
 import variables
+from utils import load_and_parse_html, extract_content
 
 def read_total_from_file(file_path, label):
     """Helper function to read total counts from a file."""
@@ -64,11 +65,14 @@ def create_activity_plot(output_path, comments_file, likes_file, fig_size_bar=(8
     except Exception as e:
         print(f"Error creating charts: {e}")
 
-def create_follower_growth_plot(output_path, growth_file, fig_size=(8, 5)):
-    """Generate and save a line chart showing follower growth over time."""
-    growth_file = Path(growth_file)
-    if not growth_file.exists():
-        print(f"Error: Growth file '{growth_file}' not found.")
+def create_following_vs_close_friends_plot(output_path, close_friends_file, following_file, fig_size=(8, 5)):
+    """Generate and save a plot showing the percentage ratio between following and close friends."""
+    close_friends_file = Path(close_friends_file)
+    following_file = Path(following_file)
+    
+    # Read the close friends file
+    if not close_friends_file.exists():
+        print(f"Error: Close friends file '{close_friends_file}' not found.")
         return
 
     try:
