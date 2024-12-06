@@ -74,23 +74,16 @@ def create_following_vs_close_friends_plot(output_path, close_friends_file, foll
     if not close_friends_file.exists():
         print(f"Error: Close friends file '{close_friends_file}' not found.")
         return
-
-    try:
-        with growth_file.open("r") as f:
-            lines = f.readlines()
-            dates, followers = zip(*[line.strip().split(",") for line in lines])
-
-        # Line chart for growth
-        plt.figure(figsize=fig_size)
-        plt.plot(dates, followers, marker='o', linestyle='-', color='b')
-        plt.title("Instagram Follower Growth Over Time")
-        plt.xlabel("Date")
-        plt.ylabel("Followers")
-        plt.xticks(rotation=45)
-        plt.tight_layout()
-        plt.savefig(output_path, dpi=150, bbox_inches="tight")
-        plt.close()
-
-        print(f"Follower growth chart saved to: {output_path}")
-    except Exception as e:
-        print(f"Error creating growth chart: {e}")
+    
+    with close_friends_file.open("r") as f:
+        lines = f.readlines()
+        
+        # Get the number of close friends, in first line
+        try:
+            num_close_friends = int(lines[0].strip().split(":")[1].strip())
+        except (ValueError, IndexError) as e:
+            print(f"Error parsing the number of close friends from '{close_friends_file}': {e}")
+            return
+        
+        # Get the usernames of close friends, skipping the header lines
+        close_friends = set(line.strip().lstrip("- ").strip() for line in lines[2:])
