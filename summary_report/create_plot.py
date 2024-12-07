@@ -108,3 +108,12 @@ def create_close_friends_ratio_plot(output_path, close_friends_file, following_f
         percentage = (num_close_friends / len(following_usernames)) * 100
     else:
         percentage = 0
+    
+    # Create the plot
+    plt.figure(figsize=fig_size)
+    bars = plt.bar(
+        ["Close Friends in Following", "Others"], 
+        [num_close_friends, len(following_usernames) - num_close_friends], 
+        color=['green', 'gray']
+    )
+ 
