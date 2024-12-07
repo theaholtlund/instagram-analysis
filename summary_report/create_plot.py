@@ -99,3 +99,12 @@ def create_close_friends_ratio_plot(output_path, close_friends_file, following_f
     if following_soup is None:
         print(f"Error loading or parsing the following HTML file '{following_file}'.")
         return
+    
+    # Extract following usernames from the HTML content
+    following_usernames = extract_content(following_soup, tag="a", content_type="text")
+    
+    # Calculate the percentage of close friends among those followed
+    if len(following_usernames) > 0:
+        percentage = (num_close_friends / len(following_usernames)) * 100
+    else:
+        percentage = 0
