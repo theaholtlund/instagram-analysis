@@ -117,3 +117,6 @@ def create_close_friends_ratio_plot(output_path, close_friends_file, following_f
         color=['green', 'gray']
     )
     plt.title(f"Following vs Close Friends\nClose Friends: {num_close_friends} | Following: {len(following_usernames)}\nPercentage: {percentage:.2f}%")
+    plt.xlabel("Category")
+    plt.ylabel("Count")
+    plt.tight_layout()
