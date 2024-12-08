@@ -120,3 +120,5 @@ def create_close_friends_ratio_plot(output_path, close_friends_file, following_f
     plt.xlabel("Category")
     plt.ylabel("Count")
     plt.tight_layout()
+
+    print(f"Following vs Close Friends plot saved to: {output_path}")
