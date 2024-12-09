@@ -119,7 +119,7 @@ def generate_summary_report():
     show_count_files = {"count_comments.txt", "count_liked_comments.txt", "count_liked_posts.txt", "count_stories.txt"}
 
     # Generate and read HTML template
-    report_content = generate_html_content(summary_data, show_count_files, bar_chart_path, pie_chart_path)
+    report_content = generate_html_content(summary_data, show_count_files, bar_chart_path, pie_chart_path, following_vs_close_friends_path)
 
     html_template = read_file(template_file_path)
     if not html_template:
