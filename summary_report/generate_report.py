@@ -68,6 +68,7 @@ def export_to_pdf(summary_file_path, pdf_output_path):
 def generate_summary_report():
     """Generate the HTML summary report with plots from analysis output files."""
     analysis_output_dir = Path(variables.OUTPUT_DIR)
+    followers_file_dir = Path(variables.DATA_DIR, variables.CONNECTIONS_DIR, variables.FOLLOWERS_DIR)
     summary_file_path = script_dir / variables.SUMMARY_REPORT
     template_file_path = script_dir / variables.REPORT_TEMPLATE
     bar_chart_path = analysis_output_dir / "activity_chart_bar.png"
