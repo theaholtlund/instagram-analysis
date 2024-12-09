@@ -121,4 +121,17 @@ def create_close_friends_ratio_plot(output_path, close_friends_file, following_f
     plt.ylabel("Count")
     plt.tight_layout()
 
+    # Add the numbers on top of the bars for verification
+    for bar in bars:
+        height = bar.get_height()
+        plt.text(
+            bar.get_x() + bar.get_width() / 2, height + 0.5,
+            f'{int(height)}',
+            ha='center', va='bottom', fontsize=10
+        )
+    
+    # Save the plot
+    plt.savefig(output_path, dpi=150, bbox_inches="tight")
+    plt.close()
+    
     print(f"Following vs Close Friends plot saved to: {output_path}")
