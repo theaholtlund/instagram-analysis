@@ -2,7 +2,7 @@
 
 ### Overview
 
-The repository can be used to analyse various areas for Instagram, based on files received when a user requests their data from the platform. Files are names according to their functionality. Results are saved to a file for easy access.
+This project contains scripts to analyse various metrics for Instagram, based on files received when a user requests their data from the platform. Files are named according to functionality. Results are saved to a report for easy access and interpretation.
 
 ### Requesting Data
 
