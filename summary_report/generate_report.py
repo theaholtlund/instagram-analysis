@@ -2,6 +2,7 @@
 import sys
 import webbrowser
 from pathlib import Path
+from weasyprint import HTML
 
 # Add project root directory to system path if not already present
 script_dir = Path(__file__).resolve().parent
@@ -55,7 +56,7 @@ def generate_html_content(summary_data, show_count_files, bar_chart_path, pie_ch
 def export_to_pdf(summary_file_path, pdf_output_path):
     """Export the summary report HTML to a PDF file."""
     try:
-        from weasyprint import HTML
+        
         html_content = summary_file_path.read_text(encoding="utf-8")
         pdf = HTML(string=html_content).write_pdf()
         pdf_output_path.write_bytes(pdf)
