@@ -72,6 +72,7 @@ def generate_summary_report():
     template_file_path = script_dir / variables.REPORT_TEMPLATE
     bar_chart_path = analysis_output_dir / "activity_chart_bar.png"
     pie_chart_path = analysis_output_dir / "activity_chart_pie.png"
+    following_vs_close_friends_path = analysis_output_dir / "following_vs_close_friends.png"
 
     try:
         # Generate bar and pie charts with activity data
