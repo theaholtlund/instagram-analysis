@@ -82,6 +82,13 @@ def generate_summary_report():
             comments_file=analysis_output_dir / "count_comments.txt",
             likes_file=analysis_output_dir / "count_liked_posts.txt"
         )
+
+        # Generate following vs close friends plot
+        create_close_friends_ratio_plot(
+            output_path=following_vs_close_friends_path,
+            close_friends_file=analysis_output_dir / "close_friends.txt",
+            following_file=followers_file_dir / "following.html"
+        )
     except Exception as e:
         print(f"Error creating plots: {e}")
         return
