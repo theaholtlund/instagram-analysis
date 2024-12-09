@@ -14,7 +14,7 @@ import variables
 from utils import read_file, parse_simple_output, parse_list_output, parse_detailed_output
 from create_plot import create_activity_plot, create_close_friends_ratio_plot
 
-def generate_html_content(summary_data, show_count_files, bar_chart_path, pie_chart_path):
+def generate_html_content(summary_data, show_count_files, bar_chart_path, pie_chart_path, following_vs_close_friends_path):
     """Generate HTML content for the summary report, including bar and pie charts."""
     analysis_output_dir = Path(variables.OUTPUT_DIR)
     report_content = ["<div class='container'>", "<h2>Instagram Activity Summary</h2>\n"]
@@ -26,6 +26,8 @@ def generate_html_content(summary_data, show_count_files, bar_chart_path, pie_ch
             <img src="../{analysis_output_dir / bar_chart_path.name}" alt="Total Likes and Comments">
             <h3>Likes-to-Comments Ratio</h3>
             <img src="../{analysis_output_dir / pie_chart_path.name}" alt="Likes-to-Comments Ratio">
+            <h3>Close Friends Among Those Followed</h3>
+            <img src="../{analysis_output_dir / following_vs_close_friends_path.name}" alt="Close Friends Among Those Followed">
         </div>
     """)
 
