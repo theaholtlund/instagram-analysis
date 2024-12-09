@@ -84,9 +84,6 @@ def create_close_friends_ratio_plot(output_path, close_friends_file, following_f
         except (ValueError, IndexError) as e:
             print(f"Error parsing the number of close friends from '{close_friends_file}': {e}")
             return
-        
-        # Get the usernames of close friends, skipping the header lines
-        close_friends = set(line.strip().lstrip("- ").strip() for line in lines[2:])
     
     # Read the following file (following.html)
     if not following_file.exists():
