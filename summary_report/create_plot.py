@@ -40,7 +40,7 @@ def create_activity_plot(output_path, comments_file, likes_file):
     pie_chart_path = output_dir / "activity_chart_pie.png"
 
     try:
-        # Bar chart
+        # Define design for bar chart
         plt.figure(figsize=(8, 5))
         plt.bar(["Likes", "Comments"], [total_likes, total_comments], color=[variables.COLOR_LIKES, variables.COLOR_COMMENTS])
         plt.title("Total Instagram Activity: Likes and Comments")
@@ -49,7 +49,7 @@ def create_activity_plot(output_path, comments_file, likes_file):
         plt.savefig(bar_chart_path, dpi=150, bbox_inches="tight")
         plt.close()
 
-        # Pie chart
+        # Define design for pie chart
         plt.figure(figsize=(6, 6))
         plt.pie(
             [total_likes, total_comments], labels=["Likes", "Comments"],
@@ -100,7 +100,7 @@ def create_close_friends_ratio_plot(output_path, close_friends_file, following_f
     # Extract following usernames from the HTML content
     following_usernames = extract_content(following_soup, tag="a", content_type="text")
     
-    # Calculate the percentage of close friends among those followed
+    # Calculate the percentage of close friends, avoid division by zero error
     if len(following_usernames) > 0:
         percentage = (num_close_friends / len(following_usernames)) * 100
     else:
