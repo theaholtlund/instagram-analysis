@@ -27,7 +27,7 @@ def read_total_from_file(file_path, label):
         print(f"Error reading {label} data in '{file_path}': {e}")
         return None
 
-def create_activity_plot(output_path, comments_file, likes_file, fig_size_bar=(8, 5), fig_size_pie=(6, 6)):
+def create_activity_plot(output_path, comments_file, likes_file):
     """Generate and save charts showing total likes, comments and their ratio."""
     total_comments = read_total_from_file(comments_file, "comments")
     total_likes = read_total_from_file(likes_file, "likes")
@@ -41,7 +41,7 @@ def create_activity_plot(output_path, comments_file, likes_file, fig_size_bar=(8
 
     try:
         # Bar chart
-        plt.figure(figsize=fig_size_bar)
+        plt.figure(figsize=(8, 5))
         plt.bar(["Likes", "Comments"], [total_likes, total_comments], color=[variables.COLOR_LIKES, variables.COLOR_COMMENTS])
         plt.title("Total Instagram Activity: Likes and Comments")
         plt.xlabel("Activity Type")
@@ -50,7 +50,7 @@ def create_activity_plot(output_path, comments_file, likes_file, fig_size_bar=(8
         plt.close()
 
         # Pie chart
-        plt.figure(figsize=fig_size_pie)
+        plt.figure(figsize=(6, 6))
         plt.pie(
             [total_likes, total_comments], labels=["Likes", "Comments"],
             autopct="%1.1f%%", startangle=140,
