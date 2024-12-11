@@ -85,11 +85,6 @@ def create_close_friends_ratio_plot(output_path, close_friends_file, following_f
             print(f"Error parsing the number of close friends from '{close_friends_file}': {e}")
             return
     
-    # Read the following file (following.html)
-    if not following_file.exists():
-        print(f"Error: Following file '{following_file}' not found.")
-        return
-    
     # Parse the following HTML content using BeautifulSoup
     following_soup = load_and_parse_html(following_file)
     
