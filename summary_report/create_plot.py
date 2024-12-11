@@ -27,7 +27,7 @@ def read_total_from_file(file_path, label):
         print(f"Error reading {label} data in '{file_path}': {e}")
         return None
 
-def create_activity_plot(output_path, comments_file, likes_file):
+def create_activity_plots(output_path, comments_file, likes_file):
     """Generate and save charts showing total likes, comments and their ratio."""
     total_comments = read_total_from_file(comments_file, "comments")
     total_likes = read_total_from_file(likes_file, "likes")

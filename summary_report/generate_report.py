@@ -13,7 +13,7 @@ if str(root_dir) not in sys.path:
 # Import modules and variables
 import variables
 from utils import read_file, parse_simple_output, parse_list_output, parse_detailed_output
-from create_plot import create_activity_plot, create_close_friends_ratio_plot
+from create_plot import create_activity_plots, create_close_friends_plot
 
 def generate_html_content(summary_data, show_count_files, bar_chart_path, pie_chart_path, following_vs_close_friends_path):
     """Generate HTML content for the summary report, including bar and pie charts."""
@@ -78,7 +78,7 @@ def generate_summary_report():
 
     try:
         # Generate bar and pie charts with activity data
-        create_activity_plot(
+        create_activity_plots(
             output_path=bar_chart_path,
             comments_file=analysis_output_dir / "count_comments.txt",
             likes_file=analysis_output_dir / "count_liked_posts.txt"
