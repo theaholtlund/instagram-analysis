@@ -47,7 +47,7 @@ pip install -r requirements.txt
 To utilise the script:
 
 1. All analysis scripts are located in the `analysis_scripts` directory. Run the script for which you want to perform an analysis.
-2. Once the analysis is complete, the output can be found in the `analysis_outputs` directory, with a name corresponding to the area of analysis.
+2. Once the analysis is complete, the outputs can be found in the `analysis_outputs` directory, with a name corresponding to the area of analysis.
 
 ### Repository Contents
 
