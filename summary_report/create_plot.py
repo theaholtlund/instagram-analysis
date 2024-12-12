@@ -63,8 +63,7 @@ def create_activity_plots(output_path, comments_file, likes_file):
         plt.savefig(pie_chart_path, dpi=150, bbox_inches="tight")
         plt.close()
 
-        print(f"Bar chart saved to: {bar_chart_path}")
-        print(f"Pie chart saved to: {pie_chart_path}")
+        print(f"Charts saved to: {output_dir}")
     except Exception as e:
         print(f"Error creating charts: {e}")
 
@@ -128,5 +127,5 @@ def create_close_friends_plot(output_path, close_friends_file, following_file):
     # Save the plot
     plt.savefig(output_path, dpi=150, bbox_inches="tight")
     plt.close()
-    
-    print(f"Following vs Close Friends plot saved to: {output_path}")
+
+    print(f"Plot saved to: {output_path}")
