@@ -40,6 +40,9 @@ def create_activity_plots(output_path, comments_file, likes_file):
     pie_chart_path = output_dir / "activity_chart_pie.png"
 
     try:
+        # Set the output directory
+        output_dir = output_path.parent
+
         # Define design for bar chart
         plt.figure(figsize=(8, 5))
         plt.bar(["Likes", "Comments"], [total_likes, total_comments], color=[variables.PLOT_COLOUR_LIGHT, variables.PLOT_COLOUR_DARK])
