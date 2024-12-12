@@ -23,5 +23,5 @@ REPORT_TEMPLATE = "report_template.html"
 SUMMARY_REPORT = "summary_report.html"
 
 # Constants for styling of report plots
-COLOR_LIKES = "#FFA64E"
-COLOR_COMMENTS = "#FF8B19"
+PLOT_COLOUR_LIGHT = "#FFA64E"
+PLOT_COLOUR_DARK = "#FF8B19"
