@@ -106,7 +106,7 @@ def create_close_friends_plot(output_path, close_friends_file, following_file):
     bars = plt.bar(
         ["Close Friends in Following", "Others"], 
         [num_close_friends, len(following_usernames) - num_close_friends], 
-        color=['green', 'gray']
+        color=[variables.PLOT_COLOUR_LIGHT, variables.PLOT_COLOUR_DARK]
     )
     plt.title(f"Following vs Close Friends\nClose Friends: {num_close_friends} | Following: {len(following_usernames)}\nPercentage: {percentage:.2f}%")
     plt.xlabel("Category")
