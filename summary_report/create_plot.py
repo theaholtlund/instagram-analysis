@@ -113,7 +113,7 @@ def create_close_friends_plot(output_path, close_friends_file, following_file):
     plt.ylabel("Count")
     plt.tight_layout()
 
-    # Add the numbers on top of the bars for verification
+    # Add numbers at the top of bars for verification
     for bar in bars:
         height = bar.get_height()
         plt.text(
