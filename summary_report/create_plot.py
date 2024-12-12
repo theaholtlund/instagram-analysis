@@ -52,9 +52,9 @@ def create_activity_plots(output_path, comments_file, likes_file):
         # Define design for pie chart
         plt.figure(figsize=(6, 6))
         plt.pie(
-            [total_likes, total_comments], labels=["Likes", "Comments"],
+            ["Likes", "Comments"], [total_likes, total_comments],
             autopct="%1.1f%%", startangle=140,
-            colors=[variables.COLOR_LIKES, variables.COLOR_COMMENTS], wedgeprops={"edgecolor": "black", "linewidth": 1}
+            colors=[variables.PLOT_COLOUR_LIGHT, variables.PLOT_COLOUR_DARK], wedgeprops={"edgecolor": "black", "linewidth": 1}
         )
         plt.title("Likes-to-Comments Ratio")
         plt.savefig(pie_chart_path, dpi=150, bbox_inches="tight")
