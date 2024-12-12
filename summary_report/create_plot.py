@@ -43,7 +43,7 @@ def create_activity_plots(output_path, comments_file, likes_file):
         # Set the output directory
         output_dir = output_path.parent
 
-        # Define design for bar chart
+        # Bar Chart
         plt.figure(figsize=(8, 5))
         plt.bar(["Likes", "Comments"], [total_likes, total_comments], color=[variables.PLOT_COLOUR_LIGHT, variables.PLOT_COLOUR_DARK])
         plt.title("Total Instagram Activity: Likes and Comments")
@@ -52,7 +52,7 @@ def create_activity_plots(output_path, comments_file, likes_file):
         plt.savefig(bar_chart_path, dpi=150, bbox_inches="tight")
         plt.close()
 
-        # Define design for pie chart
+        # Pie Chart
         plt.figure(figsize=(6, 6))
         plt.pie(
             ["Likes", "Comments"], [total_likes, total_comments],
@@ -115,7 +115,7 @@ def create_close_friends_plot(output_path, close_friends_file, following_file):
     plt.ylabel("Count")
     plt.tight_layout()
 
-    # Add numbers at the top of bars for verification
+    # Annotate bars
     for bar in bars:
         height = bar.get_height()
         plt.text(
