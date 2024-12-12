@@ -85,7 +85,7 @@ def generate_summary_report():
         )
 
         # Generate following vs close friends plot
-        create_close_friends_ratio_plot(
+        create_close_friends_plot(
             output_path=following_vs_close_friends_path,
             close_friends_file=analysis_output_dir / "close_friends.txt",
             following_file=followers_file_dir / "following.html"

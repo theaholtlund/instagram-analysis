@@ -65,7 +65,7 @@ def create_activity_plots(output_path, comments_file, likes_file):
     except Exception as e:
         print(f"Error creating charts: {e}")
 
-def create_close_friends_ratio_plot(output_path, close_friends_file, following_file, fig_size=(8, 5)):
+def create_close_friends_plot(output_path, close_friends_file, following_file):
     """Generate and save a plot showing the percentage ratio between following and close friends."""
     close_friends_file = Path(close_friends_file)
     following_file = Path(following_file)
@@ -102,7 +102,7 @@ def create_close_friends_ratio_plot(output_path, close_friends_file, following_f
         percentage = 0
     
     # Create the plot
-    plt.figure(figsize=fig_size)
+    plt.figure(figsize=(8, 5))
     bars = plt.bar(
         ["Close Friends in Following", "Others"], 
         [num_close_friends, len(following_usernames) - num_close_friends], 
