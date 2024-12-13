@@ -15,7 +15,7 @@ import variables
 from utils import read_file, parse_simple_output, parse_list_output, parse_detailed_output
 from create_plot import create_activity_plots, create_close_friends_plot
 
-def generate_html_content(summary_data, show_count_files, bar_chart_path, pie_chart_path, following_vs_close_friends_path):
+def generate_html_content(summary_data, show_count_files):
     """Generate HTML content for the summary report, including bar and pie charts."""
     analysis_output_dir = Path(variables.OUTPUT_DIR)
     report_content = ["<div class='container'>", "<h2>Instagram Activity Summary</h2>\n"]
@@ -117,7 +117,7 @@ def generate_summary_report():
     show_count_files = {"count_comments.txt", "count_liked_comments.txt", "count_liked_posts.txt", "count_stories.txt"}
 
     # Generate and read HTML template
-    report_content = generate_html_content(summary_data, show_count_files, bar_chart_path, pie_chart_path, following_vs_close_friends_path)
+    report_content = generate_html_content(summary_data, show_count_files)
 
     html_template = read_file(template_file_path)
     if not html_template:
