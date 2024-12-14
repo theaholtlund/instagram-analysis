@@ -23,5 +23,8 @@ REPORT_TEMPLATE = "report_template.html"
 SUMMARY_REPORT = "summary_report.html"
 
 # Constants for styling of report plots
+PLOT_BAR_CHART = "activity_chart_bar.png"
+PLOT_PIE_CHART = "activity_chart_pie.png"
+PLOT_FOLLOWING_CHART = "following_vs_close_friends.png"
 PLOT_COLOUR_LIGHT = "#FFA64E"
 PLOT_COLOUR_DARK = "#FF8B19"
