@@ -30,7 +30,8 @@ def generate_html_content(summary_data, show_count_files):
             <h3>Close Friends Among Those Followed</h3>
             <img src="../{analysis_output_dir / variables.PLOT_FOLLOWING_CHART}" alt="Close Friends Among Those Followed">
         </div>
-    """)
+    """
+    )
 
     # Add summaries for each output file
     for file_name, (count, items) in summary_data.items():
@@ -48,7 +49,8 @@ def generate_html_content(summary_data, show_count_files):
                         {item_list}
                     </div>
                 </details>\n
-            """)
+            """
+            )
 
     report_content.append("</div>")
     return "\n".join(report_content)
@@ -56,7 +58,6 @@ def generate_html_content(summary_data, show_count_files):
 def export_to_pdf(summary_file_path, pdf_output_path):
     """Export the summary report HTML to a PDF file."""
     try:
-        
         html_content = summary_file_path.read_text(encoding="utf-8")
         pdf = HTML(string=html_content).write_pdf()
         pdf_output_path.write_bytes(pdf)
