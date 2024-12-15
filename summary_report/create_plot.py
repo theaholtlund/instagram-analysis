@@ -14,7 +14,7 @@ import variables
 from utils import load_and_parse_html, extract_content
 
 def read_total_from_file(file_path, label):
-    """Helper function to read total counts from a file."""
+    """Read total counts from a file."""
     file_path = Path(file_path)
     if not file_path.exists():
         print(f"Error: {label} file '{file_path}' not found.")
@@ -52,7 +52,7 @@ def create_activity_plots(output_path, comments_file, likes_file):
         plt.savefig(output_dir / "activity_chart_bar.png", dpi=150, bbox_inches="tight")
         plt.close()
 
-        # Pie Chart
+        # Define design for pie chart
         plt.figure(figsize=(6, 6))
         plt.pie(
             ["Likes", "Comments"], [total_likes, total_comments],
@@ -71,8 +71,7 @@ def create_close_friends_plot(output_path, close_friends_file, following_file):
     """Generate and save a plot showing the percentage ratio between following and close friends."""
     close_friends_file = Path(close_friends_file)
     following_file = Path(following_file)
-    
-    # Read the close friends file
+
     if not close_friends_file.exists():
         print(f"Error: Close friends file '{close_friends_file}' not found.")
         return
