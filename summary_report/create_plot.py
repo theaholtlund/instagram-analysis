@@ -13,6 +13,9 @@ if str(root_dir) not in sys.path:
 import variables
 from utils import load_and_parse_html, extract_content
 
+# Set path for shared output directory
+output_dir = Path(variables.OUTPUT_DIR)
+
 def read_total_from_file(file_path, label):
     """Read total counts from a file."""
     file_path = Path(file_path)
