@@ -37,15 +37,11 @@ def create_activity_plots(comments_file, likes_file):
     """Generate and save charts showing total likes, comments and their ratio."""
     total_comments = read_total_from_file(comments_file, "comments")
     total_likes = read_total_from_file(likes_file, "likes")
-    
     if total_comments is None or total_likes is None:
         return
 
     try:
-        # Set the output directory
-        output_dir = output_path.parent
-
-        # Bar Chart
+        # Define design for bar chart
         plt.figure(figsize=(8, 5))
         plt.bar(["Likes", "Comments"], [total_likes, total_comments], color=[variables.PLOT_COLOUR_LIGHT, variables.PLOT_COLOUR_DARK])
         plt.title("Total Instagram Activity: Likes and Comments")
