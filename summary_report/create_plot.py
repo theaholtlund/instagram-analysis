@@ -114,13 +114,9 @@ def create_close_friends_plot(output_path, close_friends_file, following_file):
 
     # Annotate bars
     for bar in bars:
-        height = bar.get_height()
-        plt.text(
-            bar.get_x() + bar.get_width() / 2, height + 0.5,
-            f'{int(height)}',
-            ha='center', va='bottom', fontsize=10
-        )
-    
+        plt.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.5,
+                 f'{int(bar.get_height())}', ha='center', va='bottom', fontsize=10)
+
     # Save the plot
     plt.savefig(output_path, dpi=150, bbox_inches="tight")
     plt.close()
