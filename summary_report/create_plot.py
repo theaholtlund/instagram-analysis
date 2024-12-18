@@ -118,7 +118,7 @@ def create_close_friends_plot(output_path, close_friends_file, following_file):
                  f'{int(bar.get_height())}', ha='center', va='bottom', fontsize=10)
 
     # Save the plot
-    plt.savefig(output_path, dpi=150, bbox_inches="tight")
+    plt.savefig(file_path_following, dpi=150, bbox_inches="tight")
     plt.close()
 
-    print(f"Plot saved to: {output_path}")
+    print(f"Plot saved to: {output_dir}")
