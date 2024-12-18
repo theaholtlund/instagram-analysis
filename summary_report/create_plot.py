@@ -86,12 +86,10 @@ def create_close_friends_plot(close_friends_file, following_file):
     
     # Parse the following HTML content using BeautifulSoup
     following_soup = load_and_parse_html(following_file)
-    
     if following_soup is None:
         print(f"Error loading or parsing the following HTML file '{following_file}'.")
         return
-    
-    # Extract following usernames from the HTML content
+
     following_usernames = extract_content(following_soup, tag="a", content_type="text")
     
     # Calculate the percentage of close friends, avoid division by zero error
@@ -112,7 +110,7 @@ def create_close_friends_plot(close_friends_file, following_file):
     plt.ylabel("Count")
     plt.tight_layout()
 
-    # Annotate bars
+    # Annotate bars with their value
     for bar in bars:
         plt.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.5,
                  f'{int(bar.get_height())}', ha='center', va='bottom', fontsize=10)
