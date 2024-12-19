@@ -98,12 +98,10 @@ def create_close_friends_plot(close_friends_file, following_file):
 
     # Create the plot
     plt.figure(figsize=(8, 5))
-    bars = plt.bar(
-        ["Close Friends in Following", "Others"], 
-        [num_close_friends, len(following_usernames) - num_close_friends], 
-        color=[variables.PLOT_COLOUR_LIGHT, variables.PLOT_COLOUR_DARK]
-    )
-    plt.title(f"Following vs Close Friends\nClose Friends: {num_close_friends} | Following: {len(following_usernames)}\nPercentage: {percentage:.2f}%")
+    bars = plt.bar(["Close Friends", "Others"],
+                   [num_close_friends, total_following - num_close_friends],
+                   color=[variables.PLOT_COLOUR_LIGHT, variables.PLOT_COLOUR_DARK])
+    plt.title(f"Following vs Close Friends\nClose Friends: {num_close_friends} | Following: {total_following}\nPercentage: {percentage:.2f}%")
     plt.xlabel("Category")
     plt.ylabel("Count")
     plt.tight_layout()
