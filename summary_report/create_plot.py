@@ -73,18 +73,18 @@ def create_close_friends_plot(close_friends_file, following_file):
     if not close_friends_file.exists():
         print(f"Error: Close friends file '{close_friends_file}' not found.")
         return
-    
-    with close_friends_file.open("r") as f:
-        lines = f.readlines()
-        
-        # Get the number of close friends, in first line
-        try:
-            num_close_friends = int(lines[0].strip().split(":")[1].strip())
-        except (ValueError, IndexError) as e:
-            print(f"Error parsing the number of close friends from '{close_friends_file}': {e}")
-            return
-    
-    # Parse the following HTML content using BeautifulSoup
+
+    try:
+        close_friends_data = close_friends_file.read_text(encoding="utf-8").strip()
+        num_close_friends_line = next(
+            line for line in close_friends_data.splitlines() if "Number of close friends:" in line
+        )
+        num_close_friends = int(num_close_friends_line.split(":")[1].strip())
+    except (ValueError, IndexError, StopIteration) as e:
+        print(f"Error parsing the number of close friends from '{close_friends_file}': {e}")
+        return
+
+
     following_soup = load_and_parse_html(following_file)
     if following_soup is None:
         print(f"Error loading or parsing the following HTML file '{following_file}'.")
