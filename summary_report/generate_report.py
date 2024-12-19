@@ -77,14 +77,12 @@ def generate_summary_report():
     try:
         # Generate bar and pie charts with activity data
         create_activity_plots(
-            output_path=bar_chart_path,
             comments_file=analysis_output_dir / "count_comments.txt",
             likes_file=analysis_output_dir / "count_liked_posts.txt"
         )
 
         # Generate following vs close friends plot
         create_close_friends_plot(
-            output_path=following_vs_close_friends_path,
             close_friends_file=analysis_output_dir / "close_friends.txt",
             following_file=followers_file_dir / "following.html"
         )
