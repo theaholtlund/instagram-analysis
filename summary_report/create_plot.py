@@ -90,13 +90,10 @@ def create_close_friends_plot(close_friends_file, following_file):
         return
 
     following_usernames = extract_content(following_soup, tag="a", content_type="text")
-    
-    # Calculate the percentage of close friends, avoid division by zero error
-    if len(following_usernames) > 0:
-        percentage = (num_close_friends / len(following_usernames)) * 100
-    else:
-        percentage = 0
-    
+
+    total_following = len(following_usernames)
+    percentage = (num_close_friends / total_following) * 100 if total_following > 0 else 0
+
     # Create the plot
     plt.figure(figsize=(8, 5))
     bars = plt.bar(
