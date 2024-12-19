@@ -9,7 +9,7 @@ sys.path.append(str(project_root))
 
 # Import modules and variables
 import variables
-from utils import load_and_parse_html, extract_content
+from utils import load_and_parse_html, extract_content, read_file
 
 # Set path for shared output directory
 output_dir = Path(variables.OUTPUT_DIR)
@@ -25,8 +25,8 @@ def read_total_from_file(file_path, label):
         return None
 
     try:
-        with file_path.open("r") as f:
-            return int(f.readline().strip().split(":")[1].strip())
+        content = read_file(file_path)
+        return int(content.split(":")[1].strip())
     except (ValueError, IndexError) as e:
         print(f"Error reading {label} data in '{file_path}': {e}")
         return None
