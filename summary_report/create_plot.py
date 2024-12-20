@@ -83,8 +83,8 @@ def create_close_friends_plot(close_friends_file, following_file):
 
     # Parse the following HTML content using BeautifulSoup
     following_soup = load_and_parse_html(following_file)
-    if following_soup is None:
-        print(f"Error loading or parsing the following HTML file '{following_file}'.")
+    if not following_soup:
+        print(f"Error parsing the following HTML file '{following_file}'.")
         return
     
     # Extract usernames for following from the HTML content
