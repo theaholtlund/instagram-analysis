@@ -4,11 +4,10 @@ import webbrowser
 from pathlib import Path
 from weasyprint import HTML
 
-# Add project root directory to system path if not already present
+# Ensure project root is in the path
 script_dir = Path(__file__).resolve().parent
-root_dir = script_dir.parent
-if str(root_dir) not in sys.path:
-    sys.path.append(str(root_dir))
+project_root = script_dir.parent
+sys.path.append(str(project_root))
 
 # Import modules and variables
 import variables
