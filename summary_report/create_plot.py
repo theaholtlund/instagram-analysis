@@ -11,7 +11,7 @@ sys.path.append(str(project_root))
 import variables
 from utils import load_and_parse_html, extract_content, read_file
 
-# Set path for shared output directory
+# Define shared paths
 output_dir = Path(variables.OUTPUT_DIR)
 file_path_bar = output_dir / variables.PLOT_BAR_CHART
 file_path_pie = output_dir / variables.PLOT_PIE_CHART
