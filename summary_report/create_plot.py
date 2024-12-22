@@ -19,11 +19,6 @@ file_path_following = output_dir / variables.PLOT_FOLLOWING_CHART
 
 def read_total_from_file(file_path, label):
     """Read total counts from a file."""
-    file_path = Path(file_path)
-    if not file_path.exists():
-        print(f"Error: {label} file '{file_path}' not found.")
-        return None
-
     try:
         content = read_file(file_path)
         return int(content.split(":")[1].strip())
