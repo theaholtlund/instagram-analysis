@@ -63,7 +63,7 @@ To utilise the script:
 - `most_liked_posts`: Finds the accounts to which the user has given the most likes.
 - `not_following_back`: Finds users who the account follows that does not follow back.
 
-In the main project directory, there is also a script called `run_all_scripts.py`, which will run all analysis scripts automatically.
+In the main project directory, there is a script called `run_all_scripts.py`, which will run all analysis scripts in one batch.
 
 #### Scripts for Summary Report:
 
