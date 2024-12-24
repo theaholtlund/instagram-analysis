@@ -71,5 +71,5 @@ A summary report of all analysis outputs can be generated through the `generate_
 
 #### Shared Functionality Files:
 
-- `utils`: For functionality shared between scripts, such as writing to file.
-- `variables`: Stores shared variables, such as file and directory names for analysis data.
+- `utils`: Functionality shared between scripts, such as writing to file.
+- `variables`: Shared variables, such as file and directory names for analysis data.
