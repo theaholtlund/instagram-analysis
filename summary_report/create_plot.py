@@ -27,6 +27,7 @@ def read_total_from_file(file_path, label):
         return None
 
 def save_plot(fig, file_path):
+    """Save the given plot to a file."""
     fig.savefig(file_path, dpi=150, bbox_inches="tight")
     plt.close(fig)
 
