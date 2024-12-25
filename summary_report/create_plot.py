@@ -22,8 +22,8 @@ def read_total_from_file(file_path, label):
     try:
         content = read_file(file_path)
         return int(content.split(":")[1].strip())
-    except (ValueError, IndexError) as e:
-        print(f"Error reading {label} data in '{file_path}': {e}")
+    except (ValueError, IndexError, AttributeError):
+        print(f"Error reading {label} data in '{file_path}'.")
         return None
 
 def save_plot(fig, file_path):
