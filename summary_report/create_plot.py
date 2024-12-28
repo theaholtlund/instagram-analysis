@@ -38,16 +38,14 @@ def create_activity_plots(comments_file, likes_file):
     if total_comments is None or total_likes is None:
         return
 
-    try:
-        # Define design for bar chart
-        plt.figure(figsize=(8, 5))
-        plt.bar(["Likes", "Comments"], [total_likes, total_comments], 
-                color=[variables.PLOT_COLOUR_LIGHT, variables.PLOT_COLOUR_DARK])
-        plt.title("Total Instagram Activity: Likes and Comments")
-        plt.xlabel("Activity Type")
-        plt.ylabel("Count")
-        plt.savefig(file_path_bar, dpi=150, bbox_inches="tight")
-        plt.close()
+    # Bar chart
+    fig, ax = plt.subplots(figsize=(8, 5))
+    ax.bar(["Likes", "Comments"], [total_likes, total_comments], 
+           color=[variables.PLOT_COLOUR_LIGHT, variables.PLOT_COLOUR_DARK])
+    ax.set_title("Total Instagram Activity: Likes and Comments")
+    ax.set_xlabel("Activity Type")
+    ax.set_ylabel("Count")
+    save_plot(fig, output_dir / variables.PLOT_BAR_CHART)
 
         # Define design for pie chart
         plt.figure(figsize=(6, 6))
