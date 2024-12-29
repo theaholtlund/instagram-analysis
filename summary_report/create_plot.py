@@ -47,15 +47,13 @@ def create_activity_plots(comments_file, likes_file):
     ax.set_ylabel("Count")
     save_plot(fig, output_dir / variables.PLOT_BAR_CHART)
 
-        # Define design for pie chart
-        plt.figure(figsize=(6, 6))
-        plt.pie([total_likes, total_comments], labels=["Likes", "Comments"],
-                autopct="%1.1f%%", startangle=140,
-                colors=[variables.PLOT_COLOUR_LIGHT, variables.PLOT_COLOUR_DARK],
-                wedgeprops={"edgecolor": "black", "linewidth": 1})
-        plt.title("Likes-to-Comments Ratio")
-        plt.savefig(file_path_pie, dpi=150, bbox_inches="tight")
-        plt.close()
+    # Pie chart
+    fig, ax = plt.subplots(figsize=(6, 6))
+    ax.pie([total_likes, total_comments], labels=["Likes", "Comments"], autopct="%1.1f%%", 
+           startangle=140, colors=[variables.PLOT_COLOUR_LIGHT, variables.PLOT_COLOUR_DARK],
+           wedgeprops={"edgecolor": "black", "linewidth": 1})
+    ax.set_title("Likes-to-Comments Ratio")
+    save_plot(fig, output_dir / variables.PLOT_PIE_CHART)
 
         print(f"Charts saved to: {output_dir}")
     except Exception as e:
