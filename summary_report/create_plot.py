@@ -89,9 +89,6 @@ def create_close_friends_plot(close_friends_file, following_file):
     ax.set_xlabel("Category")
     ax.set_ylabel("Count")
     ax.bar_label(bars, fmt="%.0f", padding=3)
-
-    # Save the plot
-    plt.savefig(fig, dpi=150, bbox_inches="tight")
-    plt.close()
+    save_plot(fig, output_dir / variables.PLOT_FOLLOWING_CHART)
 
     print(f"Plot saved to: {output_dir}")
