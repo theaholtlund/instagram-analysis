@@ -68,11 +68,10 @@ def create_close_friends_plot(close_friends_file, following_file):
 
     try:
         # Get the number of close friends, in first line
-        close_friends_data = close_friends_file.read_text(encoding="utf-8").strip()
-        num_close_friends_line = next(line for line in close_friends_data.splitlines() if "Number of close friends:" in line)
-        num_close_friends = int(num_close_friends_line.split(":")[1].strip())
-    except (ValueError, IndexError, StopIteration) as e:
-        print(f"Error parsing the number of close friends from '{close_friends_file}': {e}")
+        close_friends_data = read_file(close_friends_file, as_lines=True)
+        num_close_friends = int(next(line for line in close_friends_data if "Number of close friends:" in line).split(":")[1].strip())
+    except (ValueError, IndexError, StopIteration, AttributeError):
+        print(f"Error parsing the number of close friends from '{close_friends_file}'.")
         return
 
     # Parse the following HTML content using BeautifulSoup
