@@ -81,22 +81,17 @@ def create_close_friends_plot(close_friends_file, following_file):
     percentage = (num_close_friends / total_following) * 100 if total_following > 0 else 0
 
     # Create the plot
-    plt.figure(figsize=(8, 5))
-    bars = plt.bar(["Close Friends", "Others"],
-                   [num_close_friends, total_following - num_close_friends],
-                   color=[variables.PLOT_COLOUR_LIGHT, variables.PLOT_COLOUR_DARK])
-    plt.title(f"Following vs Close Friends\nClose Friends: {num_close_friends} | Following: {total_following}\nPercentage: {percentage:.2f}%")
-    plt.xlabel("Category")
-    plt.ylabel("Count")
-    plt.tight_layout()
-
-    # Annotate bars with their value
-    for bar in bars:
-        plt.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.5,
-                 f'{int(bar.get_height())}', ha='center', va='bottom', fontsize=10)
+    fig, ax = plt.subplots(figsize=(8, 5))
+    bars = ax.bar(["Close Friends", "Others"], 
+                  [num_close_friends, total_following - num_close_friends],
+                  color=[variables.PLOT_COLOUR_LIGHT, variables.PLOT_COLOUR_DARK])
+    ax.set_title(f"Following vs Close Friends\nClose Friends: {num_close_friends} | Following: {total_following}\nPercentage: {percentage:.2f}%")
+    ax.set_xlabel("Category")
+    ax.set_ylabel("Count")
+    ax.bar_label(bars, fmt="%.0f", padding=3)
 
     # Save the plot
-    plt.savefig(file_path_following, dpi=150, bbox_inches="tight")
+    plt.savefig(fig, dpi=150, bbox_inches="tight")
     plt.close()
 
     print(f"Plot saved to: {output_dir}")
