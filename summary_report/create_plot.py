@@ -55,9 +55,7 @@ def create_activity_plots(comments_file, likes_file):
     ax.set_title("Likes-to-Comments Ratio")
     save_plot(fig, output_dir / variables.PLOT_PIE_CHART)
 
-        print(f"Charts saved to: {output_dir}")
-    except Exception as e:
-        print(f"Error creating charts: {e}")
+    print(f"Charts saved to: {output_dir}")
 
 def create_close_friends_plot(close_friends_file, following_file):
     """Generate and save a plot showing the percentage ratio between following and close friends."""
