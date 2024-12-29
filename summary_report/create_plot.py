@@ -13,9 +13,6 @@ from utils import load_and_parse_html, extract_content, read_file
 
 # Define shared paths
 output_dir = Path(variables.OUTPUT_DIR)
-file_path_bar = output_dir / variables.PLOT_BAR_CHART
-file_path_pie = output_dir / variables.PLOT_PIE_CHART
-file_path_following = output_dir / variables.PLOT_FOLLOWING_CHART
 
 def read_total_from_file(file_path, label):
     """Read total counts from a file."""
