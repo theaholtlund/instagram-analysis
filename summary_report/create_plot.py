@@ -58,7 +58,7 @@ def create_activity_plots(comments_file, likes_file):
     print(f"Charts saved to: {output_dir}")
 
 def create_close_friends_plot(close_friends_file, following_file):
-    """Generate and save a plot showing the percentage ratio between following and close friends."""
+    """Generate a plot showing the percentage of close friends among those followed."""
     try:
         # Get the number of close friends, in first line
         close_friends_data = read_file(close_friends_file, as_lines=True)
