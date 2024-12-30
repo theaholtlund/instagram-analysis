@@ -9,9 +9,9 @@ sys.path.append(str(project_root))
 
 # Import modules and variables
 import variables
-from utils import load_and_parse_html, extract_content, read_file
+from utils import load_and_parse_html, read_file, extract_content
 
-# Define shared paths
+# Define shared paths for plots
 output_dir = Path(variables.OUTPUT_DIR)
 
 def read_total_from_file(file_path, label):
@@ -57,7 +57,7 @@ def create_activity_plots(comments_file, likes_file):
 def create_close_friends_plot(close_friends_file, following_file):
     """Generate a plot showing the percentage of close friends among those followed."""
     try:
-        # Get the number of close friends, in first line
+        # Get number of close friends, located in first line
         close_friends_data = read_file(close_friends_file, as_lines=True)
         num_close_friends = int(next(line for line in close_friends_data if "Number of close friends:" in line).split(":")[1].strip())
     except (ValueError, IndexError, StopIteration, AttributeError):
