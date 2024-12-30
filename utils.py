@@ -12,8 +12,7 @@ def construct_file_path(*path_parts):
 
 def list_files_and_construct_paths(directory):
     """List files in a directory and construct their full paths."""
-    directory = Path(directory)
-    return [str(f) for f in directory.iterdir() if f.is_file()]
+    return [str(f) for f in Path(directory).iterdir() if f.is_file()]
 
 def read_file(file_path, as_lines=False):
     """Read content from a file, returning either a string or a list of lines."""
