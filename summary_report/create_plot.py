@@ -35,7 +35,7 @@ def create_activity_plots(comments_file, likes_file):
     if total_comments is None or total_likes is None:
         return
 
-    # Bar chart
+    # Create bar chart
     fig, ax = plt.subplots(figsize=(8, 5))
     ax.bar(["Likes", "Comments"], [total_likes, total_comments], 
            color=[variables.PLOT_COLOUR_LIGHT, variables.PLOT_COLOUR_DARK])
@@ -44,7 +44,7 @@ def create_activity_plots(comments_file, likes_file):
     ax.set_ylabel("Count")
     save_plot(fig, output_dir / variables.PLOT_BAR_CHART)
 
-    # Pie chart
+    # Create pie chart
     fig, ax = plt.subplots(figsize=(6, 6))
     ax.pie([total_likes, total_comments], labels=["Likes", "Comments"], autopct="%1.1f%%", 
            startangle=140, colors=[variables.PLOT_COLOUR_LIGHT, variables.PLOT_COLOUR_DARK],
@@ -64,7 +64,7 @@ def create_close_friends_plot(close_friends_file, following_file):
         print(f"Error parsing the number of close friends from '{close_friends_file}'.")
         return
 
-    # Parse the following HTML content using BeautifulSoup
+    # Parse following HTML content using BeautifulSoup
     following_soup = load_and_parse_html(following_file)
     if not following_soup:
         print(f"Error parsing the following HTML file '{following_file}'.")
