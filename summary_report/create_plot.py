@@ -53,7 +53,7 @@ def create_activity_plots(comments_file, likes_file):
     ax.set_title("Likes-to-Comments Ratio")
     save_plot(fig, output_dir / variables.PLOT_PIE_CHART)
 
-    print(f"Charts saved to: {output_dir}")
+    print(f"Charts saved to {output_dir}")
 
 def create_close_friends_plot(close_friends_file, following_file):
     """Generate a plot showing the percentage of close friends among those followed."""
@@ -89,4 +89,4 @@ def create_close_friends_plot(close_friends_file, following_file):
     ax.bar_label(bars, fmt="%.0f", padding=3)
     save_plot(fig, output_dir / variables.PLOT_FOLLOWING_CHART)
 
-    print(f"Plot saved to: {output_dir}")
+    print(f"Plot saved to {output_dir}")
