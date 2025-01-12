@@ -32,7 +32,8 @@ def create_activity_plots(comments_file, likes_file):
     """Generate and save charts showing total likes, comments and their ratio."""
     total_comments = read_total_from_file(comments_file, "comments")
     total_likes = read_total_from_file(likes_file, "likes")
-    if total_comments is None or total_likes is None:
+
+    if None in [total_comments, total_likes]:
         return
 
     # Create bar chart
