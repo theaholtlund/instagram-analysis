@@ -33,8 +33,8 @@ def load_and_parse_html(file_path):
         with file_path.open("r", encoding="utf-8") as file:
             return BeautifulSoup(file.read(), "html.parser")
     except Exception as e:
-        print(f"Error parsing HTML file '{file_path}': {e}")
-    return None
+        print(f"Error loading HTML file '{file_path}': {e}")
+        return None
 
 def extract_content(soup, tag, attr=None, text_condition=None, content_type="text"):
     """Extract content from HTML based on tag, attributes and optional text conditions."""
