@@ -17,10 +17,10 @@ from create_plot import create_activity_plots, create_close_friends_plot
 def generate_html_content(summary_data, show_count_files):
     """Generate HTML content for the summary report, including bar and pie charts."""
     analysis_output_dir = Path(variables.OUTPUT_DIR)
-    report_content = ["<div class='container'>", "<h2>Instagram Activity Summary</h2>\n"]
-
-    # Add charts with class names for styling
-    report_content.append(f"""
+    report_content = [
+        "<div class='container'>", 
+        "<h2>Instagram Activity Summary</h2>\n",
+        f"""
         <div class="chart-container">
             <h3>Total Likes and Comments</h3>
             <img src="../{analysis_output_dir / variables.PLOT_BAR_CHART}" alt="Total Likes and Comments">
@@ -29,8 +29,8 @@ def generate_html_content(summary_data, show_count_files):
             <h3>Close Friends Among Those Followed</h3>
             <img src="../{analysis_output_dir / variables.PLOT_FOLLOWING_CHART}" alt="Close Friends Among Those Followed">
         </div>
-    """
-    )
+        """
+    ]
 
     # Add summaries for each output file
     for file_name, (count, items) in summary_data.items():
