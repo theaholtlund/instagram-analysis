@@ -16,9 +16,8 @@ def list_files_and_construct_paths(directory):
 
 def read_file(file_path, as_lines=False):
     """Read content from a file, returning either a string or a list of lines."""
-    file_path = Path(file_path)
     try:
-        with file_path.open("r", encoding="utf-8") as file:
+        with Path(file_path).open("r", encoding="utf-8") as file:
             return file.readlines() if as_lines else file.read()
     except FileNotFoundError:
         print(f"File not found: {file_path}")
