@@ -44,12 +44,9 @@ def generate_html_content(summary_data, show_count_files):
             item_list = "".join(f"<p>- {item}</p>\n" for item in items)
             report_content.append(f"""
                 <details><summary>CLICK TO EXPAND</summary>
-                    <div class='content-list'>
-                        {item_list}
-                    </div>
+                    <div class='content-list'>{item_list}</div>
                 </details>\n
-            """
-            )
+            """)
 
     report_content.append("</div>")
     return "\n".join(report_content)
