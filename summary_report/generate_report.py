@@ -57,9 +57,7 @@ def export_to_pdf(summary_file_path, pdf_output_path):
         html_content = summary_file_path.read_text(encoding="utf-8")
         pdf = HTML(string=html_content).write_pdf()
         pdf_output_path.write_bytes(pdf)
-        print(f"PDF report saved to: {pdf_output_path}")
-    except ImportError:
-        print("Error: Install 'weasyprint' for PDF export functionality.")
+        print(f"PDF report saved to {pdf_output_path}")
     except Exception as e:
         print(f"Error exporting to PDF: {e}")
 
