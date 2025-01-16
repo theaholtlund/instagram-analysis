@@ -98,20 +98,15 @@ def generate_summary_report():
     }
 
     # Parse each file and store results
-    summary_data = {}
-    for file_name, parser in files_parsers.items():
-        file_path = analysis_output_dir / file_name
-        if file_path.exists():
-            try:
-                summary_data[file_name] = parser(read_file(file_path, as_lines=True))
-            except Exception as e:
-                print(f"Error parsing '{file_name}': {e}")
+    summary_data = {
+        file_name: parser(read_file(analysis_output_dir / file_name, as_lines=True))
+        for file_name, parser in files_parsers.items() if (analysis_output_dir / file_name).exists()
+    }
 
     show_count_files = {"count_comments.txt", "count_liked_comments.txt", "count_liked_posts.txt", "count_stories.txt"}
 
     # Generate and read HTML template
     report_content = generate_html_content(summary_data, show_count_files)
-
     html_template = read_file(template_file_path)
     if not html_template:
         print("Error: Failed to load HTML template.")
