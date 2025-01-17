@@ -20,10 +20,8 @@ def read_file(file_path, as_lines=False):
         with Path(file_path).open("r", encoding="utf-8") as file:
             return file.readlines() if as_lines else file.read()
     except FileNotFoundError:
-        print(f"File not found: {file_path}")
-    except Exception as e:
-        print(f"Error reading file '{file_path}': {e}")
-    return None
+        print(f"Error: File '{file_path}' not found.")
+        return []
 
 def load_and_parse_html(file_path):
     """Load and parse HTML content from a file using BeautifulSoup."""
