@@ -62,7 +62,3 @@ To utilise the script:
 - `count_stories`: Finds the total number of Instagram stories posted by the user.
 - `most_liked_posts`: Finds the accounts to which the user has given the most likes.
 - `not_following_back`: Finds users who the account follows that does not follow back.
-
-#### Scripts for Summary Report:
-
-A summary report of all analysis outputs can be generated through the `generate_report` file, located in the `summary_report` directory, once all scripts have been executed. The report will be created in the same directory, and automatically open in a browser once generated.
