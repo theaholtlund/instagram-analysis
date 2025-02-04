@@ -2,7 +2,7 @@
 
 ### Overview
 
-This project contains scripts to analyse various metrics for Instagram, based on files received when a user requests their data from the platform. Files are named according to functionality. Results are saved to a report for easy access and interpretation.
+This project contains scripts to analyse various metrics for Instagram, based on files received when a user requests their data from the platform. Files are named according to functionality, and results are saved to a report for easy access.
 
 ### Requesting Data
 
@@ -47,7 +47,7 @@ pip install -r requirements.txt
 To utilise the script:
 
 1. Execute the `run_all_scripts.py` file in order to run all analysis scripts in one batch, generating the required outputs.
-2. Once the analysis is complete, the outputs can be found in the `analysis_outputs` directory, with a name corresponding to the area of analysis.
+2. Run the `generate_report` script located in the `summary_report` directory. The report will be created in the same directory, and automatically open in a browser once generated.
 
 ### Repository Contents
 
@@ -66,8 +66,3 @@ To utilise the script:
 #### Scripts for Summary Report:
 
 A summary report of all analysis outputs can be generated through the `generate_report` file, located in the `summary_report` directory, once all scripts have been executed. The report will be created in the same directory, and automatically open in a browser once generated.
-
-#### Shared Functionality Files:
-
-- `utils`: Functionality shared between scripts, such as writing to file.
-- `variables`: Shared variables, such as file and directory names for analysis data.
