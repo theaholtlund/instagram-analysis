@@ -46,7 +46,7 @@ pip install -r requirements.txt
 
 To utilise the script:
 
-1. All analysis scripts are located in the `analysis_scripts` directory. Run the script for which you want to perform an analysis.
+1. Execute the `run_all_scripts.py` file in order to run all analysis scripts in one batch, generating the required outputs.
 2. Once the analysis is complete, the outputs can be found in the `analysis_outputs` directory, with a name corresponding to the area of analysis.
 
 ### Repository Contents
@@ -62,8 +62,6 @@ To utilise the script:
 - `count_stories`: Finds the total number of Instagram stories posted by the user.
 - `most_liked_posts`: Finds the accounts to which the user has given the most likes.
 - `not_following_back`: Finds users who the account follows that does not follow back.
-
-In the main project directory, there is a script called `run_all_scripts.py`, which will run all analysis scripts in one batch.
 
 #### Scripts for Summary Report:
 
