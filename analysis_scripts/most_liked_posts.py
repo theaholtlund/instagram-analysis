@@ -13,7 +13,7 @@ from utils import get_script_dir, construct_file_path, load_and_parse_html, writ
 
 def extract_liked_usernames(soup):
     """Extract usernames from liked posts in the HTML content."""
-    return [username.text for username in soup.find_all("div", class_="_3-95 _2pim _a6-h _a6-i")]
+    return [username.text for username in soup.find_all("h2", class_="_3-95 _2pim _a6-h _a6-i")]
 
 def main():
     """Identify users whose posts you liked the most and save top 5 to text file."""
