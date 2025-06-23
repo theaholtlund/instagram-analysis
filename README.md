@@ -47,7 +47,7 @@ pip install -r requirements.txt
 To utilise the script:
 
 1. Execute the `run_all_scripts.py` file in order to run all analysis scripts in one batch, generating the required outputs.
-2. Run the `generate_report` script located in the `summary_report` directory. The report will be created in the same directory, and automatically open in a browser once generated.
+2. Run the `generate_report.py` script located in the `summary_report` directory. The report will be created in the same directory, and automatically open in a browser once generated.
 
 ### Repository Contents
 
