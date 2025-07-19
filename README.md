@@ -2,7 +2,7 @@
 
 ### Overview
 
-This project contains scripts to analyse various metrics for Instagram, based on files received when a user requests their data from the platform. Files are named according to functionality, and results are saved to a report for easy access.
+This project contains scripts to analyse various metrics from Instagram, based on files received when a user requests their data from the platform. Files are named according to functionality, and results are saved to a report for easy access.
 
 ### Requesting Data
 
@@ -46,7 +46,7 @@ pip install -r requirements.txt
 
 To utilise the script:
 
-1. Execute the `run_all_scripts.py` file in order to run all analysis scripts in one batch, generating the required outputs.
+1. Run the `run_all_scripts.py` file to execure all analysis scripts in one batch, generating the required outputs.
 
 ```bash
 python run_all_scripts.py
