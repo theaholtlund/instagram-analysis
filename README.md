@@ -42,6 +42,12 @@ Install required packages:
 pip install -r requirements.txt
 ```
 
+Install `weasyprint`
+
+```
+brew install weasyprint
+```
+
 ### Running the Analysis
 
 To utilise the script:
