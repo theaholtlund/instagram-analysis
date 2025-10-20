@@ -31,7 +31,7 @@ def main():
     
     # Extract followers and following usernames
     followers_usernames = extract_content(followers_soup, tag="a", content_type="text")
-    following_usernames = extract_content(following_soup, tag="a", content_type="text")
+    following_usernames = extract_content(following_soup, tag="h2", content_type="text")
     
     # Find accounts the user is following that are not following them back
     not_following_back = following_usernames - followers_usernames
