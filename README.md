@@ -52,13 +52,13 @@ brew install weasyprint
 
 To utilise the script:
 
-1. Run the `run_all_scripts.py` file to execure all analysis scripts in one batch, generating the required outputs.
+- Run the `run_all_scripts.py` file to execute all analysis scripts in one batch, generating the required outputs.
 
 ```bash
 python run_all_scripts.py
 ```
 
-2. Run the `generate_report.py` script. The report will be created in the same directory, and automatically open in the browser.
+- Run the `generate_report.py` script. The report will be created in the same directory, and automatically open in the browser.
 
 ```bash
 python summary_report/generate_report.py
