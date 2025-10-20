@@ -1,10 +1,10 @@
 # Instagram Analysis App
 
-### Overview
+## Overview
 
 This project contains scripts to analyse various metrics from Instagram, based on files received when a user requests their data from the platform. Files are named according to functionality, and results are saved to a report for easy access.
 
-### Requesting Data
+## Requesting Data
 
 To request data from Instagram:
 
@@ -14,11 +14,11 @@ To request data from Instagram:
 4. Confirm choices by clicking "Create Files".
 5. Expect an e-mail with the download link within 30 days.
 
-### Adding Data
+## Adding Data
 
 Before running the analysis scripts, please copy all contents from the download folder as they are, with its current structure, into the `instagram_data` project folder.
 
-### Create a Virtual Environment
+## Create a Virtual Environment
 
 Set up a virtual environment if desired (optional but recommended).
 
@@ -44,7 +44,7 @@ pip install -r requirements.txt
 
 Install `weasyprint`
 
-```
+```bash
 brew install weasyprint
 ```
 
@@ -66,7 +66,7 @@ python summary_report/generate_report.py
 
 ### Repository Contents
 
-#### Scripts for Analysis:
+#### Scripts for Analysis
 
 - `blocked_accounts`: Finds the number of blocked accounts, and their usernames.
 - `close_friends`: Finds the number of close friends, and their usernames.
