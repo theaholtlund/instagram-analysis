@@ -42,10 +42,10 @@ Install required packages:
 pip install -r requirements.txt
 ```
 
-Install `weasyprint`
+Install `weasyprint` and library dependencies
 
 ```bash
-brew install weasyprint
+brew install weasyprint pango gobject-introspection cairo
 ```
 
 ### Running the Analysis
