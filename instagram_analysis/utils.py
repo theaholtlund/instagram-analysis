@@ -3,8 +3,8 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 
 def get_script_dir():
-    """Return the directory of the current script."""
-    return Path(__file__).resolve().parent
+    """Return the project root directory."""
+    return Path(__file__).resolve().parent.parent
 
 def construct_file_path(*path_parts):
     """Construct a file path from the given parts."""
@@ -93,3 +93,8 @@ def parse_detailed_output(data):
     except IndexError as e:
         print(f"Error parsing detailed output: {e}")
         return 0, []
+
+
+def extract_comments(soup):
+    """Extract comments from an Instagram comments export."""
+    return [comment.text for comment in soup.find_all("td", class_="_2pin _a6_q") if "Comment" in comment.text]
