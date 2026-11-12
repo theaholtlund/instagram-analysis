@@ -1,35 +1,29 @@
-# Import required libraries
+"""Count liked Instagram comments."""
+
 import sys
 from pathlib import Path
 
-# Ensure project root is in the path
-project_root = Path(__file__).resolve().parent.parent
-sys.path.append(str(project_root))
+# Allow scripts to import the shared package
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 
-# Import modules and variables
 from instagram_analysis import variables
-from instagram_analysis.utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file
+from instagram_analysis.export import records
+from instagram_analysis.utils import write_to_file
 
-def extract_likes(soup):
-    """Extract liked comments from HTML content."""
-    return [like for like in soup.find_all("a", href=True) if like.text == "👍"]
 
 def main():
-    """Count the total number of likes given on comments and save to text file."""
-    script_dir = get_script_dir()
-    
-    # Load, parse and extract liked comments from HTML content
-    file_path = construct_file_path(script_dir, variables.DATA_DIR, variables.ACTIVITY_DIR, variables.LIKES_DIR, variables.LIKED_COMMENTS_FILE)
-    comments_soup = load_and_parse_html(file_path)
-    comment_likes = extract_likes(comments_soup)
-    
-    # Update the total likes count
-    total_likes = len(comment_likes)
-    
-    # Construct output file path and output result to file
-    output_file_path = construct_file_path(variables.OUTPUT_DIR, "count_liked_comments.txt")
-    write_to_file(output_file_path, [total_likes], "Total number of likes given on Instagram comments: ", detailed=False)
-    print(f"Number of likes given on comments has been saved to '{output_file_path}'.")
+    """Count and save liked comments."""
+    path = Path(
+        variables.DATA_DIR,
+        variables.ACTIVITY_DIR,
+        variables.LIKES_DIR,
+        variables.LIKED_COMMENTS_FILE,
+    )
+    count = sum(1 for _ in records(path))
+    output = Path(variables.OUTPUT_DIR, "count_liked_comments.txt")
+    write_to_file(output, [count], "Total number of liked comments: ")
+    print(f"Saved {count} liked comments to {output}.")
+
 
 if __name__ == "__main__":
     main()

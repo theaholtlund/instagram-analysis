@@ -1,45 +1,39 @@
-# Import required libraries
+"""Find followed accounts that do not follow back."""
+
 import sys
 from pathlib import Path
 
-# Ensure project root is in the path
-project_root = Path(__file__).resolve().parent.parent
-sys.path.append(str(project_root))
+# Allow scripts to import the shared package
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 
-# Import modules and variables
 from instagram_analysis import variables
-from instagram_analysis.utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file, extract_content
+from instagram_analysis.export import account_names
+from instagram_analysis.utils import write_to_file
+
 
 def main():
-    """Identify accounts not following back and save the list to text file."""
-    script_dir = get_script_dir()
-    
-    # Define base paths for the followers and following HTML files
-    base_path = construct_file_path(script_dir, variables.DATA_DIR, variables.CONNECTIONS_DIR, variables.FOLLOWERS_DIR)
-    
-    # Construct paths for the followers and following HTML files
-    followers_path = construct_file_path(base_path, variables.FOLLOWERS_FILE)
-    following_path = construct_file_path(base_path, variables.FOLLOWING_FILE)
-    
-    # Parse the HTML content using BeautifulSoup
-    followers_soup = load_and_parse_html(followers_path)
-    following_soup = load_and_parse_html(following_path)
-    
-    if followers_soup is None or following_soup is None:
-        print("Error loading or parsing HTML files.")
-        return
-    
-    # Extract followers and following usernames
-    followers_usernames = extract_content(followers_soup, tag="a", content_type="text")
-    following_usernames = extract_content(following_soup, tag="h2", content_type="text")
-    
-    # Find accounts the user is following that are not following them back
-    not_following_back = following_usernames - followers_usernames
-    
-    # Construct output file path and output result to file
-    output_file_path = construct_file_path(variables.OUTPUT_DIR, "not_following_back.txt")
-    write_to_file(output_file_path, not_following_back, "Accounts not following back", detailed=True, data_label="Usernames not following back")
-    print(f"Accounts not following back have been saved to '{output_file_path}'.")
+    """Find and save accounts that do not follow back."""
+    base = Path(variables.DATA_DIR, variables.CONNECTIONS_DIR, variables.FOLLOWERS_DIR)
+    files = sorted(base.glob("followers_*.html"))
+    if not files:
+        raise FileNotFoundError(f"No followers_*.html files found in {base}")
+    followers = set().union(*(account_names(path) for path in files))
+    following = account_names(base / variables.FOLLOWING_FILE)
+    follower_keys = {name.casefold() for name in followers}
+    missing = sorted(
+        (name for name in following if name.casefold() not in follower_keys),
+        key=str.casefold,
+    )
+    output = Path(variables.OUTPUT_DIR, "not_following_back.txt")
+    write_to_file(
+        output,
+        missing,
+        "Accounts not following back",
+        detailed=True,
+        data_label="Usernames not following back",
+    )
+    print(f"Saved {len(missing)} accounts to {output}.")
+
 
 if __name__ == "__main__":
     main()

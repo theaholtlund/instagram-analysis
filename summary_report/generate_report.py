@@ -1,24 +1,31 @@
-# Import required libraries
+"""Generate the Instagram summary report."""
+
 import sys
 import webbrowser
+from html import escape
 from pathlib import Path
 from weasyprint import HTML
 
-# Ensure project root is in the path
+# Allow scripts to import the shared package
 script_dir = Path(__file__).resolve().parent
 project_root = script_dir.parent
 sys.path.append(str(project_root))
 
-# Import modules and variables
 from instagram_analysis import variables
-from instagram_analysis.utils import read_file, parse_simple_output, parse_list_output, parse_detailed_output
+from instagram_analysis.utils import (
+    read_file,
+    parse_simple_output,
+    parse_list_output,
+    parse_detailed_output,
+)
 from create_plot import create_activity_plots, create_close_friends_plot
+
 
 def generate_html_content(summary_data, show_count_files):
     """Generate HTML content for the summary report, including bar and pie charts."""
     analysis_output_dir = Path(variables.OUTPUT_DIR)
     report_content = [
-        "<div class='container'>", 
+        "<div class='container'>",
         "<h2>Instagram Activity Summary</h2>\n",
         f"""
         <div class="chart-container">
@@ -29,62 +36,84 @@ def generate_html_content(summary_data, show_count_files):
             <h3>Close Friends Among Those Followed</h3>
             <img src="../{analysis_output_dir / variables.PLOT_FOLLOWING_CHART}" alt="Close Friends Among Those Followed">
         </div>
-        """
+        """,
     ]
 
-    # Add summaries for each output file
+    titles = {
+        "blocked_accounts.txt": "Blocked accounts",
+        "close_friends.txt": "Close friends",
+        "content_comments.txt": "Most repeated comments on posts and reels",
+        "count_comments.txt": "Comments on posts and reels",
+        "count_liked_comments.txt": "Liked comments",
+        "count_liked_posts.txt": "Liked posts",
+        "count_stories.txt": "Downloaded story media files",
+        "most_liked_posts.txt": "Accounts whose posts you liked most",
+        "not_following_back.txt": "Accounts not following back",
+    }
     for file_name, (count, items) in summary_data.items():
-        # Convert title to uppercase and format it
-        title = file_name.replace("_", " ").replace(".txt", "").upper()
-        
-        # Add expandable details for file contents
-        report_content.append(f"<h2>{title}: {count}</h2>\n" if file_name in show_count_files else f"<h2>{title}:</h2>\n")
+        title = titles.get(file_name, file_name).upper()
+
+        report_content.append(
+            f"<h2>{title}: {count}</h2>\n"
+            if file_name in show_count_files
+            else f"<h2>{title}:</h2>\n"
+        )
 
         if items:
-            item_list = "".join(f"<p>- {item}</p>\n" for item in items)
-            report_content.append(f"""
+            item_list = "".join(f"<p>- {escape(item)}</p>\n" for item in items)
+            report_content.append(
+                f"""
                 <details><summary>CLICK TO EXPAND</summary>
                     <div class='content-list'>{item_list}</div>
                 </details>\n
-            """)
+            """
+            )
 
     report_content.append("</div>")
     return "\n".join(report_content)
+
 
 def export_to_pdf(summary_file_path, pdf_output_path):
     """Export the summary report HTML to a PDF file."""
     try:
         html_content = summary_file_path.read_text(encoding="utf-8")
-        pdf = HTML(string=html_content).write_pdf()
+        # Expand details because PDF has no interactive elements
+        html_content = html_content.replace("<details>", "<div>").replace(
+            "</details>", "</div>"
+        )
+        html_content = html_content.replace("<summary>CLICK TO EXPAND</summary>", "")
+        pdf = HTML(
+            string=html_content, base_url=str(summary_file_path.parent)
+        ).write_pdf()
         pdf_output_path.write_bytes(pdf)
         print(f"PDF report saved to {pdf_output_path}")
     except Exception as e:
         print(f"Error exporting to PDF: {e}")
 
+
 def generate_summary_report():
     """Generate the HTML summary report with plots from analysis output files."""
     analysis_output_dir = Path(variables.OUTPUT_DIR)
-    followers_file_dir = Path(variables.DATA_DIR, variables.CONNECTIONS_DIR, variables.FOLLOWERS_DIR)
+    followers_file_dir = Path(
+        variables.DATA_DIR, variables.CONNECTIONS_DIR, variables.FOLLOWERS_DIR
+    )
     summary_file_path = script_dir / variables.SUMMARY_REPORT
     template_file_path = script_dir / variables.REPORT_TEMPLATE
 
     try:
-        # Generate bar and pie charts with activity data
         create_activity_plots(
             comments_file=analysis_output_dir / "count_comments.txt",
-            likes_file=analysis_output_dir / "count_liked_posts.txt"
+            likes_file=analysis_output_dir / "count_liked_posts.txt",
         )
 
-        # Generate following vs close friends plot
         create_close_friends_plot(
             close_friends_file=analysis_output_dir / "close_friends.txt",
-            following_file=followers_file_dir / "following.html"
+            following_file=followers_file_dir / "following.html",
         )
     except Exception as e:
         print(f"Error creating plots: {e}")
         return
 
-    # Define parsers for each file type
     files_parsers = {
         "blocked_accounts.txt": parse_list_output,
         "close_friends.txt": parse_list_output,
@@ -94,36 +123,45 @@ def generate_summary_report():
         "count_liked_posts.txt": parse_simple_output,
         "count_stories.txt": parse_simple_output,
         "most_liked_posts.txt": parse_detailed_output,
-        "not_following_back.txt": parse_list_output
+        "not_following_back.txt": parse_list_output,
     }
 
-    # Parse each file and store results
     summary_data = {
         file_name: parser(read_file(analysis_output_dir / file_name, as_lines=True))
-        for file_name, parser in files_parsers.items() if (analysis_output_dir / file_name).exists()
+        for file_name, parser in files_parsers.items()
+        if (analysis_output_dir / file_name).exists()
     }
 
-    show_count_files = {"count_comments.txt", "count_liked_comments.txt", "count_liked_posts.txt", "count_stories.txt"}
+    show_count_files = {
+        "blocked_accounts.txt",
+        "close_friends.txt",
+        "not_following_back.txt",
+        "count_comments.txt",
+        "count_liked_comments.txt",
+        "count_liked_posts.txt",
+        "count_stories.txt",
+    }
 
-    # Generate and read HTML template
     report_content = generate_html_content(summary_data, show_count_files)
     html_template = read_file(template_file_path)
     if not html_template:
         print("Error: Failed to load HTML template.")
         return
 
-    # Write content into the template and save the report
     try:
-        summary_file_path.write_text(html_template.replace("{{{content}}}", report_content), encoding="utf-8")
-        print(f"The summary report has been generated and saved to '{summary_file_path}'.")
+        summary_file_path.write_text(
+            html_template.replace("{{{content}}}", report_content), encoding="utf-8"
+        )
+        print(
+            f"The summary report has been generated and saved to '{summary_file_path}'."
+        )
 
-        # Open the report in a browser
         webbrowser.open(summary_file_path.as_uri())
 
-        # Export the report in PDF format
         export_to_pdf(summary_file_path, analysis_output_dir / "instagram_report.pdf")
     except Exception as e:
         print(f"Error writing summary report: {e}")
+
 
 if __name__ == "__main__":
     generate_summary_report()

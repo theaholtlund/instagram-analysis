@@ -1,44 +1,44 @@
-# Import required libraries
+"""Find the accounts whose posts received the most likes."""
+
 import sys
-from pathlib import Path
 from collections import Counter
+from pathlib import Path
 
-# Ensure project root is in the path
-project_root = Path(__file__).resolve().parent.parent
-sys.path.append(str(project_root))
+# Allow scripts to import the shared package
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 
-# Import modules and variables
 from instagram_analysis import variables
-from instagram_analysis.utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file
+from instagram_analysis.export import liked_post_owner, records
+from instagram_analysis.utils import write_to_file
 
-def extract_liked_usernames(soup):
-    """Extract usernames from liked posts in the HTML content."""
-    return [username.text for username in soup.find_all("h2", class_="_3-95 _2pim _a6-h _a6-i")]
 
 def main():
-    """Identify users whose posts you liked the most and save top 5 to text file."""
-    script_dir = get_script_dir()
-    
-    # Load, parse and extract liked posts from HTML content
-    likes_path = construct_file_path(script_dir, variables.DATA_DIR, variables.ACTIVITY_DIR, variables.LIKES_DIR, variables.LIKED_POSTS_FILE)
-    likes_soup = load_and_parse_html(likes_path)
-    liked_usernames = extract_liked_usernames(likes_soup)
-    
-    # Count occurrences of each username
-    username_counts = Counter(liked_usernames)
-    
-    # Get the top 5 usernames with the most likes
-    top_5_liked_users = username_counts.most_common(5)
-    
-    # Prepare output data with proper formatting
-    header = "Top 5 users who you liked the most posts from:"
-    output_data = [f"- {username}: {count}" for username, count in top_5_liked_users]
-    formatted_header = f"{header}\n"
-    
-    # Construct output file path and output result to file
-    output_file_path = construct_file_path(variables.OUTPUT_DIR, "most_liked_posts.txt")
-    write_to_file(output_file_path, data=output_data, header=formatted_header, detailed=False)
-    print(f"Top users who received the most likes on their posts have been saved to '{output_file_path}'.")
+    """Find and save the accounts whose posts were liked most."""
+    path = Path(
+        variables.DATA_DIR,
+        variables.ACTIVITY_DIR,
+        variables.LIKES_DIR,
+        variables.LIKED_POSTS_FILE,
+    )
+    counts = Counter()
+    total = missing = 0
+    for record in records(path):
+        total += 1
+        owner = liked_post_owner(record)
+        if owner:
+            counts[owner.casefold()] += 1
+        else:
+            missing += 1
+    output = Path(variables.OUTPUT_DIR, "most_liked_posts.txt")
+    lines = [f"- {name}: {count}" for name, count in counts.most_common(5)]
+    lines.append(
+        f"- {missing} of {total} liked posts have no identifiable owner in the export"
+    )
+    write_to_file(output, lines, header="Top 5 accounts whose posts you liked most:\n")
+    print(
+        f"Saved top accounts to {output}; {missing} of {total} posts have no identifiable owner."
+    )
+
 
 if __name__ == "__main__":
     main()
