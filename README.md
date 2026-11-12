@@ -42,11 +42,20 @@ Install required packages:
 pip install -r requirements.txt
 ```
 
-Install `weasyprint` and library dependencies
+On macOS, install WeasyPrint's system libraries with Homebrew:
 
 ```bash
 brew install pango gobject-introspection cairo gdk-pixbuf libffi
 ```
+
+Tell macOS where to find those libraries. Run this in each new terminal
+session before generating the report:
+
+```bash
+export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib${DYLD_FALLBACK_LIBRARY_PATH:+:$DYLD_FALLBACK_LIBRARY_PATH}"
+```
+
+On other platforms, see the [WeasyPrint installation instructions](https://doc.courtbouillon.org/weasyprint/stable/first_steps.html#installation) for the required system libraries.
 
 ### Running the Analysis
 
@@ -58,11 +67,20 @@ To utilise the script:
 python run_all_scripts.py
 ```
 
-- Run the `generate_report.py` script. The report will be created in the same directory, and automatically open in the browser.
+- Run the `generate_report.py` script. The HTML report is created in `summary_report/` and opens in the browser; the PDF is saved in `analysis_outputs/`.
 
 ```bash
 python summary_report/generate_report.py
 ```
+
+Run both commands again after updating the code or replacing the Instagram export;
+the report reads the files produced by the analysis scripts. The results describe
+the downloaded export, which is a snapshot and may not reflect later changes.
+Comments include posts and reels, but not story hype. Story totals count downloaded
+image and video files, which may differ from the number of stories published.
+The liked-post ranking counts the account identified as the owner of each liked
+post and reports how many entries lack an identifiable owner. The close-friends
+chart counts only close friends who are also in the following list.
 
 ### Repository Contents
 

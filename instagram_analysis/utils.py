@@ -62,6 +62,7 @@ def write_to_file(file_path, data, header="", detailed=False, data_label=None):
                     file.write(f"{item}\n")
     except Exception as e:
         print(f"Error writing to file '{file_path}': {e}")
+        raise
 
 def parse_simple_output(data):
     """Parse a simple output file where the first line contains a count."""
@@ -78,7 +79,7 @@ def parse_list_output(data):
     try:
         header = data[0].strip()
         count = int(header.split(": ")[1])
-        items = [line.strip("- \n") for line in data[2:]]
+        items = [line.strip().removeprefix('- ').strip() for line in data[2:] if line.strip()]
         return count, items
     except (IndexError, ValueError) as e:
         print(f"Error parsing list output: {e}")
@@ -88,7 +89,7 @@ def parse_detailed_output(data):
     """Parse a detailed output file where items appear after the first line."""
     try:
         header = data[0].strip()
-        items = [line.strip("- \n") for line in data[1:] if line.strip()]
+        items = [line.strip().removeprefix('- ').strip() for line in data[1:] if line.strip()]
         return len(items), items
     except IndexError as e:
         print(f"Error parsing detailed output: {e}")

@@ -1,6 +1,7 @@
 # Import required libraries
 import sys
 import webbrowser
+from html import escape
 from pathlib import Path
 from weasyprint import HTML
 
@@ -32,16 +33,27 @@ def generate_html_content(summary_data, show_count_files):
         """
     ]
 
+    titles = {
+        'blocked_accounts.txt': 'Blocked accounts',
+        'close_friends.txt': 'Close friends',
+        'content_comments.txt': 'Most repeated comments on posts and reels',
+        'count_comments.txt': 'Comments on posts and reels',
+        'count_liked_comments.txt': 'Liked comments',
+        'count_liked_posts.txt': 'Liked posts',
+        'count_stories.txt': 'Downloaded story media files',
+        'most_liked_posts.txt': 'Accounts whose posts you liked most',
+        'not_following_back.txt': 'Accounts not following back',
+    }
     # Add summaries for each output file
     for file_name, (count, items) in summary_data.items():
         # Convert title to uppercase and format it
-        title = file_name.replace("_", " ").replace(".txt", "").upper()
+        title = titles.get(file_name, file_name).upper()
         
         # Add expandable details for file contents
         report_content.append(f"<h2>{title}: {count}</h2>\n" if file_name in show_count_files else f"<h2>{title}:</h2>\n")
 
         if items:
-            item_list = "".join(f"<p>- {item}</p>\n" for item in items)
+            item_list = "".join(f"<p>- {escape(item)}</p>\n" for item in items)
             report_content.append(f"""
                 <details><summary>CLICK TO EXPAND</summary>
                     <div class='content-list'>{item_list}</div>
@@ -55,7 +67,10 @@ def export_to_pdf(summary_file_path, pdf_output_path):
     """Export the summary report HTML to a PDF file."""
     try:
         html_content = summary_file_path.read_text(encoding="utf-8")
-        pdf = HTML(string=html_content).write_pdf()
+        # PDF has no interactive details elements, so show their contents.
+        html_content = html_content.replace('<details>', '<div>').replace('</details>', '</div>')
+        html_content = html_content.replace('<summary>CLICK TO EXPAND</summary>', '')
+        pdf = HTML(string=html_content, base_url=str(summary_file_path.parent)).write_pdf()
         pdf_output_path.write_bytes(pdf)
         print(f"PDF report saved to {pdf_output_path}")
     except Exception as e:
@@ -103,7 +118,7 @@ def generate_summary_report():
         for file_name, parser in files_parsers.items() if (analysis_output_dir / file_name).exists()
     }
 
-    show_count_files = {"count_comments.txt", "count_liked_comments.txt", "count_liked_posts.txt", "count_stories.txt"}
+    show_count_files = {"blocked_accounts.txt", "close_friends.txt", "not_following_back.txt", "count_comments.txt", "count_liked_comments.txt", "count_liked_posts.txt", "count_stories.txt"}
 
     # Generate and read HTML template
     report_content = generate_html_content(summary_data, show_count_files)

@@ -16,8 +16,11 @@ def main():
     script_dir = get_script_dir()
     stories_path = construct_file_path(script_dir, variables.DATA_DIR, variables.MEDIA_DIR, variables.STORIES_DIR)
     
-    # Count all files in the stories directory and its subdirectories
-    total_files = sum(len(files) for _, _, files in os.walk(stories_path))
+    if not stories_path.is_dir():
+        raise FileNotFoundError(f"Stories directory not found: {stories_path}")
+    # Count downloaded image and video files, not metadata or hidden files.
+    extensions = {".jpg", ".jpeg", ".png", ".webp", ".heic", ".mp4", ".mov"}
+    total_files = sum(1 for path in stories_path.rglob('*') if path.is_file() and path.suffix.lower() in extensions)
     
     # Construct output file path and output result to file
     output_file_path = construct_file_path(variables.OUTPUT_DIR, "count_stories.txt")

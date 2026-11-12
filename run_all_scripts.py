@@ -17,10 +17,13 @@ def run_script(script_name):
     try:
         result = subprocess.run([sys.executable, script_path], check=True, capture_output=True, text=True)
         print(f"Successfully ran '{script_name}':\n{result.stdout}\n{'=' * 40}\n")
+        return True
     except subprocess.CalledProcessError as e:
         print(f"Error running '{script_name}':\n{e.stderr}\n{'=' * 40}\n")
+        return False
     except Exception as e:
         print(f"An unexpected error occurred while running '{script_name}': {e}\n{'=' * 40}\n")
+        return False
 
 def main():
     """Run all Python scripts in the analysis_scripts directory."""
@@ -30,9 +33,14 @@ def main():
         print("No scripts found to execute in the analysis scripts directory.")
         return
 
+    failed = []
     for script in scripts_to_run:
         print(f"Running '{script}'...")
-        run_script(script)
+        if not run_script(script):
+            failed.append(script)
+    if failed:
+        print(f"Analysis failed for: {', '.join(failed)}. Do not use old output files for these analyses.")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

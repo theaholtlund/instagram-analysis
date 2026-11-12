@@ -9,7 +9,8 @@ sys.path.append(str(project_root))
 
 # Import modules and variables
 from instagram_analysis import variables
-from instagram_analysis.utils import load_and_parse_html, read_file, extract_content
+from instagram_analysis.utils import read_file, parse_list_output
+from instagram_analysis.export import account_names
 
 # Define shared paths for plots
 output_dir = Path(variables.OUTPUT_DIR)
@@ -47,9 +48,12 @@ def create_activity_plots(comments_file, likes_file):
 
     # Create pie chart
     fig, ax = plt.subplots(figsize=(6, 6))
-    ax.pie([total_likes, total_comments], labels=["Likes", "Comments"], autopct="%1.1f%%", 
+    if total_likes + total_comments:
+        ax.pie([total_likes, total_comments], labels=["Likes", "Comments"], autopct="%1.1f%%",
            startangle=140, colors=[variables.PLOT_COLOUR_LIGHT, variables.PLOT_COLOUR_DARK],
            wedgeprops={"edgecolor": "black", "linewidth": 1})
+    else:
+        ax.text(0.5, 0.5, "No likes or comments", ha="center", va="center", transform=ax.transAxes)
     ax.set_title("Likes-to-Comments Ratio")
     save_plot(fig, output_dir / variables.PLOT_PIE_CHART)
 
@@ -60,19 +64,14 @@ def create_close_friends_plot(close_friends_file, following_file):
     try:
         # Get number of close friends, located in first line
         close_friends_data = read_file(close_friends_file, as_lines=True)
-        num_close_friends = int(next(line for line in close_friends_data if "Number of close friends:" in line).split(":")[1].strip())
+        _, close_friends = parse_list_output(close_friends_data)
     except (ValueError, IndexError, StopIteration, AttributeError):
         print(f"Error parsing the number of close friends from '{close_friends_file}'.")
         return
 
     # Parse following HTML content using BeautifulSoup
-    following_soup = load_and_parse_html(following_file)
-    if not following_soup:
-        print(f"Error parsing the following HTML file '{following_file}'.")
-        return
-    
-    # Extract usernames for following from the HTML content
-    following_usernames = extract_content(following_soup, tag="a", content_type="text")
+    following_usernames = {name.casefold() for name in account_names(following_file)}
+    num_close_friends = len(following_usernames & {name.casefold() for name in close_friends})
 
     # Calculate the percentage of close friends, avoid division by zero error
     total_following = len(following_usernames)

@@ -1,40 +1,19 @@
-# Import required libraries
 import sys
 from pathlib import Path
-
-# Ensure project root is in the path
-project_root = Path(__file__).resolve().parent.parent
-sys.path.append(str(project_root))
-
-# Import modules and variables
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 from instagram_analysis import variables
-from instagram_analysis.utils import get_script_dir, construct_file_path, list_files_and_construct_paths, load_and_parse_html, write_to_file, extract_comments
+from instagram_analysis.utils import write_to_file
+from instagram_analysis.export import comments
 
 def main():
-    """Count the total number of comments made and save to text file."""
-    script_dir = get_script_dir()
-    
-    # Get files from comments folder
-    comments_path = construct_file_path(script_dir, variables.DATA_DIR, variables.ACTIVITY_DIR, variables.COMMENTS_DIR)
-    file_paths = list_files_and_construct_paths(comments_path)
-    
-    # Initialise the comment count
-    total_comments = 0
+    directory = Path(variables.DATA_DIR, variables.ACTIVITY_DIR, variables.COMMENTS_DIR)
+    paths = sorted(directory.glob('post_comments*.html')) + sorted(directory.glob('reels_comments*.html'))
+    if not paths:
+        raise FileNotFoundError(f'No post or reel comment files found in {directory}')
+    count = sum(1 for path in paths for _ in comments(path))
+    output = Path(variables.OUTPUT_DIR, 'count_comments.txt')
+    write_to_file(output, [count], 'Total number of comments on posts and reels: ')
+    print(f'Saved {count} comments to {output}.')
 
-    # Iterate over all files in the comments directory
-    for filename in file_paths:
-        # Load, parse and extract comments from HTML content
-        file_path = construct_file_path(comments_path, filename)
-        comments_soup = load_and_parse_html(file_path)
-        comments = extract_comments(comments_soup)
-        
-        # Update the total comment count
-        total_comments += len(comments)
-    
-    # Construct output file path and output result to file
-    output_file_path = construct_file_path(variables.OUTPUT_DIR, "count_comments.txt")
-    write_to_file(output_file_path, [total_comments], "Total number of comments left on Instagram: ", detailed=False)
-    print(f"Number of comments made has been saved to '{output_file_path}'.")
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
