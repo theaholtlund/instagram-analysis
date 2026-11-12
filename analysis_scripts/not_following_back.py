@@ -7,8 +7,8 @@ project_root = Path(__file__).resolve().parent.parent
 sys.path.append(str(project_root))
 
 # Import modules and variables
-import variables
-from utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file, extract_content
+from instagram_analysis import variables
+from instagram_analysis.utils import get_script_dir, construct_file_path, load_and_parse_html, write_to_file, extract_content
 
 def main():
     """Identify accounts not following back and save the list to text file."""

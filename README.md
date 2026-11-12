@@ -66,6 +66,13 @@ python summary_report/generate_report.py
 
 ### Repository Contents
 
+- `instagram_analysis/`: shared configuration and helpers.
+- `analysis_scripts/`: individual analysis scripts.
+- `summary_report/`: report generation, charts, and report assets.
+- `instagram_data/`: place the extracted Instagram download here.
+- `analysis_outputs/`: generated analysis results and charts.
+- `run_all_scripts.py`: runs the analysis scripts with the active Python interpreter.
+
 #### Scripts for Analysis
 
 - `blocked_accounts`: Finds the number of blocked accounts, and their usernames.

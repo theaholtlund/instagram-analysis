@@ -1,7 +1,8 @@
 # Import required libraries
 import subprocess
+import sys
 from pathlib import Path
-import variables
+from instagram_analysis import variables
 
 # Define the path to the folder containing analysis scripts
 scripts_dir = Path(__file__).resolve().parent / variables.SCRIPTS_DIR
@@ -14,7 +15,7 @@ def run_script(script_name):
         return
     
     try:
-        result = subprocess.run(["python3", script_path], check=True, capture_output=True, text=True)
+        result = subprocess.run([sys.executable, script_path], check=True, capture_output=True, text=True)
         print(f"Successfully ran '{script_name}':\n{result.stdout}\n{'=' * 40}\n")
     except subprocess.CalledProcessError as e:
         print(f"Error running '{script_name}':\n{e.stderr}\n{'=' * 40}\n")

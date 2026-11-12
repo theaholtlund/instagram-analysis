@@ -8,8 +8,8 @@ project_root = Path(__file__).resolve().parent.parent
 sys.path.append(str(project_root))
 
 # Import modules and variables
-import variables
-from utils import get_script_dir, construct_file_path, write_to_file
+from instagram_analysis import variables
+from instagram_analysis.utils import get_script_dir, construct_file_path, write_to_file
 
 def main():
     """Count the total number of files in the stories directory and save to a text file."""

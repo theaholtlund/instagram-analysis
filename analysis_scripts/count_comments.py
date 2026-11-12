@@ -7,12 +7,8 @@ project_root = Path(__file__).resolve().parent.parent
 sys.path.append(str(project_root))
 
 # Import modules and variables
-import variables
-from utils import get_script_dir, construct_file_path, list_files_and_construct_paths, load_and_parse_html, write_to_file
-
-def extract_comments(soup):
-    """Extract comments from HTML content."""
-    return [comment.text for comment in soup.find_all("td", class_="_2pin _a6_q") if "Comment" in comment.text]
+from instagram_analysis import variables
+from instagram_analysis.utils import get_script_dir, construct_file_path, list_files_and_construct_paths, load_and_parse_html, write_to_file, extract_comments
 
 def main():
     """Count the total number of comments made and save to text file."""
